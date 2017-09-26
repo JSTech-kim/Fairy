@@ -3,4 +3,4 @@ Hyeon	Ji n Sub
 	Gi
 
 목표는 수상 :)
-화이팅!
+화이팅!reddd
