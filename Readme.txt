@@ -1,5 +1,5 @@
 Hyeon	Ji n Sub
-	n
+	nsdfg
 	Gi
 
 목표는 수상 :)
