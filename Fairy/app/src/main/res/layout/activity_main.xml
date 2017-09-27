@@ -20,7 +20,7 @@
             android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
+            android:background="?attr/colorPrimaryDark"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
         <com.astuetz.PagerSlidingTabStrip
@@ -28,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            android:textColor="@color/colorWhite"
             app:pstsShouldExpand="true"
             app:pstsIndicatorColor="@color/colorAccent"
             app:pstsIndicatorHeight="5dip"
