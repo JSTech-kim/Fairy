@@ -44,7 +44,7 @@ public class InfoFragment extends Fragment {
     JSONArray aJson = null;
     ArrayList<InfoDataType> aListInfo;
 
-    String strTestUrl = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/3";
+    String strTestUrl = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/5";
 
     //  Constructor
     public InfoFragment(){
