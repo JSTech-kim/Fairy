@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jstech.fairy.DataType.InfoDataType;
 import com.jstech.fairy.R;
 
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ import java.util.ArrayList;
 public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFragmentRecyclerViewAdapter.ViewHolder>{
 
     Context mContext;
-    ArrayList<String> arrayList;
+    ArrayList<InfoDataType> aListInfo;
 
-    public InfoFragmentRecyclerViewAdapter(Context context, ArrayList<String> arrayList) {
+    public InfoFragmentRecyclerViewAdapter(Context context, ArrayList<InfoDataType> aListInfo) {
         this.mContext = context;
-        this.arrayList = arrayList;
+        this.aListInfo = aListInfo;
     }
 
     @Override
@@ -41,14 +42,14 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
     @Override
     public void onBindViewHolder(InfoFragmentRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        holder.textview.setText(arrayList.get(position));
-        Log.e("text", arrayList.get(position));
+        holder.textview.setText(aListInfo.get(position).getStrTitle());
+        Log.e("text", aListInfo.get(position).getStrTitle());
 
     }
 
     @Override
     public int getItemCount() {
-        return arrayList.size();
+        return aListInfo.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
