@@ -15,10 +15,10 @@ import android.view.MenuItem;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
-import com.jstech.fairy.NavigationBar.Navi_ContactUs;
-import com.jstech.fairy.NavigationBar.Navi_Developers;
-import com.jstech.fairy.NavigationBar.Navi_LicenseInfo;
-import com.jstech.fairy.NavigationBar.Navi_Secuity;
+import com.jstech.fairy.Navigation.Navi_ContactUs;
+import com.jstech.fairy.Navigation.Navi_Developers;
+import com.jstech.fairy.Navigation.Navi_LicenseInfo;
+import com.jstech.fairy.Navigation.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity {
     final int PAGE_COUNT = 3;   //페이지 개수
