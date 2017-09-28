@@ -1,5 +1,6 @@
 package com.jstech.fairy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -11,10 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
+import com.jstech.fairy.NavigationBar.Navi_ContactUs;
+import com.jstech.fairy.NavigationBar.Navi_Developers;
+import com.jstech.fairy.NavigationBar.Navi_LicenseInfo;
+import com.jstech.fairy.NavigationBar.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity {
     final int PAGE_COUNT = 3;   //페이지 개수
@@ -45,17 +49,25 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
+                Intent intent;
 
                 int id = menuItem.getItemId();
                 switch(id){
-                    case R.id.test1:
-                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                    case R.id.navi_btn_Secuity:
+                        intent = new Intent(getApplicationContext(), Navi_Secuity.class);
+                        startActivity(intent);
                         break;
-                    case R.id.test2:
-                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                    case R.id.navi_btn_ContactUs:
+                        intent = new Intent(getApplicationContext(), Navi_ContactUs.class);
+                        startActivity(intent);
                         break;
-                    case R.id.test3:
-                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
+                    case R.id.navi_btn_Developers:
+                        intent = new Intent(getApplicationContext(), Navi_Developers.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.navi_btn_LicenseInfo:
+                        intent = new Intent(getApplicationContext(), Navi_LicenseInfo.class);
+                        startActivity(intent);
                         break;
                 }
 
