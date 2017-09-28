@@ -3,18 +3,22 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/test1"
+            android:id="@+id/navi_btn_Secuity"
             android:checked="true"
             android:icon="@drawable/ic_attachment"
-            android:title="item_attachment"/>
+            android:title="Secuity"/>
         <item
-            android:id="@+id/test2"
+            android:id="@+id/navi_btn_ContactUs"
             android:icon="@drawable/ic_image"
-            android:title="item_image"/>
+            android:title="Contact us"/>
         <item
-            android:id="@+id/test3"
+            android:id="@+id/navi_btn_Developers"
             android:icon="@drawable/ic_place"
-            android:title="item_location"/>
+            android:title="Developers"/>
+        <item
+            android:id="@+id/navi_btn_LicenseInfo"
+            android:icon="@drawable/ic_place"
+            android:title="License Info"/>
 
 
     </group>
