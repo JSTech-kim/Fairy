@@ -18,7 +18,7 @@
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="제목 : " />
+            android:text="제목      : " />
 
         <EditText
             android:id="@+id/EmailTitle"
@@ -39,14 +39,12 @@
             android:layout_width="87dp"
             android:gravity="center"
             android:layout_height="wrap_content"
-            android:text="Email : " />
+            android:text="Send To : " />
 
-        <EditText
-            android:id="@+id/EmailString"
+        <Spinner
+            android:id="@+id/Developer_List"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:text="" />
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 

@@ -18,10 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
-        <activity android:name=".NavigationBar.Navi_LicenseInfo" />
-        <activity android:name=".NavigationBar.Navi_Developers" />
-        <activity android:name=".NavigationBar.Navi_ContactUs" />
-        <activity android:name=".NavigationBar.Navi_Secuity" />
         <activity android:name=".Navigation.Navi_Secuity" />
         <activity android:name=".Navigation.Navi_ContactUs" />
         <activity android:name=".Navigation.Navi_Developers" />
