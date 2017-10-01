@@ -5,12 +5,12 @@
         <item
             android:id="@+id/navi_btn_Secuity"
             android:checked="true"
-            android:icon="@drawable/ic_attachment"
-            android:title="Secuity"/>
+            android:icon="@drawable/ic_lock"
+            android:title="잠금 설정"/>
         <item
             android:id="@+id/navi_btn_ContactUs"
-            android:icon="@drawable/ic_image"
-            android:title="Contact us"/>
+            android:icon="@drawable/ic_mail"
+            android:title="문의 사항"/>
         <item
             android:id="@+id/navi_btn_Developers"
             android:icon="@drawable/ic_place"
