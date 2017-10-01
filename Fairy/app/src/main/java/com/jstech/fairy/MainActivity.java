@@ -1,7 +1,6 @@
 package com.jstech.fairy;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,7 +12,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
@@ -27,24 +25,11 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout mDrawerLayout;
     private ViewPager viewpager;    // ViewPager에 Fragment 올려서 액티비티 구성.
 
-    /********** 진기***********/
-
-    static int isSecure; // 앱의 잠금 설정 여부 , 1 = off & -1 = on
-
-     /*************************/
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
-
-        /********** 진기*********** 어플이 종료되었다가 다시 켜졌을 때 앱의 잠금 상태를 저장한 것을 받아온다*/
-
-        SharedPreferences SecureState = getSharedPreferences("State",0);
-        isSecure = SecureState.getInt("SavedState",1);
-
-        /*************************/
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -70,8 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 switch(id){
                     case R.id.navi_btn_Secuity:
                         intent = new Intent(getApplicationContext(), Navi_Secuity.class);
-                        intent.putExtra("isSecure",isSecure); // 현재 암호잠금 여부를 "isSecure" Key값으로 전달한다.
-                        startActivityForResult(intent,0);
+                        startActivity(intent);
                         break;
                     case R.id.navi_btn_ContactUs:
                         intent = new Intent(getApplicationContext(), Navi_ContactUs.class);
@@ -101,31 +85,6 @@ public class MainActivity extends AppCompatActivity {
         tabsStrip.setViewPager(viewpager);
 
     }
-
-
-
-    /*************************************************진기 *****************************************************/
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) { // 어플 잠금 스위치 정보 받아와서 반영하기
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK){ // 변화가 있을 경우
-            isSecure = data.getIntExtra("IsChanged",1);
-            if(isSecure == -1)
-                Toast.makeText(getApplicationContext(),"ON",Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(getApplicationContext(),"OFF",Toast.LENGTH_LONG).show();
-        }
-    }
-
-    protected  void onStop(){  //어플이 종료될때 앱의 잠금 여부를 저장한다.
-        super.onStop();
-        SharedPreferences SecureState = getSharedPreferences("State",0);
-        SharedPreferences.Editor editor = SecureState.edit();
-        editor.putInt("SavedState",isSecure);
-        editor.commit();
-    }
-    /**************************************************************************************************************/
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
