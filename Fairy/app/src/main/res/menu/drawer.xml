@@ -14,11 +14,11 @@
         <item
             android:id="@+id/navi_btn_Developers"
             android:icon="@drawable/ic_place"
-            android:title="Developers"/>
+            android:title="개발자 정보"/>
         <item
             android:id="@+id/navi_btn_LicenseInfo"
             android:icon="@drawable/ic_place"
-            android:title="License Info"/>
+            android:title="저작권 정보"/>
 
 
     </group>
