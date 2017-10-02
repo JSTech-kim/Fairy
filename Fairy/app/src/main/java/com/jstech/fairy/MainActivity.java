@@ -18,7 +18,7 @@ import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
 import com.jstech.fairy.Navigation.Navi_Developers;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
-import com.jstech.fairy.Navigation.Navi_Secuity;
+import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity {
     final int PAGE_COUNT = 3;   //페이지 개수
@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch(id){
                     case R.id.navi_btn_Secuity:
-                        intent = new Intent(getApplicationContext(), Navi_Secuity.class);
-                        startActivity(intent);
+                        startActivity(new Intent(MainActivity.this, Navi_Secuity.class));
                         break;
                     case R.id.navi_btn_ContactUs:
                         intent = new Intent(getApplicationContext(), Navi_ContactUs.class);
