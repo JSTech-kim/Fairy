@@ -21,7 +21,12 @@
 
         <activity android:name=".MainActivity" />
         <activity android:name=".Navigation.Navi_Security.Navi_Secuity" />
-        <activity android:name=".Navigation.Navi_ContactUs" />
+        <activity
+            android:name=".Navigation.Navi_ContactUs" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
         <activity android:name=".Navigation.Navi_Developers" />
         <activity android:name=".Navigation.Navi_LicenseInfo"></activity>
 
