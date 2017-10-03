@@ -41,7 +41,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorGray"
+        android:background="@color/colorLine"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
 
@@ -69,7 +69,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorGray"
+        android:background="@color/colorLine"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"/>
 
