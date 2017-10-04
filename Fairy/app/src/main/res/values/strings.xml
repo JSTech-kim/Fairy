@@ -22,4 +22,21 @@
     <!-- 비밀번호 치는 창 위에 떠있는 TEXT <<확인해봐 -->
     <string name="passcodelock_prompt_message">비밀번호를 입력하시오</string>
 
+    <string name="passcode">PIN</string>
+    <string name="passcode_manage">Manage passcode</string>
+    <string name="passcode_preference_title">Passcode lock</string>
+    <string name="passcode_set">Passcode set</string>
+    <string name="passcodelock_hint"/>
+    <string name="passcodelock_numpad_0">0</string>
+    <string name="passcodelock_numpad_1">1</string>
+    <string name="passcodelock_numpad_2">2</string>
+    <string name="passcodelock_numpad_3">3</string>
+    <string name="passcodelock_numpad_4">4</string>
+    <string name="passcodelock_numpad_5">5</string>
+    <string name="passcodelock_numpad_6">6</string>
+    <string name="passcodelock_numpad_7">7</string>
+    <string name="passcodelock_numpad_8">8</string>
+    <string name="passcodelock_numpad_9">9</string>
+    <string name="pref_key_change_passcode">change_passcode</string>
+    <string name="pref_key_passcode_toggle">turn_passcode_on_off</string>
 </resources>

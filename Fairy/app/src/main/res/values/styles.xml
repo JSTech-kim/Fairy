@@ -7,4 +7,24 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="PasscodeEditTextStyle">
+        <item name="android:background">@color/passcodelock_field_background_color</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColor">@color/passcodelock_field_text_color</item>
+        <item name="android:textColorHint">@color/passcodelock_field_hint_text_color</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_marginLeft">40dp</item>
+    </style>
+    <style name="PasscodeKeyboardButtonStyle" parent="@android:style/Widget.Button">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/light_gray</item>
+        <item name="colorControlActivated">@color/list_row_selected</item>
+        <item name="colorControlHighlight">@color/list_row_selected</item>
+
+        <item name="android:textColor">@color/passcodelock_button_text_color</item>
+        <item name="android:textSize">@dimen/passcodelock_button_text_size</item>
+        <item name="android:clickable">true</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
 </resources>

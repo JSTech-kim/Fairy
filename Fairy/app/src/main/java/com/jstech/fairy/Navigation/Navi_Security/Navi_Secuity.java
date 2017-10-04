@@ -5,18 +5,9 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.SwitchPreference;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.util.TypedValue;
 import android.view.MenuItem;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
 
 import com.jstech.fairy.R;
-
-import org.wordpress.passcodelock.AppLockManager;
-import org.wordpress.passcodelock.PasscodePreferenceFragment;
-
-import static java.security.AccessController.getContext;
 
 public class Navi_Secuity extends AppCompatActivity {
     private static final String KEY_PASSCODE_FRAGMENT = "passcode-fragment";
@@ -58,9 +49,9 @@ public class Navi_Secuity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         Preference togglePreference = mSamplePreferenceFragment.findPreference(
-                getString(org.wordpress.passcodelock.R.string.pref_key_passcode_toggle));
+                getString(R.string.pref_key_passcode_toggle));
         Preference changePreference = mSamplePreferenceFragment.findPreference(
-                getString(org.wordpress.passcodelock.R.string.pref_key_change_passcode));
+                getString(R.string.pref_key_change_passcode));
 
         if (togglePreference != null && changePreference != null) {
             mPasscodePreferenceFragment.setPreferences(togglePreference, changePreference);

@@ -2,7 +2,8 @@ package com.jstech.fairy;
 
 import android.app.Application;
 
-import org.wordpress.passcodelock.AppLockManager;
+import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
+
 
 public class IsSecuredApp extends Application {
     @Override

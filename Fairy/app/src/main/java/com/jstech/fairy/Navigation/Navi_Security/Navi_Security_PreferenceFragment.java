@@ -10,6 +10,6 @@ public class Navi_Security_PreferenceFragment extends PreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
-        addPreferencesFromResource(R.xml.preferences);
+        addPreferencesFromResource(R.xml.passcode_preferences);
     }
 }
