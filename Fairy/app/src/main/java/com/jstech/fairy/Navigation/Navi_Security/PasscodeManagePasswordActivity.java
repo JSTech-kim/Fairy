@@ -2,8 +2,6 @@ package com.jstech.fairy.Navigation.Navi_Security;
 
 import android.os.Bundle;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
-import android.support.v4.os.CancellationSignal;
-import android.view.View;
 import android.widget.TextView;
 
 import com.jstech.fairy.R;
@@ -33,14 +31,6 @@ public class PasscodeManagePasswordActivity extends AbstractPasscodeKeyboardActi
     public void onResume() {
         super.onResume();
 
-        // Show fingerprint scanner if supported
-        if (mFingerprintManager.isHardwareDetected() &&
-                mFingerprintManager.hasEnrolledFingerprints() &&
-                type == PasscodePreferenceFragment.DISABLE_PASSLOCK) {
-            mFingerprintManager.authenticate(null, 0, mCancel = new CancellationSignal(), getFingerprintCallback(), null);
-            View view = findViewById(R.id.image_fingerprint);
-            view.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override
