@@ -3,6 +3,7 @@
     package="com.jstech.fairy">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
 
     <application
         android:name=".IsSecuredApp"
@@ -32,13 +33,13 @@
 
         <!--============== 현지가 만져야 하는 부분 !!! 패스워드 치는 부분 디자인 ======================-->
         <activity
-            android:name="org.wordpress.passcodelock.PasscodeManagePasswordActivity"
+            android:name="com.jstech.fairy.Navigation.Navi_Security.PasscodeManagePasswordActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" >
         </activity>
 
         <activity
-            android:name="org.wordpress.passcodelock.PasscodeUnlockActivity"
+            android:name="com.jstech.fairy.Navigation.Navi_Security.PasscodeUnlockActivity"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" >
         </activity>
