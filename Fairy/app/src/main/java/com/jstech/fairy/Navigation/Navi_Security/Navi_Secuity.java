@@ -29,7 +29,6 @@ public class Navi_Secuity extends AppCompatActivity {
             mSamplePreferenceFragment = new Navi_Security_PreferenceFragment();
             mPasscodePreferenceFragment = new PasscodePreferenceFragment();
             mPasscodePreferenceFragment.setArguments(passcodeArgs);
-
             fragmentManager.beginTransaction()
                     .replace(android.R.id.content, mPasscodePreferenceFragment, KEY_PASSCODE_FRAGMENT)
                     .add(android.R.id.content, mSamplePreferenceFragment, KEY_PREFERENCE_FRAGMENT)

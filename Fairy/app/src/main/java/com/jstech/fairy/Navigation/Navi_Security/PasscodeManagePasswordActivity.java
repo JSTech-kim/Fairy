@@ -27,13 +27,17 @@ public class PasscodeManagePasswordActivity extends AbstractPasscodeKeyboardActi
         if (extras != null) {
             type = extras.getInt(KEY_TYPE, -1);
         }
+
+        if(type ==PasscodePreferenceFragment.DISABLE_PASSLOCK){
+            AppLockManager.getInstance().getAppLock().setPassword(null);
+            authenticationSucceeded();
+            return;
+        }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-
-        // Show fingerprint scanner if supported
         if (mFingerprintManager.isHardwareDetected() &&
                 mFingerprintManager.hasEnrolledFingerprints() &&
                 type == PasscodePreferenceFragment.DISABLE_PASSLOCK) {
@@ -49,14 +53,6 @@ public class PasscodeManagePasswordActivity extends AbstractPasscodeKeyboardActi
         mPinCodeField.setText("");
 
         switch (type) {
-            case PasscodePreferenceFragment.DISABLE_PASSLOCK:
-                if (AppLockManager.getInstance().getAppLock().verifyPassword(passLock)) {
-                    AppLockManager.getInstance().getAppLock().setPassword(null);
-                    authenticationSucceeded();
-                } else {
-                    authenticationFailed();
-                }
-                break;
             case PasscodePreferenceFragment.ENABLE_PASSLOCK:
                 if (unverifiedPasscode == null) {
                     ((TextView) findViewById(R.id.passcodelock_prompt)).setText(R.string.passcode_re_enter_passcode);

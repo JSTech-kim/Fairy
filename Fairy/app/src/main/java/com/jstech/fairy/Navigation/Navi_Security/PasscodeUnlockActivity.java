@@ -14,7 +14,6 @@ import com.jstech.fairy.R;
 public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {
     @Override
     public void onResume() {
-        super.onResume();
 
         if (isFingerprintSupportedAndEnabled()) {
             mCancel = new CancellationSignal();
@@ -22,6 +21,7 @@ public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {
             View view = findViewById(R.id.image_fingerprint);
             view.setVisibility(View.VISIBLE);
         }
+        super.onResume();
     }
 
     @Override
@@ -53,12 +53,10 @@ public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {
                 getAppLock().verifyPassword(AbstractAppLock.FINGERPRINT_VERIFICATION_BYPASS);
                 authenticationSucceeded();
             }
-
             @Override
             public void onAuthenticationFailed() {
                 authenticationFailed();
             }
-
             @Override public void onAuthenticationError(int errMsgId, CharSequence errString) { }
             @Override public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) { }
         };
