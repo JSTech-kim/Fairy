@@ -23,7 +23,7 @@ import com.jstech.fairy.R;
 
 public abstract class AbstractPasscodeKeyboardActivity extends Activity {
     public static final String KEY_MESSAGE = "message";
-
+    public static boolean a=true;
     protected EditText mPinCodeField;
     protected InputFilter[] filters = null;
     protected TextView topMessage = null;
@@ -34,7 +34,6 @@ public abstract class AbstractPasscodeKeyboardActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         if (!getResources().getBoolean(R.bool.allow_rotation)) {
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         }

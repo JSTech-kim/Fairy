@@ -69,9 +69,7 @@ public class PasscodePreferenceFragment extends PreferenceFragment
             // on devices Pre-Lollip.
             return true;
         }
-
         handlePasscodeToggleClick();
-
         return true;
     }
 
@@ -94,10 +92,10 @@ public class PasscodePreferenceFragment extends PreferenceFragment
     private boolean handlePasscodeToggleClick() {
         int type = AppLockManager.getInstance().getAppLock().isPasswordLocked()
                 ? DISABLE_PASSLOCK : ENABLE_PASSLOCK;
+
         Intent i = new Intent(getActivity(), PasscodeManagePasswordActivity.class);
         i.putExtra(PasscodeManagePasswordActivity.KEY_TYPE, type);
         startActivityForResult(i, type);
-
         return true;
     }
 
@@ -113,7 +111,6 @@ public class PasscodePreferenceFragment extends PreferenceFragment
         i.putExtra(AbstractPasscodeKeyboardActivity.KEY_MESSAGE,
                 getString(R.string.passcode_enter_old_passcode));
         startActivityForResult(i, CHANGE_PASSWORD);
-
         return true;
     }
 
