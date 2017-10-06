@@ -2,6 +2,10 @@ package com.jstech.fairy.Navigation.Navi_Security;
 
 import android.content.Intent;
 import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
+import android.support.v4.os.CancellationSignal;
+import android.view.View;
+
+import com.jstech.fairy.R;
 
 /**
  * Created by 박PC on 2017-10-04.
@@ -10,6 +14,13 @@ import android.support.v4.hardware.fingerprint.FingerprintManagerCompat;
 public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {
     @Override
     public void onResume() {
+
+        if (isFingerprintSupportedAndEnabled()) {
+            mCancel = new CancellationSignal();
+            mFingerprintManager.authenticate(null, 0, mCancel, getFingerprintCallback(), null);
+            View view = findViewById(R.id.image_fingerprint);
+            view.setVisibility(View.VISIBLE);
+        }
         super.onResume();
     }
 
@@ -38,11 +49,13 @@ public class PasscodeUnlockActivity extends AbstractPasscodeKeyboardActivity {
         return new FingerprintManagerCompat.AuthenticationCallback() {
             @Override
             public void onAuthenticationSucceeded(FingerprintManagerCompat.AuthenticationResult result) {
-
+                // without the call to verifyPassword the unlock screen will show multiple times
+                getAppLock().verifyPassword(AbstractAppLock.FINGERPRINT_VERIFICATION_BYPASS);
+                authenticationSucceeded();
             }
             @Override
             public void onAuthenticationFailed() {
-
+                authenticationFailed();
             }
             @Override public void onAuthenticationError(int errMsgId, CharSequence errString) { }
             @Override public void onAuthenticationHelp(int helpMsgId, CharSequence helpString) { }
