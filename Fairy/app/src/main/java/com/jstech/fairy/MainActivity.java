@@ -1,5 +1,6 @@
 package com.jstech.fairy;
 
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
 import com.jstech.fairy.Navigation.Navi_Developers;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
+import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
 import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,7 +30,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Application thisApp = (Application)getApplication();
+        AppLockManager.getInstance().enableDefaultAppLockIfAvailable(thisApp);
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
