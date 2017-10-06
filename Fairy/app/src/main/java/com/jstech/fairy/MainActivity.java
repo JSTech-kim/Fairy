@@ -30,8 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Application thisApp = (Application)getApplication();
+
+        /**********************************************************************************************************/
+        Application thisApp = (Application)getApplication(); // 어플 잠금 여부 확인 및 비밀번호 입력  by JinGi
         AppLockManager.getInstance().enableDefaultAppLockIfAvailable(thisApp);
+        /**********************************************************************************************************/
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
@@ -113,4 +116,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
