@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/info_cardview"
@@ -15,14 +16,14 @@
             android:orientation="horizontal">
             
             <LinearLayout
-                android:layout_width="120sp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
                 
                 <ImageView
                     android:id="@+id/info_cardview_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="200sp"
+                    android:layout_height="250sp"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/test_jinsub"/>
@@ -36,10 +37,34 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/info_cardview_textview"
+                    android:id="@+id/info_cardview_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="JinSub2"/>
+
+                <TextView
+                    android:id="@+id/info_cardview_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="17/10/10"/>
+
+                <TextView
+                    android:id="@+id/info_cardview_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="17/10/13"/>
+
+                <TextView
+                    android:id="@+id/info_cardview_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="용인"/>
+
+                <TextView
+                    android:id="@+id/info_cardview_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="500\"/>
 
             </LinearLayout>
 

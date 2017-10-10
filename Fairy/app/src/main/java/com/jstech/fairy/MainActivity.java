@@ -1,7 +1,5 @@
 package com.jstech.fairy;
 
-import android.app.Application;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,14 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
-import com.jstech.fairy.Navigation.Navi_ContactUs;
-import com.jstech.fairy.Navigation.Navi_Developers;
-import com.jstech.fairy.Navigation.Navi_LicenseInfo;
-import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
-import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity {
     final int PAGE_COUNT = 3;   //페이지 개수
@@ -30,13 +24,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        /**********************************************************************************************************/
-        Application thisApp = (Application)getApplication(); // 어플 잠금 여부 확인 및 비밀번호 입력  by JinGi
-        AppLockManager.getInstance().enableDefaultAppLockIfAvailable(thisApp);
-        /**********************************************************************************************************/
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,24 +45,17 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
-                Intent intent;
 
                 int id = menuItem.getItemId();
                 switch(id){
-                    case R.id.navi_btn_Secuity:
-                        startActivity(new Intent(MainActivity.this, Navi_Secuity.class));
+                    case R.id.test1:
+                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.navi_btn_ContactUs:
-                        intent = new Intent(getApplicationContext(), Navi_ContactUs.class);
-                        startActivity(intent);
+                    case R.id.test2:
+                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                         break;
-                    case R.id.navi_btn_Developers:
-                        intent = new Intent(getApplicationContext(), Navi_Developers.class);
-                        startActivity(intent);
-                        break;
-                    case R.id.navi_btn_LicenseInfo:
-                        intent = new Intent(getApplicationContext(), Navi_LicenseInfo.class);
-                        startActivity(intent);
+                    case R.id.test3:
+                        Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_SHORT).show();
                         break;
                 }
 
@@ -116,6 +99,4 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-
 }

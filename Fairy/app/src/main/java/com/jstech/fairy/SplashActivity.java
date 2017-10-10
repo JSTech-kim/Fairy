@@ -11,13 +11,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_splash);
 
         Handler handle = new Handler();
         handle.postDelayed(new splashhandler(), 2000);  //일단 2초 후 Main으로
-
 
     }
 

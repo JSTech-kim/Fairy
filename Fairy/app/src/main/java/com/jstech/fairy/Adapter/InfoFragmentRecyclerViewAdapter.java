@@ -13,7 +13,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jstech.fairy.DataType.InfoDataType;
+import com.jstech.fairy.MoreFunction.PicassoTransformations;
 import com.jstech.fairy.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -42,8 +44,28 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
     @Override
     public void onBindViewHolder(InfoFragmentRecyclerViewAdapter.ViewHolder holder, int position) {
 
-        holder.textview.setText(aListInfo.get(position).getStrTitle());
-        Log.e("text", aListInfo.get(position).getStrTitle());
+        //  이미지 스트링이 없으면 비운다.
+        if(aListInfo.get(position).getStrMainImg().isEmpty())
+        {
+            Log.e("BindImg", "Failed");
+            holder.ivImg.setVisibility(View.GONE);
+        }
+        else
+        {
+            Log.e("BingImg", aListInfo.get(position).getStrMainImg());
+            Picasso.with(mContext).load(aListInfo.get(position).getStrMainImg())
+                    .placeholder(R.mipmap.ic_launcher)                              // 이미지 불러오는 동안 이미지
+                    .transform(PicassoTransformations.resizeTransformation)           //  리사이즈
+                    .error(R.drawable.test_jinsub)                                  // 다운로드 실패 시, 이미지
+                    .fit()                                                            // 이미지뷰에 맞추기
+                    .into(holder.ivImg);
+        }
+
+        holder.tvTitle.setText(aListInfo.get(position).getStrTitle());
+        holder.tvStartDate.setText(aListInfo.get(position).getStrStartDate());
+        holder.tvEndDate.setText(aListInfo.get(position).getStrEndDate());
+        holder.tvPlace.setText(aListInfo.get(position).getStrPlace());
+        holder.tvFee.setText(aListInfo.get(position).getStrUseFee());
 
     }
 
@@ -55,14 +77,22 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CardView cardview;
-        ImageView imageview;
-        TextView textview;
+        ImageView ivImg;
+        TextView tvTitle;
+        TextView tvStartDate;
+        TextView tvEndDate;
+        TextView tvPlace;
+        TextView tvFee;
 
         public ViewHolder(View itemView) {
             super(itemView);
             cardview = (CardView)itemView.findViewById(R.id.info_cardview);
-            imageview = (ImageView)itemView.findViewById(R.id.info_cardview_imageview);
-            textview = (TextView)itemView.findViewById(R.id.info_cardview_textview);
+            ivImg = (ImageView)itemView.findViewById(R.id.info_cardview_imageview);
+            tvTitle = (TextView)itemView.findViewById(R.id.info_cardview_title);
+            tvStartDate = (TextView)itemView.findViewById(R.id.info_cardview_start_date);
+            tvEndDate = (TextView)itemView.findViewById(R.id.info_cardview_end_date);
+            tvPlace = (TextView)itemView.findViewById(R.id.info_cardview_place);
+            tvFee = (TextView)itemView.findViewById(R.id.info_cardview_fee);
         }
     }
 
