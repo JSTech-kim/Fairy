@@ -1,7 +1,6 @@
 package com.jstech.fairy.Fragment;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,10 +33,6 @@ import java.util.ArrayList;
 *
 *   17/09/25 문화 행사 정보를 뿌려주는 InfoFragment
 *   이곳에서 RecyclerView + CardView로 문화 행사 정보를 뿌려줘야한다.
-*
-*   17/10/10 동적으로 데이터 갯수에 따라 전체 데이터 다운로드 가능.
-*   1페이지 데이터 시트 다운로드 -> list_total_count 값 추출 -> 1~Count의 데이터 시트 다운로드 -> 리스트 생성
-*
 * */
 public class InfoFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
@@ -49,7 +44,7 @@ public class InfoFragment extends Fragment {
     JSONArray aJson = null;
     ArrayList<InfoDataType> aListInfo;
 
-    String mStrDefaultURL = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/";
+    String strTestUrl = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/5";
 
     //  Constructor
     public InfoFragment(){
@@ -87,174 +82,53 @@ public class InfoFragment extends Fragment {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-        /*
-        *       /1/1 페이지로부터 전체 인덱스 개수 구한 뒤, 전체 데이터에 대해 요청한다.
-        *       위 작업을 모두 수행하는 GetInfoDataFromURL 함수.
-        * */
-        GetInfoDataFromURL();
-
+        GetInfoDataFromURL(strTestUrl);
         return view;
     }
 
     /*
-    *       첫번째 페이지만 받아와서 전체 Count를 알아낸 뒤,
-    *       다시 전체에 대한 Request를 보내서 데이터를 가져온다.
-    * */
-    public void GetInfoDataFromURL()
-    {
-        String strFirstURL = mStrDefaultURL + "1";
-        Log.e("strFirstURL", strFirstURL);
-
-        GetTotalRequest objGetTotalCount = new GetTotalRequest();
-        objGetTotalCount.execute(strFirstURL);
-    }
-
-    /*
     *
-    *       전체 데이터를 받아와서 리스트에 삽입한다.
+    *       JSON 파싱 메소드
     * */
-    public class GetDataJSON extends AsyncTask<String, Void, String>
+    public void GetInfoDataFromURL(String strUrl)
     {
-        private ProgressDialog progressdialog = null;
-
-        //  ProgressDialog Setting
-        public GetDataJSON()
+        class GetDataJSON extends AsyncTask<String, Void, String>
         {
-            progressdialog = new ProgressDialog(getActivity());
-            progressdialog.setTitle("");
-            progressdialog.setMessage("잠시만 기다려주세요.");
-            progressdialog.setCancelable(false);
-        }
+            @Override
+            protected String doInBackground(String... params) {
+                //JSON 데이터 시트 받아온다.
+                String uri = params[0];
+                BufferedReader br = null;
+                try {
+                    URL url = new URL(uri);
+                    HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                    StringBuilder sb = new StringBuilder();
 
-        //  ProgressDialog Show
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            if(progressdialog != null)
-            {
-                progressdialog.show();
-            }
-        }
+                    br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 
-        @Override
-        protected String doInBackground(String... params) {
-            //JSON 데이터 시트 받아온다.
-            String uri = params[0];
-            BufferedReader br = null;
-            try {
-                URL url = new URL(uri);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                StringBuilder sb = new StringBuilder();
-
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                String strJsonData;
-                while((strJsonData = br.readLine()) != null) {
-                    sb.append(strJsonData + "\n");
+                    String strJsonData;
+                    while((strJsonData = br.readLine()) != null) {
+                        sb.append(strJsonData+"\n");
+                    }
+                    return sb.toString().trim();
+                }catch (Exception e) {
+                    return null;
                 }
-                return sb.toString().trim();
-            }catch (Exception e) {
-                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String strJson) {
+                MakeInfoArrayList(strJson);
             }
         }
 
-        @Override
-        protected void onPostExecute(String strJson)
-        {
-             MakeInfoArrayList(strJson);
-            if(progressdialog != null)
-            {
-                progressdialog.dismiss();
-            }
-        }
-    }
-
-
-    /*
-    *       첫번째 페이지만 다운로드하는 부분.
-    * */
-    public class GetTotalRequest extends AsyncTask<String, Void, String>
-    {
-        private ProgressDialog progressdialog = null;
-
-        public GetTotalRequest()
-        {
-            progressdialog = new ProgressDialog(getActivity());
-            progressdialog.setTitle("");
-            progressdialog.setMessage("잠시만 기다려주세요.");
-            progressdialog.setCancelable(false);
-        }
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            if(progressdialog != null)
-            {
-                progressdialog.show();
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            //JSON 데이터 시트 받아온다.
-            String uri = params[0];
-            BufferedReader br = null;
-            try {
-                URL url = new URL(uri);
-                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                StringBuilder sb = new StringBuilder();
-
-                br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-
-                String strJsonData;
-                while((strJsonData = br.readLine()) != null) {
-                    sb.append(strJsonData + "\n");
-                }
-                return sb.toString().trim();
-            }catch (Exception e) {
-                return null;
-            }
-        }
-
-        @Override
-        protected void onPostExecute(String strJson)
-        {
-            GetTotalCountAndRunRequest(strJson);
-            if(progressdialog != null)
-            {
-                progressdialog.dismiss();
-            }
-        }
-    }
-
-    /*
-     *
-     *       전체 Data 개수를 추출해서 다시 Request를 보내 데이터를 받아온다.
-     * */
-    public void GetTotalCountAndRunRequest(String strJson)
-    {
-        try {
-            JSONObject objJson = new JSONObject(strJson);
-            JSONObject objData = objJson.getJSONObject("SearchConcertDetailService");
-            int nCount = objData.getInt("list_total_count");
-            Log.e("Count", Integer.toString(nCount));
-
-            String strRequestURL = mStrDefaultURL+Integer.toString(nCount);
-            Log.e("strRequestURL", strRequestURL);
-
-            GetDataJSON objGetData = new GetDataJSON();
-            objGetData.execute(strRequestURL);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+        GetDataJSON objGetDataJSON = new GetDataJSON();
+        objGetDataJSON.execute(strUrl);
     }
 
  /*
   *
   *       JSON 파싱 메소드
-  *       이곳에서 리스트에 데이터를 삽입한다.
   * */
     public void MakeInfoArrayList(String strJson)
     {
@@ -292,6 +166,7 @@ public class InfoFragment extends Fragment {
             Log.e("onCreate[noticeList]", "" + aListInfo.size());
             mRecyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+
 
         } catch (JSONException e) {
             e.printStackTrace();
