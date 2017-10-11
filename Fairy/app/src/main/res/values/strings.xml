@@ -3,7 +3,6 @@
     <string name="auth_key">727046784e6568663130354363776d6c</string>
 
 
-
     <string name="cd_passcodelock_logo">PasscodeLock Logo</string>
     <string name="passcode_fingerprint_supported">Fingerprint Supported</string>
 
@@ -26,7 +25,7 @@
     <string name="passcode_manage">Manage passcode</string>
     <string name="passcode_preference_title">Passcode lock</string>
     <string name="passcode_set">Passcode set</string>
-    <string name="passcodelock_hint"/>
+    <string name="passcodelock_hint" />
     <string name="passcodelock_numpad_0">0</string>
     <string name="passcodelock_numpad_1">1</string>
     <string name="passcodelock_numpad_2">2</string>

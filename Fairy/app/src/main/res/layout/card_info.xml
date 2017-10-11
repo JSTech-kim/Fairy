@@ -1,48 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/info_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16sp">
+        android:layout_marginBottom="10sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            
+
             <LinearLayout
-                android:layout_width="120sp"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-                
+                android:orientation="vertical"
+                android:padding="5sp">
+
                 <ImageView
                     android:id="@+id/info_cardview_imageview"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="150sp"
+                    android:layout_height="200sp"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
                     android:src="@drawable/test_jinsub"/>
-                
-                
+
+
             </LinearLayout>
-            
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="5sp"
+                android:layout_margin="10sp"
+                android:background="#f06292">
 
                 <TextView
-                    android:id="@+id/info_cardview_textview"
+                    android:id="@+id/info_cardview_title"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="JinSub2"/>
+                    android:layout_height="wrap_content"
+                    android:text="JinSub2"
+                    android:paddingBottom="3sp"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <TextView
+                    android:id="@+id/info_cardview_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="17/10/10"
+                    android:paddingBottom="3sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/info_cardview_end_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="17/10/13"
+                    android:paddingBottom="3sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/info_cardview_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="용인"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingBottom="3sp" />
+
+                <TextView
+                    android:id="@+id/info_cardview_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="500\"
+                    android:paddingBottom="3sp"
+                    android:maxLines="1"
+                    android:ellipsize="end" />
+
+                <ImageView
+                    android:id="@+id/info_cardview_btn_heart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_done"
+                    android:paddingBottom="3sp"
+                    android:layout_gravity="right" />
 
             </LinearLayout>
-
 
         </LinearLayout>
 

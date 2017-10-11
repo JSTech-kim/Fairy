@@ -1,5 +1,8 @@
 package com.jstech.fairy.DataType;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by SONY on 2017-09-28.
  */
@@ -7,7 +10,7 @@ package com.jstech.fairy.DataType;
 *       문화 행사 API로부터 받아와서 사용할 데이터 리스트
 *       뒤에 * 붙은건, Main 화면에서 보여질 정보.
 */
-public class InfoDataType {
+public class InfoDataType implements Parcelable{
     private String strCultCode;     //  문화 행사 코드
     private String strSubjCode;     //  장르 분류 코드
     private String strCodeName;     //  장르명
@@ -52,6 +55,47 @@ public class InfoDataType {
         this.strIsFree = strIsFree;
         this.strTicket = strTicket;
         this.strContents = strContents;
+    }
+
+    protected InfoDataType(Parcel in) {
+        strCultCode = in.readString();
+        strSubjCode = in.readString();
+        strCodeName = in.readString();
+        strTitle = in.readString();
+        strStartDate = in.readString();
+        strEndDate = in.readString();
+        strTime = in.readString();
+        strPlace = in.readString();
+        strOrgLink = in.readString();
+        strMainImg = in.readString();
+        strUseTarget = in.readString();
+        strUseFee = in.readString();
+        strSponsor = in.readString();
+        strInquiry = in.readString();
+        strIsFree = in.readString();
+        strTicket = in.readString();
+        strContents = in.readString();
+    }
+
+    public void CopyData(InfoDataType infodatatype)
+    {
+        this.strCultCode = infodatatype.getStrCultCode();
+        this.strSubjCode = infodatatype.getStrSubjCode();
+        this.strCodeName = infodatatype.getStrCodeName();
+        this.strTitle = infodatatype.getStrTitle();
+        this.strStartDate = infodatatype.getStrStartDate();
+        this.strEndDate = infodatatype.getStrEndDate();
+        this.strTime = infodatatype.getStrTime();
+        this.strPlace = infodatatype.getStrPlace();
+        this.strOrgLink = infodatatype.getStrOrgLink();
+        this.strMainImg = infodatatype.getStrMainImg();
+        this.strUseTarget = infodatatype.getStrUseTarget();
+        this.strUseFee = infodatatype.getStrUseFee();
+        this.strSponsor = infodatatype.getStrSponsor();
+        this.strInquiry = infodatatype.getStrInquiry();
+        this.strIsFree = infodatatype.getStrIsFree();
+        this.strTicket = infodatatype.getStrTicket();
+        this.strContents = infodatatype.getStrContents();
     }
 
     public String getStrCodeName() {
@@ -188,5 +232,44 @@ public class InfoDataType {
 
     public void setStrUseTarget(String strUseTarget) {
         this.strUseTarget = strUseTarget;
+    }
+
+    public static final Creator<InfoDataType> CREATOR = new Creator<InfoDataType>(){
+
+        @Override
+        public InfoDataType createFromParcel(Parcel source) {
+            return new InfoDataType(source);
+        }
+
+        @Override
+        public InfoDataType[] newArray(int size) {
+            return new InfoDataType[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(strCultCode);
+        dest.writeString(strSubjCode);
+        dest.writeString(strCodeName);
+        dest.writeString(strTitle);
+        dest.writeString(strStartDate);
+        dest.writeString(strEndDate);
+        dest.writeString(strTime);
+        dest.writeString(strPlace);
+        dest.writeString(strOrgLink);
+        dest.writeString(strMainImg);
+        dest.writeString(strUseTarget);
+        dest.writeString(strUseFee);
+        dest.writeString(strSponsor);
+        dest.writeString(strInquiry);
+        dest.writeString(strIsFree);
+        dest.writeString(strTicket);
+        dest.writeString(strContents);
     }
 }
