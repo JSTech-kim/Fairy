@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/diary_recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:text="Diary Fragment"/>
+        android:layout_height="match_parent" />
 
-    <Button
-        android:id="@+id/Add_Diary"
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/diary_fab"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="Add_Diary" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_send"
+        fab:fab_colorNormal="@color/fab_primary"
+        fab:fab_colorPressed="@color/fab_primary_dark"
+        fab:fab_colorRipple="@color/fab_ripple" />
 
-</LinearLayout>
+</FrameLayout>

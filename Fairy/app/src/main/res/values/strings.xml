@@ -5,6 +5,7 @@
     <!-- Fairy 데이터베이스 관련 String Resource -->
     <string name="database_name">FairyDatabase</string>
     <string name="heart_table_name">InfoTable_Heart</string>
+    <string name="diary_table_name">DiaryTable</string>
 
     <string name="cd_passcodelock_logo">PasscodeLock Logo</string>
     <string name="passcode_fingerprint_supported">Fingerprint Supported</string>

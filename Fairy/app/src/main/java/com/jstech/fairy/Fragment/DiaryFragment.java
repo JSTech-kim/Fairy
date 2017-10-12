@@ -1,14 +1,29 @@
 package com.jstech.fairy.Fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jstech.fairy.Adapter.DiaryFragmentRecyclerViewAdapter;
+import com.jstech.fairy.DataType.DiaryDataType;
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.R;
+import com.melnykov.fab.FloatingActionButton;
+
+import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by SONY on 2017-09-25.
@@ -23,6 +38,10 @@ public class DiaryFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
     public static final int POSITION_DIARY = 1;
     private int mPage;
+    private RecyclerView mRecyclerView;
+    private LinearLayoutManager mLinearLayoutManager;
+    DiaryFragmentRecyclerViewAdapter mAdapter;
+    ArrayList<DiaryDataType> aListDiary;
 
     //  Constructor
     public DiaryFragment(){
@@ -43,7 +62,6 @@ public class DiaryFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
 
-
     }
 
     @Nullable
@@ -52,10 +70,79 @@ public class DiaryFragment extends Fragment {
         View view = null;
         if(mPage == POSITION_DIARY){
             view = inflater.inflate(R.layout.fragment_diary, container, false);
-
-
         }
+
+        mLinearLayoutManager = new LinearLayoutManager(getActivity());
+        mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.diary_recyclerview);
+        mRecyclerView.setHasFixedSize(false);
+        mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+        //  DB로부터 데이터 가져와서 채우기.
+        aListDiary = new ArrayList<DiaryDataType>();
+        GetDiaryDataFromDatabase();
+
+        mAdapter = new DiaryFragmentRecyclerViewAdapter(getActivity(), aListDiary);
+        Log.e("onCreate[DiaryList]", "" + aListDiary.size());
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
+
+        //  Floating Button 연결.
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.diary_fab);
+        fab.attachToRecyclerView(mRecyclerView);
+
+        //  Floating Button 클릭 리스너
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Write_Diary.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
+
+    //  DB의 Diary Table로부터 데이터 읽어와서 리스트 채운다.
+    public void GetDiaryDataFromDatabase()
+    {
+        try{
+            SQLiteDatabase ReadDB = getActivity().openOrCreateDatabase(getString(R.string.database_name), MODE_PRIVATE, null);
+            String strQuery = "SELECT * FROM " + getString(R.string.heart_table_name);
+            Log.e("Query", strQuery);
+            Cursor cursor = ReadDB.rawQuery(strQuery, null);
+
+            if(cursor != null)
+            {
+                if(cursor.moveToFirst())
+                {
+                    do{
+                        DiaryDataType objDiary = new DiaryDataType();
+                        objDiary.setStrDate(cursor.getString(cursor.getColumnIndex("DATE")));
+                        objDiary.setStrTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
+                        objDiary.setStrMainText(cursor.getString(cursor.getColumnIndex("MAINTEXT")));
+                        objDiary.setStrImgPath(cursor.getString(cursor.getColumnIndex("IMGPATH")));
+                        aListDiary.add(objDiary);
+
+                    }while(cursor.moveToNext());
+                }
+            }
+
+            ReadDB.close();
+
+        }catch(SQLiteException se)
+        {
+            se.printStackTrace();
+        }
+
+        //  Test이므로 지워야함
+        DiaryDataType objDiary = new DiaryDataType();
+        objDiary.setStrDate("2017-10-12");
+        objDiary.setStrTitle("청운 돼지");
+        objDiary.setStrMainText("청운에서 밥을 먹는다 냠냠");
+        objDiary.setStrImgPath("임시임시열매");
+        aListDiary.add(objDiary);
+
+    }
+
 }
