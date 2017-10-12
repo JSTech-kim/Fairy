@@ -63,7 +63,6 @@ public class HeartFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_heart, container, false);
         }
 
-        aListHeart = new ArrayList<InfoDataType>();
 
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -71,6 +70,8 @@ public class HeartFragment extends Fragment {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
+        //  DB로부터 데이터 가져와서 채우기.
+        aListHeart = new ArrayList<InfoDataType>();
         GetDataFromDatabase();
 
         mAdapter = new HeartFragmentRecyclerViewAdapter(getActivity(), aListHeart);
