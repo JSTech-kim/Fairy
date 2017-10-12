@@ -27,6 +27,7 @@ public class DiaryFragment extends Fragment {
     //  Constructor
     public DiaryFragment(){
 
+
     }
 
     //  Constructor
@@ -41,6 +42,8 @@ public class DiaryFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPage = getArguments().getInt(ARG_PAGE);
+
+
     }
 
     @Nullable
@@ -49,6 +52,8 @@ public class DiaryFragment extends Fragment {
         View view = null;
         if(mPage == POSITION_DIARY){
             view = inflater.inflate(R.layout.fragment_diary, container, false);
+
+
         }
 
         return view;

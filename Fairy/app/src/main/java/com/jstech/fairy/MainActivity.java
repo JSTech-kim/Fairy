@@ -16,8 +16,8 @@ import android.view.MenuItem;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
-import com.jstech.fairy.Navigation.Navi_Developers;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
 import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
 import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
@@ -67,8 +67,9 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.navi_btn_Developers:
-                        intent = new Intent(getApplicationContext(), Navi_Developers.class);
-                        startActivity(intent);
+                        /*intent = new Intent(getApplicationContext(), Navi_Developers.class);
+                        startActivity(intent);*/
+                        startActivity(new Intent(MainActivity.this, Write_Diary.class));
                         break;
                     case R.id.navi_btn_LicenseInfo:
                         intent = new Intent(getApplicationContext(), Navi_LicenseInfo.class);

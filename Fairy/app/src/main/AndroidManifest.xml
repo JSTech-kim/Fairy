@@ -30,12 +30,13 @@
         <activity
             android:name=".Navigation.Navi_Security.PasscodeManagePasswordActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Navigation.Navi_Security.PasscodeUnlockActivity"
             android:theme="@style/AppTheme"
-            android:windowSoftInputMode="stateHidden"></activity>
-        <activity android:name=".InfoDetail"></activity>
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".InfoDetail" />
+        <activity android:name=".Fragment.Add_Diary.Write_Diary"></activity>
     </application>
 
 </manifest>
