@@ -108,7 +108,7 @@ public class DiaryFragment extends Fragment {
     {
         try{
             SQLiteDatabase ReadDB = getActivity().openOrCreateDatabase(getString(R.string.database_name), MODE_PRIVATE, null);
-            String strQuery = "SELECT * FROM " + getString(R.string.heart_table_name);
+            String strQuery = "SELECT * FROM " + getString(R.string.diary_table_name);
             Log.e("Query", strQuery);
             Cursor cursor = ReadDB.rawQuery(strQuery, null);
 
