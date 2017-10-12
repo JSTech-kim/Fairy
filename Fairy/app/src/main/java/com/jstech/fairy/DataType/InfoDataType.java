@@ -28,6 +28,7 @@ public class InfoDataType implements Parcelable{
     private String strIsFree;       //  무료 구분
     private String strTicket;       //  할인 티켓 예매정보
     private String strContents;     //  본문
+    private String strIsHeart;      //  좋아요 버튼이 눌러져있는지 여부. (0 or 1)
 
     public InfoDataType()
     {
@@ -75,6 +76,7 @@ public class InfoDataType implements Parcelable{
         strIsFree = in.readString();
         strTicket = in.readString();
         strContents = in.readString();
+        strIsHeart = in.readString();
     }
 
     public void CopyData(InfoDataType infodatatype)
@@ -96,6 +98,7 @@ public class InfoDataType implements Parcelable{
         this.strIsFree = infodatatype.getStrIsFree();
         this.strTicket = infodatatype.getStrTicket();
         this.strContents = infodatatype.getStrContents();
+        this.strIsHeart = infodatatype.getStrIsHeart();
     }
 
     public String getStrCodeName() {
@@ -234,6 +237,14 @@ public class InfoDataType implements Parcelable{
         this.strUseTarget = strUseTarget;
     }
 
+    public String getStrIsHeart() {
+        return strIsHeart;
+    }
+
+    public void setStrIsHeart(String strIsHeart) {
+        this.strIsHeart = strIsHeart;
+    }
+
     public static final Creator<InfoDataType> CREATOR = new Creator<InfoDataType>(){
 
         @Override
@@ -271,5 +282,6 @@ public class InfoDataType implements Parcelable{
         dest.writeString(strIsFree);
         dest.writeString(strTicket);
         dest.writeString(strContents);
+        dest.writeString(strIsHeart);
     }
 }

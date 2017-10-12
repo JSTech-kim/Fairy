@@ -20,7 +20,7 @@ import com.jstech.fairy.Fragment.InfoFragment;
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
 
-    private String tabTtitles[] = new String[]{"Info", "Diary", "Heart"};   //  추후 이미지로 수정
+    private String tabTtitles[] = new String[]{"List", "Diary", "Heart"};   //  추후 이미지로 수정
 
     public FairyFragmentPagerAdapter(FragmentManager fm) {
         super(fm);

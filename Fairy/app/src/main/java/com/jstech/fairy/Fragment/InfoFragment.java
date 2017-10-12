@@ -2,6 +2,9 @@ package com.jstech.fairy.Fragment;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,6 +29,8 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+
+import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Created by SONY on 2017-09-25.
@@ -277,9 +282,21 @@ public class InfoFragment extends Fragment {
                 objInfo.setStrPlace(jsonobject.getString("PLACE"));
                 objInfo.setStrOrgLink(jsonobject.getString("ORG_LINK"));
 
-                //  대소문자 가리는 URL 때문에 소문자로 변경.
-                String strLowerUrl = jsonobject.getString("MAIN_IMG").toLowerCase();
-                objInfo.setStrMainImg(strLowerUrl);
+                //  대소문자 가리는 URL 때문에 도메인 소문자로 변경.
+                String strImgUrl = jsonobject.getString("MAIN_IMG");
+                int iCursor = strImgUrl.indexOf(":");               //  http:// 의 :를 찾기 위함
+                iCursor += 3;
+
+                //  도메인 부분만 잘라서 소문자화한 뒤, 다시 합쳐서 저장.
+                String strDomain = "";
+                strDomain += strImgUrl.substring(0, iCursor);
+                strImgUrl = strImgUrl.substring(iCursor, strImgUrl.length());
+                iCursor = strImgUrl.indexOf("/");
+                strDomain += strImgUrl.substring(0, iCursor);
+                strDomain = strDomain.toLowerCase();
+                String strUrl = strDomain + "/" +strImgUrl.substring(iCursor+1);
+
+                objInfo.setStrMainImg(strUrl);
 
                 objInfo.setStrUseTarget(jsonobject.getString("USE_TRGT"));
                 objInfo.setStrUseFee(jsonobject.getString("USE_FEE"));
@@ -288,6 +305,16 @@ public class InfoFragment extends Fragment {
                 objInfo.setStrIsFree(jsonobject.getString("IS_FREE"));
                 objInfo.setStrTicket(jsonobject.getString("TICKET"));
                 objInfo.setStrContents(jsonobject.getString("CONTENTS"));
+
+                //  좋아요 눌러져 있는지 여부 확인.
+                if(IsHeartData(jsonobject.getString("CULTCODE")) == true)
+                {
+                    objInfo.setStrIsHeart("1");
+                }
+                else
+                {
+                    objInfo.setStrIsHeart("0");
+                }
 
                 aListInfo.add(objInfo);
             }
@@ -301,6 +328,42 @@ public class InfoFragment extends Fragment {
             e.printStackTrace();
         }
 
+    }
+
+    /*
+    *
+    *   Database의 Table을 CultCode 값을 통해 탐색해 좋아요 버튼이 눌려져 있는지 여부 판단.
+    *   만일 눌러져 있으면 true, 아니면 false 를 리턴.
+    *   해당 테이블에 들어있으면 좋아요가 눌려진것임.
+    *
+    * */
+    public boolean IsHeartData(String strCultCode)
+    {
+        boolean bRet = false;
+
+        try{
+            SQLiteDatabase ReadDB = getActivity().openOrCreateDatabase(getString(R.string.database_name), MODE_PRIVATE, null);
+            String strQuery = "SELECT * FROM " + getString(R.string.heart_table_name) + " WHERE CULTCODE = " + strCultCode;
+            Cursor cursor = ReadDB.rawQuery(strQuery, null);
+
+            if(cursor != null)
+            {
+                if(cursor.moveToFirst())
+                {
+                    do{
+                        bRet = true;
+                    }while(cursor.moveToNext());
+                }
+            }
+
+            ReadDB.close();
+
+        }catch(SQLiteException se)
+        {
+            se.printStackTrace();
+        }
+
+        return bRet;
     }
 
 }
