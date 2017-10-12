@@ -55,7 +55,7 @@ public class Write_Diary extends AppCompatActivity {
         /*===============  제목 넣는 코드  ==============*/
     }
 
-    /*======================================사진 골라 넣기 버튼 이벤트======================================*/
+    /*======================================사진 골라 넣기 버튼 이벤트===========================================*/
     public void Add_Photo(View v){
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
@@ -76,7 +76,7 @@ public class Write_Diary extends AppCompatActivity {
             }
         }
     }
-    /*======================================사진 골라 넣기 버튼 이벤트======================================*/
+    /*======================================사진 골라 넣기 버튼 이벤트=============================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/
     public void Date_Choise(View v){new DatePickerDialog(Write_Diary.this, mDateSetListener, mYear, mMonth, mDay).show();}

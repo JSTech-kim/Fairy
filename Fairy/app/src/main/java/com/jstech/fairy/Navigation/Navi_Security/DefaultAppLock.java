@@ -43,6 +43,7 @@ public class DefaultAppLock extends AbstractAppLock {
     /** {@link PasscodeUnlockActivity} is always exempt. */
     @Override
     public boolean isExemptActivity(String activityName) {
+
         return UNLOCK_CLASS_NAME.equals(activityName) || super.isExemptActivity(activityName);
     }
 
@@ -53,7 +54,7 @@ public class DefaultAppLock extends AbstractAppLock {
 
     @Override
     public void onActivityResumed(Activity activity) {
-        if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()) {
+        if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen() && !isExemptActivity("android.content.Intent")){
             Intent i = new Intent(activity.getApplicationContext(), PasscodeUnlockActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.getApplication().startActivity(i);
