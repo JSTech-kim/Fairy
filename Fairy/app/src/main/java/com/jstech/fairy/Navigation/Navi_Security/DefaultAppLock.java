@@ -53,7 +53,7 @@ public class DefaultAppLock extends AbstractAppLock {
     }
 
     @Override
-    public void onActivityResumed(Activity activity) {
+    public void onActivityResumed(Activity activity) { // 잠금 예외 할 엑티비티들.
         if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen() && !isExemptActivity("android.content.Intent")){
             Intent i = new Intent(activity.getApplicationContext(), PasscodeUnlockActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
