@@ -320,7 +320,6 @@ public class InfoFragment extends Fragment {
             }
 
             InfoFragmentRecyclerViewAdapter adapter = new InfoFragmentRecyclerViewAdapter(getActivity(), aListInfo);
-            Log.e("onCreate[noticeList]", "" + aListInfo.size());
             mRecyclerView.setAdapter(adapter);
             adapter.notifyDataSetChanged();
 

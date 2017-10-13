@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 
 import com.jstech.fairy.Adapter.HeartFragmentRecyclerViewAdapter;
 import com.jstech.fairy.DataType.InfoDataType;
+import com.jstech.fairy.Interface.HeartObserver;
+import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.R;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by SONY on 2017-09-25.
  */
 
-public class HeartFragment extends Fragment {
+public class HeartFragment extends Fragment implements HeartObserver{
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
     public static final int POSITION_SETTING = 2;
     private int mPage;
@@ -36,6 +38,8 @@ public class HeartFragment extends Fragment {
 
     ArrayList<InfoDataType> aListHeart;
 
+    HeartAlarm heartPublisher;
+
     //  Constructor
     public HeartFragment(){
 
@@ -43,10 +47,13 @@ public class HeartFragment extends Fragment {
 
     //  Constructor
     @SuppressLint("ValidFragment")
-    public HeartFragment(int page) {
+    public HeartFragment(int page, HeartAlarm heartPublisher) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
         this.setArguments(args);
+
+        this.heartPublisher = heartPublisher;
+        heartPublisher.add(this);
     }
 
     @Override
@@ -63,7 +70,6 @@ public class HeartFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_heart, container, false);
         }
 
-
         mLinearLayoutManager = new LinearLayoutManager(getActivity());
         mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.heart_recyclerview);
@@ -73,9 +79,7 @@ public class HeartFragment extends Fragment {
         //  DB로부터 데이터 가져와서 채우기.
         aListHeart = new ArrayList<InfoDataType>();
         GetDataFromDatabase();
-
         mAdapter = new HeartFragmentRecyclerViewAdapter(getActivity(), aListHeart);
-        Log.e("onCreate[HeartList]", "" + aListHeart.size());
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
@@ -83,12 +87,12 @@ public class HeartFragment extends Fragment {
     }
 
     /*
-    *
-    *   17/10/12
-    *   DataBase의 Heart Table의 모든 값을 불러와 리스트에 넣는다.
-    *   이렇게 하면 List 탭에서 바뀐 정보가 최신화 안됨. 추후 구현.
-    *
-    * */
+            *
+            *   17/10/12
+            *   DataBase의 Heart Table의 모든 값을 불러와 리스트에 넣는다.
+            *   이렇게 하면 List 탭에서 바뀐 정보가 최신화 안됨. 추후 구현.
+            *
+            * */
     public void GetDataFromDatabase()
     {
         try{
@@ -137,4 +141,17 @@ public class HeartFragment extends Fragment {
 
     }
 
+    //  ViewPager가 Heart 가리키면 해당 콜백함수 호출.
+    //  DB에서 데이터 새로 받아와서 Refresh 해줌.
+    @Override
+    public void DataUpdate() {
+        try{
+            aListHeart.clear();
+            GetDataFromDatabase();
+            mAdapter.UpdateItemList(aListHeart);
+        }catch(Exception e)
+        {
+            Log.e("HeartFragment", "DataUpdate()");
+        }
+    }
 }

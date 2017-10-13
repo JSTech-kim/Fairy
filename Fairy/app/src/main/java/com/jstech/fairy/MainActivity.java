@@ -1,6 +1,7 @@
 package com.jstech.fairy;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,15 +18,19 @@ import android.view.MenuItem;
 import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
+import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
 import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
 import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     final int PAGE_COUNT = 3;   //페이지 개수
     private DrawerLayout mDrawerLayout;
     private ViewPager viewpager;    // ViewPager에 Fragment 올려서 액티비티 구성.
+    private FairyFragmentPagerAdapter mAdapter;
+    private HeartAlarm heartPublisher;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        mContext = this.getApplicationContext();
+
+        //  Heart Observer Pattern을 위한 Publisher.
+        heartPublisher = new HeartAlarm();
 
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
@@ -84,7 +93,30 @@ public class MainActivity extends AppCompatActivity {
         //페이지 2개 미리 띄움. 페이지 이동 시 데이터 로드 때문.
         viewpager = (ViewPager)findViewById(R.id.main_viewpager);
         viewpager.setOffscreenPageLimit(PAGE_COUNT);
-        viewpager.setAdapter(new FairyFragmentPagerAdapter(getSupportFragmentManager()));
+        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, mContext);
+        viewpager.setAdapter(mAdapter);
+
+        //  Page 바꿀 때 이벤트 처리.
+        viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            //  여기서 Heart Fragment refresh 진행.
+            @Override
+            public void onPageSelected(int position) {
+                if(position == 2)
+                {
+                    heartPublisher.notifyObserver();
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         //ViewPager를 Tab Strip에 연결
         PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip)findViewById(R.id.main_tabs);
@@ -117,6 +149,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -83,7 +83,6 @@ public class DiaryFragment extends Fragment {
         GetDiaryDataFromDatabase();
 
         mAdapter = new DiaryFragmentRecyclerViewAdapter(getActivity(), aListDiary);
-        Log.e("onCreate[DiaryList]", "" + aListDiary.size());
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
