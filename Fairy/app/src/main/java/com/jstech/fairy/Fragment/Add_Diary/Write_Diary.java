@@ -21,7 +21,6 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Write_Diary extends AppCompatActivity {
-    private String selectedImagePath;
     ImageView ImageView_Photo;
     Button Button_Add_Photo;
 
@@ -62,12 +61,11 @@ public class Write_Diary extends AppCompatActivity {
         intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 0);
     }
-
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),data.getData());
+                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
                     ImageView_Photo.setImageBitmap(bitmap);
                     Button_Add_Photo.getBackground().setAlpha(45);
                 } catch (Exception e) {
