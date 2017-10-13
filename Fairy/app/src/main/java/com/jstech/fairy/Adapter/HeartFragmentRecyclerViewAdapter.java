@@ -97,6 +97,13 @@ public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Heart
         return aListHeart.size();
     }
 
+    //  상위 Fragment에서 전체 리스트 Refresh 할 수 있게 하기위함.
+    public void UpdateItemList(ArrayList<InfoDataType> arrayListHeart)
+    {
+        this.aListHeart = arrayListHeart;
+        notifyDataSetChanged();
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         CardView cardview;
