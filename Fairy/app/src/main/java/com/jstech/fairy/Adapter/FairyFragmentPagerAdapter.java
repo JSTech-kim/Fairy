@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.jstech.fairy.Fragment.DiaryFragment;
 import com.jstech.fairy.Fragment.HeartFragment;
 import com.jstech.fairy.Fragment.InfoFragment;
+import com.jstech.fairy.MoreFunction.HeartAlarm;
 
 /**
  * Created by SONY on 2017-09-25.
@@ -20,10 +21,16 @@ import com.jstech.fairy.Fragment.InfoFragment;
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
 
+<<<<<<< HEAD
     private String tabTtitles[] = new String[]{"List", "Diary", "♡"};   //  추후 이미지로 수정
+=======
+    private String tabTtitles[] = new String[]{"List", "Diary", "Heart"};   //  추후 이미지로 수정
+    HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
+>>>>>>> 3358873... [17/10/13]
 
-    public FairyFragmentPagerAdapter(FragmentManager fm) {
+    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher) {
         super(fm);
+        this.heartPublisher = heartPublisher;
     }
 
     @Override
@@ -41,7 +48,7 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
             return new DiaryFragment(position);
         }
         else{
-            return new HeartFragment(position);
+            return new HeartFragment(position, heartPublisher);
         }
     }
 
