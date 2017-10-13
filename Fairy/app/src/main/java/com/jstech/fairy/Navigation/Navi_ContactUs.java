@@ -62,35 +62,6 @@ public class Navi_ContactUs extends AppCompatActivity {
     }
 
     /*현지 : 전송버튼 액션바로 이동*/
-    /*
-    public void SendEmail(View v){
-        EditText EmailTitle = (EditText) findViewById(R.id.EmailTitle) ; // 메일 제목 받아오기
-        UserTitle = EmailTitle.getText().toString();
-        EditText EmailText = (EditText) findViewById(R.id.EmailText) ; // 메일 본문 받아오기
-        EmailBody = EmailText.getText().toString();
-
-        if(UserTitle.trim().getBytes().length <= 0) { // 공백 또는 아무 내용이 없을 때
-            Toast.makeText(getApplicationContext(), "Please fill in Title", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(Receiver == null) { // 받는 사람 선택안했을 때
-            Toast.makeText(getApplicationContext(), "Please Select Receiver", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        if(EmailBody.trim().getBytes().length <= 0){ // 공백 또는 아무 내용이 없을 때
-            Toast.makeText(getApplicationContext(), "Please fill in Body", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",Receiver, null));
-        intent.putExtra(Intent.EXTRA_SUBJECT, UserTitle);
-        intent.putExtra(Intent.EXTRA_TEXT , EmailBody);
-        startActivity(Intent.createChooser(intent, "Send mail..."));
-    }
-    */
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_email, menu);
