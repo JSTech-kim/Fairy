@@ -20,13 +20,8 @@ import com.jstech.fairy.MoreFunction.HeartAlarm;
 
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
-
-<<<<<<< HEAD
     private String tabTtitles[] = new String[]{"List", "Diary", "♡"};   //  추후 이미지로 수정
-=======
-    private String tabTtitles[] = new String[]{"List", "Diary", "Heart"};   //  추후 이미지로 수정
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
->>>>>>> 3358873... [17/10/13]
 
     public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher) {
         super(fm);
