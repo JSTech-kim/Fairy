@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.action_settings:
+            case R.id.action_search:
                 return true;
         }
 

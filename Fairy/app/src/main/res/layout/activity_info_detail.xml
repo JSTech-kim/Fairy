@@ -7,8 +7,15 @@
     android:orientation="vertical"
     tools:context="com.jstech.fairy.InfoDetail">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/info_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
     <ImageView
-        android:id="@+id/temp_iv"
+        android:id="@+id/main_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
