@@ -12,7 +12,8 @@ public class DiaryDataType implements Parcelable{
     private String strDate;
     private String strTitle;
     private String strMainText;
-    private String strImgPath;
+    private String strImgPath; // 대표 이미지
+
 
     public DiaryDataType()
     {
