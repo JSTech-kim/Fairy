@@ -1,6 +1,7 @@
 package com.jstech.fairy;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
     private ViewPager viewpager;    // ViewPager에 Fragment 올려서 액티비티 구성.
     private FairyFragmentPagerAdapter mAdapter;
     private HeartAlarm heartPublisher;
+    private Context mContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+        mContext = this.getApplicationContext();
 
         //  Heart Observer Pattern을 위한 Publisher.
         heartPublisher = new HeartAlarm();
@@ -90,7 +93,7 @@ public class MainActivity extends AppCompatActivity{
         //페이지 2개 미리 띄움. 페이지 이동 시 데이터 로드 때문.
         viewpager = (ViewPager)findViewById(R.id.main_viewpager);
         viewpager.setOffscreenPageLimit(PAGE_COUNT);
-        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher);
+        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, mContext);
         viewpager.setAdapter(mAdapter);
 
         //  Page 바꿀 때 이벤트 처리.
