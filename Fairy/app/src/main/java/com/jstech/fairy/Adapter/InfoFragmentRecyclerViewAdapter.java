@@ -89,11 +89,11 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
         //  이후에는 클릭 이벤트 참조.
         if(aListInfo.get(pos).getStrIsHeart() == "1")       //  좋아요 눌러진 경우.
         {
-            holder.ivHeart.setImageResource(R.drawable.ic_emoticon);
+            holder.ivHeart.setImageResource(R.drawable.ic_heart_full);
         }
         else
         {
-            holder.ivHeart.setImageResource(R.drawable.ic_done);
+            holder.ivHeart.setImageResource(R.drawable.ic_heart_empty);
         }
 
         //  카드뷰 클릭 이벤트
