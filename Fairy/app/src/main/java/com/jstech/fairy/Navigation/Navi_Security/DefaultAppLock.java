@@ -43,7 +43,7 @@ public class DefaultAppLock extends AbstractAppLock {
     /** {@link PasscodeUnlockActivity} is always exempt. */
     @Override
     public boolean isExemptActivity(String activityName) {
-        return "com.jstech.fairy.Fragment.Add_Diary.Write_Diary".equals(activityName)||UNLOCK_CLASS_NAME.equals(activityName) || super.isExemptActivity(activityName)  ;
+        return UNLOCK_CLASS_NAME.equals(activityName) || super.isExemptActivity(activityName)  ;
     }
 
     @Override
@@ -53,7 +53,9 @@ public class DefaultAppLock extends AbstractAppLock {
 
     @Override
     public void onActivityResumed(Activity activity) { // 잠금 예외 할 엑티비티들.
-        if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()){
+        if(activity.getClass().getName().equals("com.jstech.fairy.Fragment.Add_Diary.Write_Diary"))
+            return;
+        else if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()){
             Intent i = new Intent(activity.getApplicationContext(), PasscodeUnlockActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.getApplication().startActivity(i);
