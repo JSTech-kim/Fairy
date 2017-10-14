@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -64,12 +65,18 @@ public class Write_Diary extends AppCompatActivity {
         intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(intent, 0);
     }
+
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 0) {
             if (resultCode == Activity.RESULT_OK) {
                 try {
+                    Uri ImageURI = data.getData(); // 이미지 경로
+
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
-                    ImageView_Photo.setImageBitmap(bitmap);
+                    ImageView_Photo.setImageBitmap(bitmap); // 이게 지금 구현된 방식이고, 회전 적용은 안됩니다.
+
+                   // Picasso.with(this).load(ImageURI).rotate("회전값").into(ImageView_Photo);  //이게 피카소로 넣는 방식인데 rotate안에 회전된 값만 넣어주면 됩니다.
+
                     Button_Add_Photo.getBackground().setAlpha(45);
                 } catch (Exception e) {
                     Log.e("test", e.getMessage());
@@ -77,7 +84,8 @@ public class Write_Diary extends AppCompatActivity {
             }
         }
     }
-    /*======================================사진 골라 넣기 버튼 이벤트=============================================*/
+
+    /*=====================================사진 골라 넣기 버튼 이벤트=============================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/
     public void Date_Choise(View v){new DatePickerDialog(Write_Diary.this, mDateSetListener, mYear, mMonth, mDay).show();}
