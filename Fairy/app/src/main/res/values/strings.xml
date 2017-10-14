@@ -7,6 +7,13 @@
     <string name="heart_table_name">InfoTable_Heart</string>
     <string name="diary_table_name">DiaryTable</string>
 
+    <!-- 필터링 될 문화 행사 Subject Code-->
+    <string name="subjcode_opera">3.0</string>
+    <string name="subjcode_art">7.0</string>
+    <string name="subjcode_drama">5.0</string>
+    <string name="subjcode_festival">12.0</string>
+    <string name="subjcode_concert">1.0</string>
+
     <string name="cd_passcodelock_logo">PasscodeLock Logo</string>
     <string name="passcode_fingerprint_supported">Fingerprint Supported</string>
 
