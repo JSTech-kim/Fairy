@@ -21,6 +21,8 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class Write_Diary extends AppCompatActivity {
+    public  static boolean comeback=false;
+
     ImageView ImageView_Photo;
     Button Button_Add_Photo;
 
@@ -56,6 +58,7 @@ public class Write_Diary extends AppCompatActivity {
 
     /*======================================사진 골라 넣기 버튼 이벤트===========================================*/
     public void Add_Photo(View v){
+        comeback = true;
         Intent intent = new Intent(Intent.ACTION_PICK);
         intent.setType(android.provider.MediaStore.Images.Media.CONTENT_TYPE);
         intent.setData(android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
