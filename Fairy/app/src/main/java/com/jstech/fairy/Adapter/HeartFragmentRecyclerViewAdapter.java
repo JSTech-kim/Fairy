@@ -70,8 +70,9 @@ public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Heart
 
         //  카드뷰의 각 값 세팅
         holder.tvTitle.setText(aListHeart.get(pos).getStrTitle());
-        holder.tvStartDate.setText(aListHeart.get(pos).getStrStartDate());
-        holder.tvEndDate.setText(aListHeart.get(pos).getStrEndDate());
+//        holder.tvStartDate.setText(aListHeart.get(pos).getStrStartDate());
+//        holder.tvEndDate.setText(aListHeart.get(pos).getStrEndDate());
+        holder.tvDate.setText(aListHeart.get(pos).getStrStartDate()+"~"+aListHeart.get(pos).getStrEndDate());
         holder.tvPlace.setText(aListHeart.get(pos).getStrPlace());
         holder.tvFee.setText(aListHeart.get(pos).getStrUseFee());
 
@@ -109,8 +110,9 @@ public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Heart
         CardView cardview;
         ImageView ivImg;
         TextView tvTitle;
-        TextView tvStartDate;
-        TextView tvEndDate;
+//        TextView tvStartDate;
+//        TextView tvEndDate;
+        TextView tvDate;
         TextView tvPlace;
         TextView tvFee;
 
@@ -119,8 +121,9 @@ public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Heart
             cardview = (CardView)itemView.findViewById(R.id.info_cardview);
             ivImg = (ImageView)itemView.findViewById(R.id.info_cardview_imageview);
             tvTitle = (TextView)itemView.findViewById(R.id.info_cardview_title);
-            tvStartDate = (TextView)itemView.findViewById(R.id.info_cardview_start_date);
-            tvEndDate = (TextView)itemView.findViewById(R.id.info_cardview_end_date);
+//            tvStartDate = (TextView)itemView.findViewById(R.id.info_cardview_start_date);
+//            tvEndDate = (TextView)itemView.findViewById(R.id.info_cardview_end_date);
+            tvDate = (TextView)itemView.findViewById(R.id.info_cardview_date);
             tvPlace = (TextView)itemView.findViewById(R.id.info_cardview_place);
             tvFee = (TextView)itemView.findViewById(R.id.info_cardview_fee);
         }

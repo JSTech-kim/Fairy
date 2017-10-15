@@ -16,13 +16,16 @@
 
     <ImageView
         android:id="@+id/main_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_width="match_parent"
+        android:layout_height="200dp" />
 
     <TextView
         android:id="@+id/temp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/colorText"
         android:text="Test_Title"/>
 
 </LinearLayout>
