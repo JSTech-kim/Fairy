@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import android.util.Base64;
 
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
+
 import java.util.Date;
 
 import javax.crypto.Cipher;
@@ -43,9 +45,7 @@ public class DefaultAppLock extends AbstractAppLock {
     /** {@link PasscodeUnlockActivity} is always exempt. */
     @Override
     public boolean isExemptActivity(String activityName) {
-        if(activityName == "android.content.Intent")
-            return true;
-        return UNLOCK_CLASS_NAME.equals(activityName) || super.isExemptActivity(activityName);
+        return UNLOCK_CLASS_NAME.equals(activityName) || super.isExemptActivity(activityName)  ;
     }
 
     @Override
@@ -55,7 +55,12 @@ public class DefaultAppLock extends AbstractAppLock {
 
     @Override
     public void onActivityResumed(Activity activity) { // 잠금 예외 할 엑티비티들.
-        if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen() && !isExemptActivity("android.content.Intent")){
+        Write_Diary test = new Write_Diary();
+        if(test.comeback&&activity.getClass().getName().equals("com.jstech.fairy.Fragment.Add_Diary.Write_Diary")) {
+            test.comeback = false;
+            return;
+        }
+        else if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()){
             Intent i = new Intent(activity.getApplicationContext(), PasscodeUnlockActivity.class);
             i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.getApplication().startActivity(i);

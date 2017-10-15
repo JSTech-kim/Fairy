@@ -56,6 +56,8 @@ public class InfoFragment extends Fragment {
 
     String mStrDefaultURL = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/";
 
+    ArrayList<String> aListFilter;      //  필터링 될 행사의 Subject Code.
+
     //  Constructor
     public InfoFragment(){
 
@@ -92,6 +94,9 @@ public class InfoFragment extends Fragment {
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
+        //  필터링 될 행사 종류를 추가하는 함수.
+        AddFilterList();
+
         /*
         *       /1/1 페이지로부터 전체 인덱스 개수 구한 뒤, 전체 데이터에 대해 요청한다.
         *       위 작업을 모두 수행하는 GetInfoDataFromURL 함수.
@@ -99,6 +104,25 @@ public class InfoFragment extends Fragment {
         GetInfoDataFromURL();
 
         return view;
+    }
+
+    /*
+    *
+    *   뮤지컬/오페라	    : "3.0"
+    *   전시/미술	        : "7.0"
+    *   연극		        : "5.0"
+    *   축제		        : "12.0"
+    *   콘서트 		        : "1.0"
+    *
+    * */
+    public void AddFilterList()
+    {
+        aListFilter = new ArrayList<>();
+        aListFilter.add(getString(R.string.subjcode_art));
+        aListFilter.add(getString(R.string.subjcode_concert));
+        aListFilter.add(getString(R.string.subjcode_drama));
+        aListFilter.add(getString(R.string.subjcode_festival));
+        aListFilter.add(getString(R.string.subjcode_opera));
     }
 
     /*
@@ -242,10 +266,8 @@ public class InfoFragment extends Fragment {
             JSONObject objJson = new JSONObject(strJson);
             JSONObject objData = objJson.getJSONObject("SearchConcertDetailService");
             int nCount = objData.getInt("list_total_count");
-            Log.e("Count", Integer.toString(nCount));
 
             String strRequestURL = mStrDefaultURL+Integer.toString(nCount);
-            Log.e("strRequestURL", strRequestURL);
 
             GetDataJSON objGetData = new GetDataJSON();
             objGetData.execute(strRequestURL);
@@ -270,7 +292,14 @@ public class InfoFragment extends Fragment {
             aJson = objData.getJSONArray("row");
             for(int i = 0; i < aJson.length(); i++)
             {
+                //  Subject Code 필터링한다.
                 JSONObject jsonobject = aJson.getJSONObject(i);
+                if(aListFilter.contains(jsonobject.getString("SUBJCODE")) == false)
+                {
+                    continue;
+                }
+
+                //  필터링한 결과에 들어가면 리스트에 추가.
                 InfoDataType objInfo = new InfoDataType();
                 objInfo.setStrCultCode(jsonobject.getString("CULTCODE"));
                 objInfo.setStrSubjCode(jsonobject.getString("SUBJCODE"));
