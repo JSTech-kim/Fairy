@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,7 +26,7 @@ public class Write_Diary extends AppCompatActivity {
     public  static boolean comeback=false;
 
     ImageView ImageView_Photo;
-    Button Button_Add_Photo;
+    ImageButton Button_Add_Photo;
 
     TextView TextView_date;
     EditText EditText_Title;
@@ -36,10 +37,10 @@ public class Write_Diary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write__diary);
+        setContentView(R.layout.activity_write_diary);
 
         ImageView_Photo=(ImageView)findViewById(R.id.Photo) ;
-        Button_Add_Photo=(Button)findViewById(R.id.Add_Photo_Button);
+        Button_Add_Photo=(ImageButton)findViewById(R.id.Add_Photo_Button);
 
         /*===============날짜 고르는 코드=========================*/
         TextView_date = (TextView)findViewById(R.id.Date_Viewer);

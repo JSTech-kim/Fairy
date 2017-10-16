@@ -23,7 +23,7 @@ import com.jstech.fairy.R;
 
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider{
     final int PAGE_COUNT = 3;   //페이지 개수
-    private int tabImg[] = {R.drawable.ic_toy, R.drawable.ic_book, R.drawable.ic_heart_full};
+    private int tabImg[] = {R.drawable.ic_flower, R.drawable.ic_book, R.drawable.ic_heart};
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
     Context mContext;
 
