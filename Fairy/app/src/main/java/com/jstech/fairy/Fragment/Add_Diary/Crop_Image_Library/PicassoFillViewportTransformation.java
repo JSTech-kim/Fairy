@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jstech.fairy.Fragment.Add_Diary.Crop_Image;
+package com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library;
 
 import android.graphics.Bitmap;
 import android.graphics.Rect;

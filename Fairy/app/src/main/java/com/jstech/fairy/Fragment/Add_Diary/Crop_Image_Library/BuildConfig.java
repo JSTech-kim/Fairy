@@ -1,4 +1,4 @@
-package com.jstech.fairy.Fragment.Add_Diary.Crop_Image;
+package com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library;
 
 /**
  * Created by 박PC on 2017-10-16.

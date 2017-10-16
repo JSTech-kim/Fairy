@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jstech.fairy.Fragment.Add_Diary.Crop_Image;
+package com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -43,8 +43,6 @@ import java.io.File;
 import java.io.OutputStream;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-
-import static com.jstech.fairy.Fragment.Add_Diary.Crop_Image.CropView.Extensions.LoaderType.PICASSO;
 
 /**
  * An {@link ImageView} with a fixed viewport and cropping capabilities.

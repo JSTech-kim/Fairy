@@ -1,10 +1,10 @@
-package com.jstech.fairy.Fragment.Add_Diary.Crop_Image;
+package com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library;
 
 import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.view.ViewTreeObserver;
 
-import static com.jstech.fairy.Fragment.Add_Diary.Crop_Image.CropViewExtensions.resolveBitmapLoader;
+import static com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropViewExtensions.resolveBitmapLoader;
 
 
 public class LoadRequest {

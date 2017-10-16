@@ -1,4 +1,4 @@
-package com.jstech.fairy.Fragment.Add_Diary.Crop_Image;
+package com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library;
 
 import android.graphics.Bitmap;
 import android.support.annotation.NonNull;
