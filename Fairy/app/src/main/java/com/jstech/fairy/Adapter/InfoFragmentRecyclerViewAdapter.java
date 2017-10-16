@@ -16,7 +16,6 @@ import android.widget.TextView;
 
 import com.jstech.fairy.DataType.InfoDataType;
 import com.jstech.fairy.InfoDetail;
-import com.jstech.fairy.MoreFunction.PicassoTransformations;
 import com.jstech.fairy.R;
 import com.squareup.picasso.Picasso;
 
@@ -72,7 +71,7 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
             Log.e("BingImg", aListInfo.get(pos).getStrMainImg());
             Picasso.with(mContext).load(aListInfo.get(pos).getStrMainImg())
                     .placeholder(R.mipmap.ic_launcher)                              // 이미지 불러오는 동안 이미지
-                    .transform(PicassoTransformations.resizeTransformation)           //  리사이즈
+//                    .transform(PicassoTransformations.resizeTransformation)           //  리사이즈    //  이미지 구김현상으로 제거.
                     .error(R.drawable.test_jinsub)                                  // 다운로드 실패 시, 이미지
                     .fit()                                                            // 이미지뷰에 맞추기
                     .into(holder.ivImg);
