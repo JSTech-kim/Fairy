@@ -18,25 +18,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Navigation.Navi_Security.Navi_Secuity" />
-        <activity android:name=".Navigation.Navi_ContactUs">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Navigation.Navi_Security.Navi_Secuity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Navigation.Navi_ContactUs"
+            android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Navigation.Navi_Developers" />
-        <activity android:name=".Navigation.Navi_LicenseInfo" />
+        <activity
+            android:name=".Navigation.Navi_Developers"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Navigation.Navi_LicenseInfo"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Navigation.Navi_Security.PasscodeManagePasswordActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".Navigation.Navi_Security.PasscodeUnlockActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".InfoDetail" />
-        <activity android:name=".Fragment.Add_Diary.Write_Diary"></activity>
+        <activity
+            android:name=".InfoDetail"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Fragment.Add_Diary.Write_Diary"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Fragment.Add_Diary.Crop_Image"
+            android:label="@string/title_activity_crop__image"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

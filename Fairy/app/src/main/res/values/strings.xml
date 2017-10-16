@@ -49,4 +49,5 @@
     <string name="passcodelock_numpad_9">9</string>
     <string name="pref_key_change_passcode">change_passcode</string>
     <string name="pref_key_passcode_toggle">turn_passcode_on_off</string>
+    <string name="title_activity_crop__image">Crop_Image</string>
 </resources>

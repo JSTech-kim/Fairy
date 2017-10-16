@@ -73,6 +73,7 @@ public class Write_Diary extends AppCompatActivity {
                     Uri ImageURI = data.getData(); // 이미지 경로
 
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), data.getData());
+
                     ImageView_Photo.setImageBitmap(bitmap); // 이게 지금 구현된 방식이고, 회전 적용은 안됩니다.
 
                    // Picasso.with(this).load(ImageURI).rotate("회전값").into(ImageView_Photo);  //이게 피카소로 넣는 방식인데 rotate안에 회전된 값만 넣어주면 됩니다.
@@ -84,6 +85,7 @@ public class Write_Diary extends AppCompatActivity {
             }
         }
     }
+
 
     /*=====================================사진 골라 넣기 버튼 이벤트=============================================*/
 
