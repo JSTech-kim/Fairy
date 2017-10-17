@@ -34,14 +34,14 @@ public class Crop extends AppCompatActivity {
 
         final CropView cropView = (CropView)findViewById(R.id.Crop_CropView);
 
-        /*                        네모 비율을 완벽하게 레이아웃과 맞춤                    */
+        /******************네모 비율을 완벽하게 레이아웃과 맞춤*******************************/
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;
         float HeightRatio = (float)(height*0.3333334);
         float WidthRatio = width;
         cropView.setViewportRatio(WidthRatio/HeightRatio);
-        /*                       오차율 0.00000몇 %                                        */
+        /*********************************오차율 0.00000몇 % *************************************/
 
         Intent intent = getIntent();
         galleryPictureUri = intent.getParcelableExtra("Uri");
