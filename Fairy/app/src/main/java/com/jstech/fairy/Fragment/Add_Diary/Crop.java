@@ -1,5 +1,6 @@
 package com.jstech.fairy.Fragment.Add_Diary;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -13,6 +14,7 @@ import com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropView;
 import com.jstech.fairy.R;
 import com.melnykov.fab.FloatingActionButton;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class Crop extends AppCompatActivity {
@@ -20,7 +22,6 @@ public class Crop extends AppCompatActivity {
     private Uri galleryPictureUri;
     private FloatingActionButton Rotate_Button ;
     private FloatingActionButton Crop_Button ;
-    private float degree=0;
 
     private Bitmap bitmap;
 
@@ -38,7 +39,7 @@ public class Crop extends AppCompatActivity {
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        float HeightRatio = (float)(height*0.3333334);
+        float HeightRatio = (float)(height*0.3333333333333333);
         float WidthRatio = width;
         cropView.setViewportRatio(WidthRatio/HeightRatio);
         /*********************************오차율 0.00000몇 % *************************************/
@@ -55,7 +56,6 @@ public class Crop extends AppCompatActivity {
         Rotate_Button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 bitmap = CropView.imgRotate(bitmap);
-                degree+=90;
                 cropView.setImageBitmap(bitmap);
             }
 
@@ -64,11 +64,19 @@ public class Crop extends AppCompatActivity {
         Crop_Button.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
                 bitmap = cropView.crop();
-
-
-                Intent data = new Intent();
-                setResult(RESULT_OK,data);
-                finish();
+                try {
+                    String filename = "bitmap.png";
+                    FileOutputStream stream = openFileOutput(filename, Context.MODE_PRIVATE);
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                    stream.close();
+                    bitmap.recycle();
+                    Intent data = new Intent();
+                    data.putExtra("image", filename);
+                    setResult(RESULT_OK,data);
+                    finish();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 

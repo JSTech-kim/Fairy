@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_weight="4">
 
-        <com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropView
+        <ImageView
             android:id="@+id/Photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
