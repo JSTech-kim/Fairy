@@ -29,7 +29,6 @@
                     android:layout_centerVertical="true"
                     android:src="@drawable/test_jinsub" />
 
-
             </LinearLayout>
 
             <LinearLayout
@@ -43,71 +42,73 @@
                     android:id="@+id/info_cardview_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="40sp"
                     android:text="JinSub2"
                     android:textColor="@color/colorText"
                     android:textStyle="bold" />
-<!--
-                <TextView
-                    android:id="@+id/info_cardview_start_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="3sp"
-                    android:text="2017/10/10"
-                    android:textColor="@color/colorGray" />
+                <!--
+                                <TextView
+                                    android:id="@+id/info_cardview_start_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:paddingBottom="3sp"
+                                    android:text="2017/10/10"
+                                    android:textColor="@color/colorGray" />
 
-                <TextView
-                    android:id="@+id/info_cardview_end_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="3sp"
-                    android:text="2017/10/13"
-                    android:textColor="@color/colorGray" />
--->
-                <TextView
-                    android:id="@+id/info_cardview_date"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="3sp"
-                    android:text="2017/10/13 ~ 2017/10/14"
-                    android:textColor="@color/colorGray" />
-
-                <TextView
-                    android:id="@+id/info_cardview_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="3sp"
-                    android:text="용인"
-                    android:textColor="@color/colorGray" />
-
-                <TextView
-                    android:id="@+id/info_cardview_fee"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:paddingBottom="3sp"
-                    android:text="500\"
-                    android:textColor="@color/colorGray" />
-
+                                <TextView
+                                    android:id="@+id/info_cardview_end_date"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:paddingBottom="3sp"
+                                    android:text="2017/10/13"
+                                    android:textColor="@color/colorGray" />
+                -->
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/info_cardview_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="3sp"
+                        android:layout_above="@+id/info_cardview_place"
+                        android:text="2017/10/13 ~ 2017/10/14"
+                        android:textColor="@color/colorGray" />
+
+                    <TextView
+                        android:id="@+id/info_cardview_place"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="3sp"
+                        android:layout_above="@+id/info_cardview_fee"
+                        android:text="용인"
+                        android:textColor="@color/colorGray" />
+
+                    <TextView
+                        android:id="@+id/info_cardview_fee"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:paddingBottom="3sp"
+                        android:text="500\"
+                        android:layout_above="@+id/info_cardview_btn_heart"
+                        android:textColor="@color/colorGray" />
 
                     <ImageView
                         android:id="@+id/info_cardview_btn_heart"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
                         android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
                         android:paddingBottom="3sp"
                         android:src="@drawable/ic_heart_empty"
                         android:tint="@color/colorAccent" />

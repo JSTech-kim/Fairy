@@ -29,7 +29,8 @@ public class MainActivity extends AppCompatActivity{
     private DrawerLayout mDrawerLayout;
     private ViewPager viewpager;    // ViewPager에 Fragment 올려서 액티비티 구성.
     private FairyFragmentPagerAdapter mAdapter;
-    private HeartAlarm heartPublisher;
+    private HeartAlarm heartPublisher;               //  Info에서 좋아요 누른것을 Heart 탭에 알리기 위함.
+    private HeartAlarm heartCancelPublisher;        //  Heart에서 좋아요 취소한 것을 Info에 알리기 위함.
     private Context mContext;
 
     //  Selector
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity{
 
         //  Heart Observer Pattern을 위한 Publisher.
         heartPublisher = new HeartAlarm();
+        heartCancelPublisher = new HeartAlarm();
 
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity{
         //페이지 2개 미리 띄움. 페이지 이동 시 데이터 로드 때문.
         viewpager = (ViewPager)findViewById(R.id.main_viewpager);
         viewpager.setOffscreenPageLimit(PAGE_COUNT);
-        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, mContext);
+        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, heartCancelPublisher, mContext);
         viewpager.setAdapter(mAdapter);
 
         //  Page 바꿀 때 이벤트 처리.
