@@ -62,6 +62,10 @@ public class InfoFragment extends Fragment implements HeartObserver{
     ArrayList<String> aListFilter;      //  필터링 될 행사의 Subject Code.
     HeartAlarm heartCancelPublisher;    //  하트정보가 바뀌었음을 Heart 탭으로부터 알림받기 위함.
 
+    //  HTML 특수문자 치환할 것은 이곳에 Old->New로 배열에 넣으면 됨.
+    String[] arrStrOld = {"&#39;"};
+    String[] arrStrNew = {"`"};
+
     //  Constructor
     public InfoFragment(){
 
@@ -139,8 +143,6 @@ public class InfoFragment extends Fragment implements HeartObserver{
     public void GetInfoDataFromURL()
     {
         String strFirstURL = mStrDefaultURL + "1";
-        Log.e("strFirstURL", strFirstURL);
-
         GetTotalRequest objGetTotalCount = new GetTotalRequest();
         objGetTotalCount.execute(strFirstURL);
     }
@@ -150,6 +152,7 @@ public class InfoFragment extends Fragment implements HeartObserver{
 
     }
 
+    //  Heart 탭에서 좋아요 누른 정보를 받아 Info에 반영.
     @Override
     public void ChangeHeartData(boolean bPushHeart, String strCultCode) {
 
@@ -332,7 +335,11 @@ public class InfoFragment extends Fragment implements HeartObserver{
                 objInfo.setStrCultCode(jsonobject.getString("CULTCODE"));
                 objInfo.setStrSubjCode(jsonobject.getString("SUBJCODE"));
                 objInfo.setStrCodeName(jsonobject.getString("CODENAME"));
-                objInfo.setStrTitle(jsonobject.getString("TITLE"));
+
+                //  HTML 특수문자 치환
+                String strTitle = ReplaceTitle(jsonobject.getString("TITLE"));
+                objInfo.setStrTitle(strTitle);
+
                 objInfo.setStrStartDate(jsonobject.getString("STRTDATE"));
                 objInfo.setStrEndDate(jsonobject.getString("END_DATE"));
                 objInfo.setStrTime(jsonobject.getString("TIME"));
@@ -384,6 +391,18 @@ public class InfoFragment extends Fragment implements HeartObserver{
             e.printStackTrace();
         }
 
+    }
+
+    //  HTML 특수문자 치환
+    public String ReplaceTitle(String strInputTitle)
+    {
+        String strTitle = strInputTitle;
+        for(int i = 0; i < arrStrNew.length; i++)
+        {
+            strTitle = strTitle.replace(arrStrOld[i], arrStrNew[i]);
+        }
+
+        return strTitle;
     }
 
     /*

@@ -179,7 +179,6 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
 
         mSQLiteDatabase.close();
 
-
         InfoDataType newInfoData = new InfoDataType();
         newInfoData.CopyData(aListInfo.get(iPos));
         newInfoData.setStrIsHeart("1");             //  좋아요 눌렀으므로 데이터 변경.
