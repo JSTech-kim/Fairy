@@ -6,4 +6,5 @@ package com.jstech.fairy.Interface;
 
 public interface HeartObserver {
     public void DataUpdate();
+    public void ChangeHeartData(boolean bPushHeart, String strCultCode);    //  변경된 좋아요 정보.
 }

@@ -205,6 +205,24 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
         notifyItemChanged(iPos);                    //   데이터 변경을 알림.
     }
 
+    //  Heart 탭에서 좋아요 누르거나 취소했다는 정보를 알림받아서, Info에서도 적용한다.
+    public void HeartDataUpdate(boolean bPushHeart, int iPosition)
+    {
+        InfoDataType newInfoData = new InfoDataType();
+        newInfoData.CopyData(aListInfo.get(iPosition));
+        if(bPushHeart == true)
+        {
+            newInfoData.setStrIsHeart("1");
+        }
+        else
+        {
+            newInfoData.setStrIsHeart("0");
+        }
+
+        aListInfo.set(iPosition, newInfoData);
+        notifyItemChanged(iPosition);
+    }
+
     @Override
     public int getItemCount() {
         return aListInfo.size();
@@ -228,7 +246,6 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
             tvDate = (TextView)itemView.findViewById(R.id.info_cardview_date);
             tvPlace = (TextView)itemView.findViewById(R.id.info_cardview_place);
             tvFee = (TextView)itemView.findViewById(R.id.info_cardview_fee);
-
             ivHeart = (ImageView)itemView.findViewById(R.id.info_cardview_btn_heart);
         }
     }

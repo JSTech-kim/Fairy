@@ -7,4 +7,5 @@ package com.jstech.fairy.Interface;
 public interface HeartPublisher {
     public void add(HeartObserver observer);
     public void notifyObserver();
+    public void notifyHeartChanged(boolean bPushHeart, String strCultCode);
 }

@@ -18,6 +18,8 @@ import android.view.ViewGroup;
 
 import com.jstech.fairy.Adapter.InfoFragmentRecyclerViewAdapter;
 import com.jstech.fairy.DataType.InfoDataType;
+import com.jstech.fairy.Interface.HeartObserver;
+import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.R;
 
 import org.json.JSONArray;
@@ -44,12 +46,13 @@ import static android.content.Context.MODE_PRIVATE;
 *   1페이지 데이터 시트 다운로드 -> list_total_count 값 추출 -> 1~Count의 데이터 시트 다운로드 -> 리스트 생성
 *
 * */
-public class InfoFragment extends Fragment {
+public class InfoFragment extends Fragment implements HeartObserver{
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
     public static final int POSITION_INFO = 0;          //  Info Fragment Index
     private int mPage;                                      //  Page Index
     private RecyclerView mRecyclerView;
     private LinearLayoutManager mLinearLayoutManager;
+    InfoFragmentRecyclerViewAdapter mAdapter;
 
     JSONArray aJson = null;
     ArrayList<InfoDataType> aListInfo;
@@ -57,6 +60,7 @@ public class InfoFragment extends Fragment {
     String mStrDefaultURL = "http://openapi.seoul.go.kr:8088/727046784e6568663130354363776d6c/json/SearchConcertDetailService/1/";
 
     ArrayList<String> aListFilter;      //  필터링 될 행사의 Subject Code.
+    HeartAlarm heartCancelPublisher;    //  하트정보가 바뀌었음을 Heart 탭으로부터 알림받기 위함.
 
     //  Constructor
     public InfoFragment(){
@@ -65,10 +69,13 @@ public class InfoFragment extends Fragment {
 
     //  Constructor
     @SuppressLint("ValidFragment")
-    public InfoFragment(int page) {
+    public InfoFragment(int page, HeartAlarm heartCancelPublisher) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
         this.setArguments(args);
+
+        this.heartCancelPublisher = heartCancelPublisher;
+        heartCancelPublisher.add(this);
     }
 
     @Override
@@ -136,6 +143,27 @@ public class InfoFragment extends Fragment {
 
         GetTotalRequest objGetTotalCount = new GetTotalRequest();
         objGetTotalCount.execute(strFirstURL);
+    }
+
+    @Override
+    public void DataUpdate() {
+
+    }
+
+    @Override
+    public void ChangeHeartData(boolean bPushHeart, String strCultCode) {
+
+        int iPosition = 0;
+        for(int i = 0; i < aListInfo.size(); i++)
+        {
+            if(aListInfo.get(i).getStrCultCode().equals(strCultCode))
+            {
+                iPosition = i;
+                break;
+            }
+        }
+
+        mAdapter.HeartDataUpdate(bPushHeart, iPosition);
     }
 
     /*
@@ -348,9 +376,9 @@ public class InfoFragment extends Fragment {
                 aListInfo.add(objInfo);
             }
 
-            InfoFragmentRecyclerViewAdapter adapter = new InfoFragmentRecyclerViewAdapter(getActivity(), aListInfo);
-            mRecyclerView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            mAdapter = new InfoFragmentRecyclerViewAdapter(getActivity(), aListInfo);
+            mRecyclerView.setAdapter(mAdapter);
+            mAdapter.notifyDataSetChanged();
 
         } catch (JSONException e) {
             e.printStackTrace();

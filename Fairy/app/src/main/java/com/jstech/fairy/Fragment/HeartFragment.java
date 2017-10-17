@@ -39,6 +39,7 @@ public class HeartFragment extends Fragment implements HeartObserver{
     ArrayList<InfoDataType> aListHeart;
 
     HeartAlarm heartPublisher;
+    HeartAlarm heartCancelPublisher;
 
     //  Constructor
     public HeartFragment(){
@@ -47,13 +48,15 @@ public class HeartFragment extends Fragment implements HeartObserver{
 
     //  Constructor
     @SuppressLint("ValidFragment")
-    public HeartFragment(int page, HeartAlarm heartPublisher) {
+    public HeartFragment(int page, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
         this.setArguments(args);
 
-        this.heartPublisher = heartPublisher;
+        this.heartPublisher = heartPublisher;               //  Info에서 좋아요 한것을 알림받기 위함.
         heartPublisher.add(this);
+
+        this.heartCancelPublisher = heartCancelPublisher;   //  좋아요 취소 시, Info에 알리기위함.
     }
 
     @Override
@@ -79,7 +82,7 @@ public class HeartFragment extends Fragment implements HeartObserver{
         //  DB로부터 데이터 가져와서 채우기.
         aListHeart = new ArrayList<InfoDataType>();
         GetDataFromDatabase();
-        mAdapter = new HeartFragmentRecyclerViewAdapter(getActivity(), aListHeart);
+        mAdapter = new HeartFragmentRecyclerViewAdapter(getActivity(), aListHeart, heartCancelPublisher);
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
 
@@ -153,5 +156,10 @@ public class HeartFragment extends Fragment implements HeartObserver{
         {
             Log.e("HeartFragment", "DataUpdate()");
         }
+    }
+
+    @Override
+    public void ChangeHeartData(boolean bPushHeart, String strCultCode) {
+
     }
 }

@@ -22,11 +22,13 @@ import com.jstech.fairy.MoreFunction.HeartAlarm;
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
+    HeartAlarm heartCancelPublisher;                  //  Info Fragment에 Observer Pattern 추가하기 위함.
     Context mContext;
 
-    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, Context context) {
+    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher, Context context) {
         super(fm);
         this.heartPublisher = heartPublisher;
+        this.heartCancelPublisher = heartCancelPublisher;
         this.mContext = context;
     }
 
@@ -39,13 +41,13 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
 
         if(position == 0){
-            return new InfoFragment(position);
+            return new InfoFragment(position, heartCancelPublisher);
         }
         else if(position == 1){
             return new DiaryFragment(position);
         }
         else{
-            return new HeartFragment(position, heartPublisher);
+            return new HeartFragment(position, heartPublisher, heartCancelPublisher);
         }
     }
 

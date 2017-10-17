@@ -23,6 +23,7 @@ public class HeartAlarm implements HeartPublisher{
         observers.add(observer);
     }
 
+    //  전체 데이터 업데이트를 지시.
     @Override
     public void notifyObserver() {
         for(HeartObserver observer : observers)
@@ -30,4 +31,15 @@ public class HeartAlarm implements HeartPublisher{
             observer.DataUpdate();
         }
     }
+
+    //  좋아요 버튼이 바꼈음을 알림.
+    @Override
+    public void notifyHeartChanged(boolean bPushHeart, String strCultCode) {
+        for(HeartObserver observer : observers)
+        {
+            observer.ChangeHeartData(bPushHeart, strCultCode);
+        }
+    }
+
+
 }
