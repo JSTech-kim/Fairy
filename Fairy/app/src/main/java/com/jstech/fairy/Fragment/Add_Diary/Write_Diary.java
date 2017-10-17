@@ -2,7 +2,9 @@ package com.jstech.fairy.Fragment.Add_Diary;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -37,11 +39,15 @@ public class Write_Diary extends AppCompatActivity {
     int mYear, mMonth, mDay;
     String DataBase_title;
 
+    SQLiteDatabase mSQLiteDatabase;     //  SQLite 접근 객체
+    Context mContext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_write_diary);
 
+        mContext = this.getApplicationContext();
         CropView_Photo=(ImageView)findViewById(R.id.Photo) ;
         Button_Add_Photo=(ImageButton)findViewById(R.id.Add_Photo_Button);
         Bitmap bitmap;
@@ -111,5 +117,32 @@ public class Write_Diary extends AppCompatActivity {
     void UpdateNow(){
         TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));}
     /*==================================================날짜 고르는 코드==========================================================*/
+
+
+
+    /*
+        To. 진기 : 파라미터 4개로 값을 넣으면 DataBase에 저장될 걸!?
+                    Table에서 데이터 삭제하는거는 상세보기 같은 화면 등에서 삭제버튼 눌렀을 때, 구현되어야할 듯.
+        [DiaryTable]
+         - strDate      날짜          - (16)
+         - strTitle     제목          - (256)
+         - strMainText  본문          - (2048)
+         - strImgPath   이미지 경로   - (512)
+     */
+    public void InsertDiaryDataToDatabase(String strDate, String strTitle, String strMainText, String strImgPath)
+    {
+        mSQLiteDatabase = mContext.openOrCreateDatabase(mContext.getString(R.string.database_name), MODE_PRIVATE, null);
+        mSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + mContext.getString(R.string.diary_table_name)
+                + " (DATE VARCHAR(16), TITLE VARCHAR(256), MAINTEXT VARCHAR(2048), IMGPATH VARCHAR(512));");
+
+        mSQLiteDatabase.execSQL("INSERT INTO " + mContext.getString(R.string.diary_table_name)
+                + " (DATE, TITLE, MAINTEXT, IMGPATH) Values"
+                + " ('"+ strDate + "', '"
+                + strTitle + "', '"
+                + strMainText + "', '"
+                + strImgPath + "');");
+
+        mSQLiteDatabase.close();
+    }
 
 }

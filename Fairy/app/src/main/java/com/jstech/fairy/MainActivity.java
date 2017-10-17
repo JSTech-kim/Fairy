@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity{
         mDrawerLayout = (DrawerLayout)findViewById(R.id.main_drawer_layout);
 
         //  들어가는 내용은 정상동작 여부를 위한 테스트용. 추후 수정 필요.
-        NavigationView navigationView = (NavigationView)findViewById(R.id.main_navigation_view);
+        final NavigationView navigationView = (NavigationView)findViewById(R.id.main_navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
