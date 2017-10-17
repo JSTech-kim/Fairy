@@ -14,6 +14,10 @@
     <string name="subjcode_festival">12.0</string>
     <string name="subjcode_concert">1.0</string>
 
+    <!-- 행사 참가료 무료 관련 메시지-->
+    <string name="text_free">무료</string>
+    <string name="text_not_free">유료</string>
+
     <string name="cd_passcodelock_logo">PasscodeLock Logo</string>
     <string name="passcode_fingerprint_supported">Fingerprint Supported</string>
 

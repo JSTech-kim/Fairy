@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -15,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
@@ -31,6 +31,9 @@ public class MainActivity extends AppCompatActivity{
     private FairyFragmentPagerAdapter mAdapter;
     private HeartAlarm heartPublisher;
     private Context mContext;
+
+    //  Selector
+    private int tabImg[] = {R.drawable.tab_info_selector, R.drawable.tab_diary_selector, R.drawable.tab_heart_selector};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -118,10 +121,13 @@ public class MainActivity extends AppCompatActivity{
             }
         });
 
-        //ViewPager를 Tab Strip에 연결
-        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip)findViewById(R.id.main_tabs);
-        tabsStrip.setViewPager(viewpager);
-
+        //Tab 이미지 및 viewpager 등록.
+        TabLayout tabLayout = (TabLayout)findViewById(R.id.main_tabs);
+        tabLayout.setupWithViewPager(viewpager);
+        for(int i = 0; i < tabLayout.getTabCount(); i++)
+        {
+            tabLayout.getTabAt(i).setIcon(tabImg[i]);
+        }
     }
 
     @Override

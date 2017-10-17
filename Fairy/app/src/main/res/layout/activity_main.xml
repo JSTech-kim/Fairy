@@ -14,6 +14,7 @@
         android:layout_height="match_parent"
         android:weightSum="10"
         android:orientation="vertical"
+        android:background="@color/colorBackground"
         tools:context="com.jstech.fairy.MainActivity">
 
         <android.support.v7.widget.Toolbar
@@ -23,7 +24,19 @@
             android:background="@color/colorPrimary"
             android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-        <com.astuetz.PagerSlidingTabStrip
+        <android.support.design.widget.TabLayout
+            android:id="@+id/main_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/colorWhite"
+            app:tabIndicatorColor="@color/colorAccent"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            />
+
+        <!--PagerSlidingTabStripg 사용 안함-->
+        <!--com.astuetz.PagerSlidingTabStrip
             android:id="@+id/main_tabs"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -33,7 +46,8 @@
             app:pstsShouldExpand="true"
             app:pstsIndicatorColor="@color/colorAccent"
             app:pstsIndicatorHeight="3dip"
-            app:pstsTextAllCaps="true"/>
+            app:pstsTextAllCaps="true"
+            app:pstsTabSwitch="true"/-->
         <!--app:pstsUnderlineColor="@color/colorLine"-->
 
         <android.support.v4.view.ViewPager

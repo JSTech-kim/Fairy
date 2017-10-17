@@ -79,11 +79,23 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
 
         //  카드뷰의 각 값 세팅
         holder.tvTitle.setText(aListInfo.get(pos).getStrTitle());
-//        holder.tvStartDate.setText(aListInfo.get(pos).getStrStartDate());
-//        holder.tvEndDate.setText(aListInfo.get(pos).getStrEndDate());
         holder.tvDate.setText(aListInfo.get(pos).getStrStartDate()+"~"+aListInfo.get(pos).getStrEndDate());
         holder.tvPlace.setText(aListInfo.get(pos).getStrPlace());
-        holder.tvFee.setText(aListInfo.get(pos).getStrIsFree());
+
+        //  무/유료 구분
+        String strIsFree = aListInfo.get(pos).getStrIsFree();
+        if(strIsFree.equals("1"))
+        {
+            holder.tvFee.setText(mContext.getString(R.string.text_free));
+        }
+        else if(strIsFree.equals("0"))
+        {
+            holder.tvFee.setText(mContext.getString(R.string.text_not_free));
+        }
+        else
+        {
+            holder.tvFee.setText(strIsFree);
+        }
 
         //  최초 좋아요 ImageView는 DB 값으로부터 구해온 IsHeart 값을 통해 구분.
         //  이후에는 클릭 이벤트 참조.
@@ -203,8 +215,6 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
         CardView cardview;
         ImageView ivImg;
         TextView tvTitle;
-//        TextView tvStartDate;
-//        TextView tvEndDate;
         TextView tvDate;
         TextView tvPlace;
         TextView tvFee;
@@ -215,8 +225,6 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
             cardview = (CardView)itemView.findViewById(R.id.info_cardview);
             ivImg = (ImageView)itemView.findViewById(R.id.info_cardview_imageview);
             tvTitle = (TextView)itemView.findViewById(R.id.info_cardview_title);
-//            tvStartDate = (TextView)itemView.findViewById(R.id.info_cardview_start_date);
-//            tvEndDate = (TextView)itemView.findViewById(R.id.info_cardview_end_date);
             tvDate = (TextView)itemView.findViewById(R.id.info_cardview_date);
             tvPlace = (TextView)itemView.findViewById(R.id.info_cardview_place);
             tvFee = (TextView)itemView.findViewById(R.id.info_cardview_fee);

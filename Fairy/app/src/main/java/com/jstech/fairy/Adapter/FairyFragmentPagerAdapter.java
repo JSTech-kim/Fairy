@@ -5,12 +5,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.astuetz.PagerSlidingTabStrip;
 import com.jstech.fairy.Fragment.DiaryFragment;
 import com.jstech.fairy.Fragment.HeartFragment;
 import com.jstech.fairy.Fragment.InfoFragment;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
-import com.jstech.fairy.R;
 
 /**
  * Created by SONY on 2017-09-25.
@@ -21,9 +19,8 @@ import com.jstech.fairy.R;
 *   Fragment들을 생성.
 * */
 
-public class FairyFragmentPagerAdapter extends FragmentPagerAdapter implements PagerSlidingTabStrip.IconTabProvider{
+public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
-    private int tabImg[] = {R.drawable.ic_flower, R.drawable.ic_book, R.drawable.ic_heart};
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
     Context mContext;
 
@@ -57,9 +54,9 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter implements P
         return PAGE_COUNT;
     }
 
-    //  Tab 제목 이미지
     @Override
-    public int getPageIconResId(int position) {
-        return tabImg[position];
+    public CharSequence getPageTitle(int position) {
+        return super.getPageTitle(position);
     }
+
 }
