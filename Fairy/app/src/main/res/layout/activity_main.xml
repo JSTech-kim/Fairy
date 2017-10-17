@@ -12,7 +12,7 @@
         android:id="@+id/activity_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:weightSum="10"
+        android:weightSum="12"
         android:orientation="vertical"
         android:background="@color/colorBackground"
         tools:context="com.jstech.fairy.MainActivity">
@@ -32,8 +32,7 @@
             android:background="@color/colorWhite"
             app:tabIndicatorColor="@color/colorAccent"
             app:tabMode="fixed"
-            app:tabGravity="fill"
-            />
+            app:tabGravity="fill" />
 
         <!--PagerSlidingTabStripg 사용 안함-->
         <!--com.astuetz.PagerSlidingTabStrip
@@ -54,7 +53,7 @@
             android:id="@+id/main_viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="9"/>
+            android:layout_weight="11"/>
 
     </LinearLayout>
 
