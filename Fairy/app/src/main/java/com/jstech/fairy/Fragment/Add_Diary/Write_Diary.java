@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -78,11 +77,11 @@ public class Write_Diary extends AppCompatActivity {
 
         else if(requestCode == CROP_PHOTO && resultCode == Activity.RESULT_OK){
 
-            byte[] bytes = data.getByteArrayExtra("BMP");
-            finalbitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+
             CropView_Photo.setImageBitmap(finalbitmap);
         }
     }
+
     /*=====================================사진 골라 넣기 버튼 이벤트=============================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/

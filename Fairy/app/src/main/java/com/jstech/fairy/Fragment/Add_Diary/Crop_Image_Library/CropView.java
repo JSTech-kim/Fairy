@@ -113,7 +113,7 @@ public class CropView extends AppCompatImageView {
         }
     }
 
-    private void drawBitmap(Canvas canvas) {
+    public void drawBitmap(Canvas canvas) {
         transform.reset();
         touchManager.applyPositioningAndScale(transform);
 
@@ -314,7 +314,25 @@ public class CropView extends AppCompatImageView {
         invalidate();
         return true;
     }
+    public static Bitmap imgRotate(Bitmap bmp){
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        Bitmap resizedBitmap = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true);
+        bmp.recycle();
+        return resizedBitmap;
+    }
 
+    public static Bitmap imgRotate(Bitmap bmp,float degree){
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+        Matrix matrix = new Matrix();
+        matrix.postRotate(degree);
+        Bitmap resizedBitmap = Bitmap.createBitmap(bmp, 0, 0, width, height, matrix, true);
+        bmp.recycle();
+        return resizedBitmap;
+    }
     /**
      * Performs synchronous image cropping based on configuration.
      *
