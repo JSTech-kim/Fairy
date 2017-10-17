@@ -80,19 +80,18 @@ public class Write_Diary extends AppCompatActivity {
         }
 
         else if(requestCode == CROP_PHOTO && resultCode == Activity.RESULT_OK){
-            String filename = data.getStringExtra("image");
+            String filename = "Temp.png";
             try {
-                FileInputStream is = this.openFileInput(filename);
-                finalbitmap = BitmapFactory.decodeStream(is);
-                is.close();
+                FileInputStream TempStream = this.openFileInput(filename);
+                finalbitmap = BitmapFactory.decodeStream(TempStream);
+                TempStream.close();
             } catch (Exception e) {
                 e.printStackTrace();
             }
             CropView_Photo.setImageBitmap(finalbitmap);
-            Button_Add_Photo.setAlpha(45);
+            Button_Add_Photo.setAlpha(65);
         }
     }
-
     /*=====================================사진 골라 넣기 버튼 이벤트=============================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/

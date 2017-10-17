@@ -65,14 +65,12 @@ public class Crop extends AppCompatActivity {
             public void onClick(View v){
                 bitmap = cropView.crop();
                 try {
-                    String filename = "bitmap.png";
+                    String filename = "Temp.png";
                     FileOutputStream stream = openFileOutput(filename, Context.MODE_PRIVATE);
                     bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                     stream.close();
                     bitmap.recycle();
-                    Intent data = new Intent();
-                    data.putExtra("image", filename);
-                    setResult(RESULT_OK,data);
+                    setResult(RESULT_OK);
                     finish();
                 } catch (Exception e) {
                     e.printStackTrace();
