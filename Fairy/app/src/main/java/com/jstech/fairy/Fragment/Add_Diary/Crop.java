@@ -16,8 +16,6 @@ import com.melnykov.fab.FloatingActionButton;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-import static android.R.attr.data;
-
 public class Crop extends AppCompatActivity {
 
     private Uri galleryPictureUri;

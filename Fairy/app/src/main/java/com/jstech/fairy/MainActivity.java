@@ -17,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
-import com.jstech.fairy.Fragment.Add_Diary.Write_Diary_Backup;
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity{
                     case R.id.navi_btn_Developers:
                         /*intent = new Intent(getApplicationContext(), Navi_Developers.class);
                         startActivity(intent);*/
-                        startActivity(new Intent(MainActivity.this, Write_Diary_Backup.class));
+                        startActivity(new Intent(MainActivity.this, Write_Diary.class));
                         break;
                     case R.id.navi_btn_LicenseInfo:
                         intent = new Intent(getApplicationContext(), Navi_LicenseInfo.class);
