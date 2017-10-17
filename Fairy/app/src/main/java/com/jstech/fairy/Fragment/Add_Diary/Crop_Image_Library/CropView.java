@@ -326,7 +326,6 @@ public class CropView extends AppCompatImageView {
         if (bitmap == null) {
             return null;
         }
-
         final Bitmap src = bitmap;
         final Bitmap.Config srcConfig = src.getConfig();
         final Bitmap.Config config = srcConfig == null ? Bitmap.Config.ARGB_8888 : srcConfig;
@@ -402,8 +401,7 @@ public class CropView extends AppCompatImageView {
          * @see PicassoBitmapLoader
          */
         public void load(@Nullable Object model) {
-            new LoadRequest(cropView)
-                    .load(model);
+            new LoadRequest(cropView).load(model);
         }
 
         /**

@@ -6,13 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.jstech.fairy.Fragment.Add_Diary.Write_Diary">
+    tools:context="com.jstech.fairy.Fragment.Add_Diary.Write_Diary_Backup">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="0dp"
+        android:layout_weight="4">
 
-        <ImageView
+        <com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropView
             android:id="@+id/Photo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -20,19 +21,20 @@
             android:scaleType="fitXY" />
 
         <ImageButton
+            android:id="@+id/Add_Photo_Button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center"
-            android:onClick="Add_Photo"
-            android:id="@+id/Add_Photo_Button"
-            android:src="@drawable/ic_add_circle"
             android:background="@android:color/transparent"
-            android:tint="#99FBC02D"/>
+            android:onClick="Add_Photo"
+            android:src="@drawable/ic_add_circle"
+            android:tint="#99FBC02D" />
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="2"
         android:paddingLeft="50dp"
         android:paddingRight="50dp">
 
@@ -45,35 +47,36 @@
         <Button
             android:id="@+id/Date_Chooser"
             android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:onClick="Date_Choise"/>
+            android:layout_height="50dp"
+            android:onClick="Date_Choise" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="2"
-        android:paddingLeft="50dp"
-        android:paddingRight="50dp">
+        android:layout_weight="6"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/Title_Diary"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
             android:gravity="center"
             android:hint="제목을 입력하시오." />
-    </LinearLayout>
 
-    <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/diary_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center"
-        android:layout_margin="50dp"
-        android:src="@drawable/ic_pencil"
-        fab:fab_colorNormal="@color/colorPrimary"
-        fab:fab_colorPressed="@color/colorAccent"
-        fab:fab_colorRipple="@color/colorGray" />
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/diary_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="50dp"
+            android:layout_weight="1"
+            android:src="@drawable/ic_pencil"
+            fab:fab_colorNormal="@color/colorPrimary"
+            fab:fab_colorPressed="@color/colorAccent"
+            fab:fab_colorRipple="@color/colorGray" />
+    </LinearLayout>
 
 </LinearLayout>

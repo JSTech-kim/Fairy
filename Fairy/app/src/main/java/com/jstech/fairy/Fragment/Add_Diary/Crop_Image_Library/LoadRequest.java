@@ -9,6 +9,7 @@ import static com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropViewExt
 
 public class LoadRequest {
 
+
     private final CropView cropView;
     private BitmapLoader bitmapLoader;
     private CropView.Extensions.LoaderType loaderType = CropView.Extensions.LoaderType.CLASS_LOOKUP;

@@ -53,10 +53,7 @@
         <activity
             android:name=".Fragment.Add_Diary.Write_Diary"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".Fragment.Add_Diary.Crop_Image"
-            android:label="@string/title_activity_crop__image"
-            android:theme="@style/AppTheme"></activity>
+        <activity android:name=".Fragment.Add_Diary.Crop"></activity>
     </application>
 
 </manifest>

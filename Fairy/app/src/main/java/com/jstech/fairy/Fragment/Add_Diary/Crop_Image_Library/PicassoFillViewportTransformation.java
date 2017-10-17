@@ -36,6 +36,7 @@ class PicassoFillViewportTransformation implements Transformation {
         int sourceHeight = source.getHeight();
 
         Rect target = CropViewExtensions.computeTargetSize(sourceWidth, sourceHeight, viewportWidth, viewportHeight);
+
         final Bitmap result = Bitmap.createScaledBitmap(
                 source,
                 target.width(),

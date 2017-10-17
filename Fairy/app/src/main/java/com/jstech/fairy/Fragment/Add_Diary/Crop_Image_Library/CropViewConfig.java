@@ -98,8 +98,7 @@ class CropViewConfig {
                 R.styleable.CropView);
 
         cropViewConfig.setViewportRatio(
-                attributes.getFloat(R.styleable.CropView_cropviewViewportRatio,
-                        CropViewConfig.DEFAULT_VIEWPORT_RATIO));
+                attributes.getFloat(R.styleable.CropView_cropviewViewportRatio, CropViewConfig.DEFAULT_VIEWPORT_RATIO));
 
         cropViewConfig.setMaxScale(
                 attributes.getFloat(R.styleable.CropView_cropviewMaxScale,

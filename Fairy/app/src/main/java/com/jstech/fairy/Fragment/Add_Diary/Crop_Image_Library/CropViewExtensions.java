@@ -65,7 +65,6 @@ class CropViewExtensions {
         if (sourceWidth == viewportWidth && sourceHeight == viewportHeight) {
             return new Rect(0, 0, viewportWidth, viewportHeight); // Fail fast for when source matches exactly on viewport
         }
-
         float scale;
         if (sourceWidth * viewportHeight > viewportWidth * sourceHeight) {
             scale = (float) viewportHeight / (float) sourceHeight;

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.jstech.fairy.Fragment.Add_Diary.Crop">
+
+    <com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropView
+        android:id="@+id/Crop_CropView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cropviewViewportRatio="1.5"/>
+
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/Crop_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="50dp"
+        android:src="@drawable/ic_add"
+        fab:fab_colorNormal="@color/colorPrimary"
+        fab:fab_colorPressed="@color/colorAccent"
+        fab:fab_colorRipple="@color/colorGray" />
+
+    <com.melnykov.fab.FloatingActionButton
+        android:id="@+id/Rotate_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="50dp"
+        android:src="@drawable/ic_toy"
+        fab:fab_colorNormal="@color/colorPrimary"
+        fab:fab_colorPressed="@color/colorAccent"
+        fab:fab_colorRipple="@color/colorGray" />
+
+</FrameLayout>
