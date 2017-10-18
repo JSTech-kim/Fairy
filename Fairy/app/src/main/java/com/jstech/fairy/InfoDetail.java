@@ -39,9 +39,9 @@ public class InfoDetail extends AppCompatActivity {
         ImageView mainIv = (ImageView)findViewById(R.id.main_iv);
 
         Picasso.with(getApplicationContext()).load(infoData.getStrMainImg())
-                .placeholder(R.mipmap.ic_launcher)                              // 이미지 불러오는 동안 이미지
+                .placeholder(R.drawable.loading_image)                              // 이미지 불러오는 동안 이미지
                 .transform(PicassoTransformations.resizeTransformation)           //  리사이즈
-                .error(R.drawable.test_jinsub)                                  // 다운로드 실패 시, 이미지
+                .error(R.drawable.no_image)                                  // 다운로드 실패 시, 이미지
                 .fit()                                                            // 이미지뷰에 맞추기
                 .into(mainIv);
 
