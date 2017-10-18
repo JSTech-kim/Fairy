@@ -53,6 +53,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".Fragment.Add_Diary.Write_Diary"
+            android:windowSoftInputMode="stateHidden|adjustPan"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Fragment.Add_Diary.Crop"

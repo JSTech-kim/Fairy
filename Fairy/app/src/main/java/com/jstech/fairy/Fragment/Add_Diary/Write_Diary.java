@@ -84,7 +84,6 @@ public class Write_Diary extends AppCompatActivity {
             intent.putExtra("Uri",galleryPictureUri);
             startActivityForResult(intent,CROP_PHOTO);
         }
-
         else if(requestCode == CROP_PHOTO && resultCode == Activity.RESULT_OK){
             String filename = "Temp.png";
             try {
@@ -115,7 +114,9 @@ public class Write_Diary extends AppCompatActivity {
         }
     };
     void UpdateNow(){
-        TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));}
+        TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));
+
+    }
     /*==================================================날짜 고르는 코드==========================================================*/
 
 
