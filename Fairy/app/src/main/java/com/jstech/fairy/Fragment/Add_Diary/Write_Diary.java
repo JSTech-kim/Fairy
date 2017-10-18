@@ -9,7 +9,12 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -51,6 +56,15 @@ public class Write_Diary extends AppCompatActivity {
         CropView_Photo=(ImageView)findViewById(R.id.Photo) ;
         Button_Add_Photo=(ImageButton)findViewById(R.id.Add_Photo_Button);
         Bitmap bitmap;
+
+        Toolbar toolbar = (Toolbar)findViewById(R.id.diary_write_toolbar);
+        setSupportActionBar(toolbar);
+
+        //  Action Bar
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        setTitleChange("");
 
         /*===============날짜 고르는 코드=========================*/
         TextView_date = (TextView)findViewById(R.id.Date_Viewer);
@@ -145,4 +159,37 @@ public class Write_Diary extends AppCompatActivity {
         mSQLiteDatabase.close();
     }
 
+    //Toolbar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_diary_write, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+        switch(id)
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            case R.id.action_save:
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    protected void setTitleChange(String title){
+        getSupportActionBar().setTitle(title);
+    }
+
+    public void Save_Diary(View v){
+        /*
+        코드 추가
+         */
+    }
 }
