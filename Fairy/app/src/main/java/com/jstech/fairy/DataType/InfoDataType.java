@@ -24,10 +24,10 @@ public class InfoDataType implements Parcelable{
     private String strUseTarget;    //  이용 대상
     private String strUseFee;       //  이용 요금*
     private String strSponsor;      //  주최
-    private String strInquiry;      //  문의 ?
+    private String strInquiry;      //  문의 - 전화번호 형식
     private String strIsFree;       //  무료 구분
     private String strTicket;       //  할인 티켓 예매정보
-    private String strContents;     //  본문 ?
+    private String strContents;     //  본문 x
     private String strIsHeart;      //  좋아요 버튼이 눌러져있는지 여부. (0 or 1)
 
     public InfoDataType()

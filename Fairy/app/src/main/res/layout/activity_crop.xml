@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="50dp"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/ic_crop"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorAccent"
         fab:fab_colorRipple="@color/colorGray" />
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|left"
         android:layout_margin="50dp"
-        android:src="@drawable/ic_toy"
+        android:src="@drawable/ic_rotate_right"
         fab:fab_colorNormal="@color/colorPrimary"
         fab:fab_colorPressed="@color/colorAccent"
         fab:fab_colorRipple="@color/colorGray" />

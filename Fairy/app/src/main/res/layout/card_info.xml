@@ -79,7 +79,7 @@
                         android:paddingBottom="3sp"
                         android:layout_above="@+id/info_cardview_place"
                         android:text="2017/10/13 ~ 2017/10/14"
-                        android:textColor="@color/colorGray" />
+                        android:textColor="@color/colorText2" />
 
                     <TextView
                         android:id="@+id/info_cardview_place"
@@ -90,7 +90,7 @@
                         android:paddingBottom="3sp"
                         android:layout_above="@+id/info_cardview_fee"
                         android:text="용인"
-                        android:textColor="@color/colorGray" />
+                        android:textColor="@color/colorText2" />
 
                     <TextView
                         android:id="@+id/info_cardview_fee"
@@ -101,7 +101,7 @@
                         android:paddingBottom="3sp"
                         android:text="500\"
                         android:layout_above="@+id/info_cardview_btn_heart"
-                        android:textColor="@color/colorGray" />
+                        android:textColor="@color/colorText2" />
 
                     <ImageView
                         android:id="@+id/info_cardview_btn_heart"

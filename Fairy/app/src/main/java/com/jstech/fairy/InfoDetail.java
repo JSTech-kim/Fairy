@@ -49,25 +49,33 @@ public class InfoDetail extends AppCompatActivity {
         titleTv.setText(infoData.getStrTitle());
 
         TextView dateTv = (TextView)findViewById(R.id.info_detail_date);
-        dateTv.setText(infoData.getStrTitle());
+        dateTv.setText(infoData.getStrStartDate() + " ~ " + infoData.getStrEndDate());
 
         TextView timeTv = (TextView)findViewById(R.id.info_detail_time);
-        timeTv.setText(infoData.getStrTitle());
+        timeTv.setText(infoData.getStrTime());
 
         TextView placeTv = (TextView)findViewById(R.id.info_detail_place);
-        placeTv.setText(infoData.getStrTitle());
+        placeTv.setText(infoData.getStrPlace());
 
         TextView targetTv = (TextView)findViewById(R.id.info_detail_target);
-        targetTv.setText(infoData.getStrTitle());
+        targetTv.setText(infoData.getStrUseTarget());
 
         TextView feeTv = (TextView)findViewById(R.id.info_detail_fee);
-        feeTv.setText(infoData.getStrTitle());
 
-        TextView discountTv = (TextView)findViewById(R.id.info_detail_discount);
-        discountTv.setText(infoData.getStrTitle());
+        if("1".equals(infoData.getStrIsFree())) //무료일 경우
+        {
+            feeTv.setText("무료");
+        }
+        else // 유료일 경우
+        {
+            feeTv.setText(infoData.getStrUseFee());
+        }
 
         TextView hostTv = (TextView)findViewById(R.id.info_detail_host);
-        hostTv.setText(infoData.getStrTitle());
+        hostTv.setText(infoData.getStrSponsor());
+
+        TextView inquiryTv = (TextView)findViewById(R.id.info_detail_inquiry);
+        inquiryTv.setText(infoData.getStrInquiry());
     }
 
     @Override

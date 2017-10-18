@@ -1,89 +1,206 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_info_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="13"
     tools:context="com.jstech.fairy.InfoDetail">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/info_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="0dp"
         android:background="@color/colorPrimary"
+        android:layout_weight="1"
         android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
-    <ImageView
-        android:id="@+id/main_iv"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
+        android:layout_height="0dp"
+        android:layout_weight="12">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_margin="10dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/info_detail_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Title"
-            android:textColor="@color/colorText"
-            android:textSize="18dp"
-            android:textStyle="bold"
-            android:layout_marginBottom="10dp"/>
+            <ImageView
+                android:id="@+id/main_iv"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginBottom="10dp"/>
 
-        <TextView
-            android:id="@+id/info_detail_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Date"
-            android:textColor="@color/colorText" />
+            <TextView
+                android:id="@+id/info_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:text="Test_Title"
+                android:textColor="@color/colorText"
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/info_detail_time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Time"
-            android:textColor="@color/colorText" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/info_detail_place"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Place"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="기간"
+                    android:textColor="@color/colorPrimaryDark" />
 
-        <TextView
-            android:id="@+id/info_detail_target"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Target"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:id="@+id/info_detail_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Date"
+                    android:textColor="@color/colorText3" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/info_detail_fee"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Fee"
-            android:textColor="@color/colorText" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/info_detail_discount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Discount_ticket"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="시간"
+                    android:textColor="@color/colorPrimaryDark"  />
 
-        <TextView
-            android:id="@+id/info_detail_host"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Test_Host"
-            android:textColor="@color/colorText" />
+                <TextView
+                    android:id="@+id/info_detail_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Time"
+                    android:textColor="@color/colorText3" />
+            </LinearLayout>
 
-    </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="장소"
+                    android:textColor="@color/colorPrimaryDark"  />
+
+                <TextView
+                    android:id="@+id/info_detail_place"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Place"
+                    android:textColor="@color/colorText3"  />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="대상"
+                    android:textColor="@color/colorPrimaryDark"  />
+
+                <TextView
+                    android:id="@+id/info_detail_target"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Target"
+                    android:textColor="@color/colorText3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="요금"
+                    android:textColor="@color/colorPrimaryDark"  />
+
+                <TextView
+                    android:id="@+id/info_detail_fee"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Fee"
+                    android:textColor="@color/colorText3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:text="주최"
+                    android:textColor="@color/colorPrimaryDark"  />
+
+                <TextView
+                    android:id="@+id/info_detail_host"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Host"
+                    android:textColor="@color/colorText3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문의"
+                    android:layout_marginRight="20dp"
+                    android:textColor="@color/colorPrimaryDark"  />
+
+                <TextView
+                    android:id="@+id/info_detail_inquiry"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Test_Inquiry"
+                    android:textColor="@color/colorText3"
+                    android:layout_marginBottom="10dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>
