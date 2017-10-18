@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#77aaaaaa"
-            android:scaleType="fitXY" />
+            android:scaleType="fitXY"
+            android:layout_margin="7dp"/>
 
         <ImageButton
             android:id="@+id/Add_Photo_Button"
@@ -123,6 +124,7 @@
             android:layout_height="wrap_content">
 
             <EditText
+                android:id="@+id/Text_Diary"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"

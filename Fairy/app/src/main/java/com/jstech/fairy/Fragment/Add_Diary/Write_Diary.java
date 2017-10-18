@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jstech.fairy.R;
 
@@ -39,9 +40,14 @@ public class Write_Diary extends AppCompatActivity {
 
     TextView TextView_date;
     EditText EditText_Title;
+    EditText EditText_Text;
 
     int mYear, mMonth, mDay;
+
+    String DataBase_Date;
     String DataBase_title;
+    String DataBase_PictureURI;
+    String DataBase_text;
 
     SQLiteDatabase mSQLiteDatabase;     //  SQLite 접근 객체
     Context mContext;
@@ -75,13 +81,16 @@ public class Write_Diary extends AppCompatActivity {
         /*===============날짜 고르는 코드=========================*/
 
 
-        /*===============  제목 넣는 코드  ==============*/
+        /*===================  제목 넣는 코드  ====================*/
         EditText_Title = (EditText) findViewById(R.id.Title_Diary);
         DataBase_title = EditText_Title.getText().toString();
-        /*===============  제목 넣는 코드  ==============*/
+
+        EditText_Text = (EditText)findViewById(R.id.Text_Diary);
+        DataBase_text = EditText_Text.getText().toString();
+        /*===================  제목 넣는 코드  ====================*/
     }
 
-    /*======================================사진 골라 넣기 버튼 이벤트===========================================*/
+    /*======================================사진 골라 넣기 버튼 이벤트============================================================*/
     public void Add_Photo(View v){
         comeback = true;
         Intent intent = new Intent(Intent.ACTION_PICK);
@@ -110,11 +119,10 @@ public class Write_Diary extends AppCompatActivity {
             Button_Add_Photo.setAlpha(65);
         }
     }
-    /*=====================================사진 골라 넣기 버튼 이벤트=============================================*/
+    /*=====================================사진 골라 넣기 버튼 이벤트=============================================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/
     public void Date_Choise(View v){new DatePickerDialog(Write_Diary.this, mDateSetListener, mYear, mMonth, mDay).show();}
-
     DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -127,6 +135,8 @@ public class Write_Diary extends AppCompatActivity {
         }
     };
     void UpdateNow(){
+
+        DataBase_Date = String.valueOf(mYear)+"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay);
         TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));
 
     }
@@ -165,7 +175,6 @@ public class Write_Diary extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.menu_diary_write, menu);
         return true;
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -182,14 +191,13 @@ public class Write_Diary extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
     protected void setTitleChange(String title){
         getSupportActionBar().setTitle(title);
     }
 
-    public void Save_Diary(View v){
-        /*
-        코드 추가
-         */
+    public void Save_Diary(){
+        Toast.makeText(getApplicationContext(),":aaaaa",Toast.LENGTH_LONG);
+        //InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
     }
+
 }

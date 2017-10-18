@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 
 import com.jstech.fairy.Fragment.Add_Diary.Crop_Image_Library.CropView;
@@ -40,7 +39,7 @@ public class Crop extends AppCompatActivity {
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;
-        float HeightRatio = (float)(height*0.3333333333333333);
+        float HeightRatio = (float)(height*(4.0/12.0));
         float WidthRatio = width;
         cropView.setViewportRatio(WidthRatio/HeightRatio);
         /*********************************오차율 0.00000몇 % *************************************/
