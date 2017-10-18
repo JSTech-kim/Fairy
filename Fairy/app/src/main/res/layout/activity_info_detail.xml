@@ -12,20 +12,78 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     <ImageView
         android:id="@+id/main_iv"
         android:layout_width="match_parent"
         android:layout_height="200dp" />
 
-    <TextView
-        android:id="@+id/temp_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:textColor="@color/colorText"
-        android:text="Test_Title"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+        <TextView
+            android:id="@+id/info_detail_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Title"
+            android:textColor="@color/colorText"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:id="@+id/info_detail_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Date"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Time"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Place"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_target"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Target"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_fee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Fee"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_discount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Discount_ticket"
+            android:textColor="@color/colorText" />
+
+        <TextView
+            android:id="@+id/info_detail_host"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Test_Host"
+            android:textColor="@color/colorText" />
+
+    </LinearLayout>
 
 </LinearLayout>

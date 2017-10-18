@@ -45,9 +45,29 @@ public class InfoDetail extends AppCompatActivity {
                 .fit()                                                            // 이미지뷰에 맞추기
                 .into(mainIv);
 
-        TextView testTv = (TextView)findViewById(R.id.temp_title);
-        testTv.setText(infoData.getStrTitle());
+        TextView titleTv = (TextView)findViewById(R.id.info_detail_title);
+        titleTv.setText(infoData.getStrTitle());
 
+        TextView dateTv = (TextView)findViewById(R.id.info_detail_date);
+        dateTv.setText(infoData.getStrTitle());
+
+        TextView timeTv = (TextView)findViewById(R.id.info_detail_time);
+        timeTv.setText(infoData.getStrTitle());
+
+        TextView placeTv = (TextView)findViewById(R.id.info_detail_place);
+        placeTv.setText(infoData.getStrTitle());
+
+        TextView targetTv = (TextView)findViewById(R.id.info_detail_target);
+        targetTv.setText(infoData.getStrTitle());
+
+        TextView feeTv = (TextView)findViewById(R.id.info_detail_fee);
+        feeTv.setText(infoData.getStrTitle());
+
+        TextView discountTv = (TextView)findViewById(R.id.info_detail_discount);
+        discountTv.setText(infoData.getStrTitle());
+
+        TextView hostTv = (TextView)findViewById(R.id.info_detail_host);
+        hostTv.setText(infoData.getStrTitle());
     }
 
     @Override
