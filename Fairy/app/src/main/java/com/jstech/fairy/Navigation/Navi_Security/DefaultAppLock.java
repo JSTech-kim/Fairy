@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.util.Base64;
 
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
+import com.jstech.fairy.InfoDetail;
 
 import java.util.Date;
 
@@ -55,9 +56,15 @@ public class DefaultAppLock extends AbstractAppLock {
 
     @Override
     public void onActivityResumed(Activity activity) { // 잠금 예외 할 엑티비티들.
-        Write_Diary test = new Write_Diary();
-        if(test.comeback&&activity.getClass().getName().equals("com.jstech.fairy.Fragment.Add_Diary.Write_Diary")) {
-            test.comeback = false;
+
+        Write_Diary Exception = new Write_Diary();
+        InfoDetail Exception_2 = new InfoDetail();
+        if(Exception.comeback&&activity.getClass().getName().equals("com.jstech.fairy.Fragment.Add_Diary.Write_Diary")) {
+            Exception.comeback = false;
+            return;
+        }
+        else if(Exception_2.comeback&&activity.getClass().getName().equals("com.jstech.fairy.InfoDetail")) {
+            Exception_2.comeback = false;
             return;
         }
         else if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()){

@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 import static com.jstech.fairy.R.attr.title;
 
 public class InfoDetail extends AppCompatActivity {
+    public  static boolean comeback=false;
 
     InfoDataType mInfoData;
     Context mContext;
@@ -120,6 +121,7 @@ public class InfoDetail extends AppCompatActivity {
     //  공유하기 클릭이벤트.
     public void ActionForClickShare()
     {
+        comeback = true;
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_SEND);
         intent.setType("text/plain");
@@ -134,6 +136,7 @@ public class InfoDetail extends AppCompatActivity {
     //  상세보기 페이지에서 사이트 바로가기 눌렀을 때.
     public void ClickFabSite(View v)
     {
+        comeback = true;
         String strUrl = mInfoData.getStrOrgLink();
 
         if(strUrl == null || strUrl.length() <= 0)
@@ -149,6 +152,7 @@ public class InfoDetail extends AppCompatActivity {
     //  상세보기 페이지에서 전화하기 눌렀을 때.
     public void ClickFabCall(View v)
     {
+        comeback = true;
         String strInquiry = mInfoData.getStrInquiry();
         int iHyphen = 0;
         String strNum = "";
