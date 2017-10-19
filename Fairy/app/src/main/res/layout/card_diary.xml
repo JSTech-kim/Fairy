@@ -25,8 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_margin="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="50dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -34,14 +33,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"
-                    android:text="2017-10-12" />
+                    android:textSize="20dp" />
 
                 <TextView
                     android:id="@+id/diary_cardview_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorWhite"
-                    android:text="진섭이랑 숭실대 축제" />
+                    android:textSize="25dp" />
 
             </LinearLayout>
         </FrameLayout>

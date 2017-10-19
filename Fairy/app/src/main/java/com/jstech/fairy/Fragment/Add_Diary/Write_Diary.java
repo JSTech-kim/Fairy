@@ -82,10 +82,7 @@ public class Write_Diary extends AppCompatActivity {
 
         /*===================  제목 넣는 코드  ====================*/
         EditText_Title = (EditText) findViewById(R.id.Title_Diary);
-        DataBase_title = EditText_Title.getText().toString();
-
         EditText_Text = (EditText)findViewById(R.id.Text_Diary);
-        DataBase_text = EditText_Text.getText().toString();
         /*===================  제목 넣는 코드  ====================*/
     }
 
@@ -196,6 +193,8 @@ public class Write_Diary extends AppCompatActivity {
     }
 
     public void Save_Diary(){
+        DataBase_title = EditText_Title.getText().toString();
+        DataBase_text = EditText_Text.getText().toString();
         InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
         finish();
     }
