@@ -15,7 +15,6 @@
         android:layout_height="0dp"
         android:layout_weight="0.8"
         android:background="@color/colorPrimary"
-        android:onClick="Save_Diary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
     <FrameLayout
@@ -131,7 +130,8 @@
                 android:background="@null"
                 android:gravity="top"
                 android:hint="내용을 입력하시오."
-                android:textColorHint="@color/colorGray" />
+                android:textColorHint="@color/colorGray"
+                android:minLines="12"/>
         </ScrollView>
 
     </LinearLayout>

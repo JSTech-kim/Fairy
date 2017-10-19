@@ -17,7 +17,7 @@
         android:layout_margin="16dp"
         android:src="@drawable/ic_pencil"
         fab:fab_colorNormal="@color/colorAccent"
-        fab:fab_colorPressed="@color/colorPrimary"
+        fab:fab_colorPressed="@color/colorAccentPressed"
         fab:fab_colorRipple="@color/colorGray" />
 
 </FrameLayout>

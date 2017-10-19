@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
+import com.jstech.fairy.MoreFunction.Filter;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
 import com.jstech.fairy.Navigation.Navi_LicenseInfo;
@@ -152,6 +153,8 @@ public class MainActivity extends AppCompatActivity{
                 return true;
 
             case R.id.action_search:
+                Intent intent = new Intent(this, Filter.class);
+                startActivity(intent);
                 return true;
         }
 
