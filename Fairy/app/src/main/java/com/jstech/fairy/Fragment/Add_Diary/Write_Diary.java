@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jstech.fairy.R;
 
@@ -197,8 +196,8 @@ public class Write_Diary extends AppCompatActivity {
     }
 
     public void Save_Diary(){
-        Toast.makeText(getApplicationContext(),":aaaaa",Toast.LENGTH_LONG).show();
-        //InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
+        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
+        finish();
     }
 
 }
