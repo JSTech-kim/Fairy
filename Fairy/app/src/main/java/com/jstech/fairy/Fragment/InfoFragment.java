@@ -15,12 +15,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.jstech.fairy.Adapter.InfoFragmentRecyclerViewAdapter;
 import com.jstech.fairy.DataType.InfoDataType;
 import com.jstech.fairy.Interface.HeartObserver;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.R;
+import com.melnykov.fab.FloatingActionButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -104,6 +106,21 @@ public class InfoFragment extends Fragment implements HeartObserver{
         mRecyclerView = (RecyclerView) view.findViewById(R.id.info_recyclerview);
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+
+        //  Floating Button 연결. (맨 위로 버튼)
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.info_fab);
+        fab.attachToRecyclerView(mRecyclerView);
+
+        //  Floating Button 클릭 리스너
+        //  맨위로 올라가는 클릭 리스너.
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.scrollToPosition(0);
+            }
+        });
+
 
         //  필터링 될 행사 종류를 추가하는 함수.
         AddFilterList();
@@ -279,6 +296,16 @@ public class InfoFragment extends Fragment implements HeartObserver{
         @Override
         protected void onPostExecute(String strJson)
         {
+            if(strJson == null || strJson.length() <= 0)
+            {
+                Toast.makeText(getActivity(), "네트워크 상태를 확인해주십시오.", Toast.LENGTH_SHORT).show();
+                if(progressdialog != null)
+                {
+                    progressdialog.dismiss();
+                }
+                return;
+            }
+
             GetTotalCountAndRunRequest(strJson);
             if(progressdialog != null)
             {
