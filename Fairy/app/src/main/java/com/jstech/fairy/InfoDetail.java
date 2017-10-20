@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -106,5 +107,21 @@ public class InfoDetail extends AppCompatActivity {
 
     protected void setTitleChange(String title){
         getSupportActionBar().setTitle(title);
+    }
+
+    public void onClick_EnlargImage(View v){
+        setContentView(R.layout.activity_enlarge);
+
+        Intent intent = getIntent();
+        InfoDataType infoData = intent.getParcelableExtra("InfoData");
+
+        ImageView mainIv = (ImageView)findViewById(R.id.enlarge_image);
+
+        Picasso.with(getApplicationContext()).load(infoData.getStrMainImg())
+                .placeholder(R.drawable.loading_image)                              // 이미지 불러오는 동안 이미지
+                // .transform(PicassoTransformations.resizeTransformation)           //  리사이즈
+                .error(R.drawable.no_image)                                  // 다운로드 실패 시, 이미지
+                .fit()                                                            // 이미지뷰에 맞추기
+                .into(mainIv);
     }
 }

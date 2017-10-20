@@ -186,6 +186,7 @@ public class Write_Diary extends AppCompatActivity {
                 return true;
 
             case R.id.action_save:
+                finish();
                 return true;
         }
 
@@ -195,9 +196,9 @@ public class Write_Diary extends AppCompatActivity {
         getSupportActionBar().setTitle(title);
     }
 
+
     public void Save_Diary(){
         Toast.makeText(getApplicationContext(),":aaaaa",Toast.LENGTH_LONG);
         //InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
     }
-
 }
