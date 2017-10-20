@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.MoreFunction.Filter;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.Navigation.Navi_ContactUs;
@@ -34,6 +35,9 @@ public class MainActivity extends AppCompatActivity{
     private HeartAlarm heartCancelPublisher;        //  Heart에서 좋아요 취소한 것을 Info에 알리기 위함.
     private Context mContext;
 
+    Menu mMenu;
+    Toolbar toolbar;
+
     //  Selector
     private int tabImg[] = {R.drawable.tab_info_selector, R.drawable.tab_diary_selector, R.drawable.tab_heart_selector};
 
@@ -47,7 +51,7 @@ public class MainActivity extends AppCompatActivity{
         /**********************************************************************************************************/
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar)findViewById(R.id.main_toolbar);
+        toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
 
@@ -59,7 +63,6 @@ public class MainActivity extends AppCompatActivity{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_menu);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("");
 
         //  Navigation View 추가.
         mDrawerLayout = (DrawerLayout)findViewById(R.id.main_drawer_layout);
@@ -112,9 +115,23 @@ public class MainActivity extends AppCompatActivity{
             //  여기서 Heart Fragment refresh 진행.
             @Override
             public void onPageSelected(int position) {
-                if(position == 2)
+
+                if(position == 0){
+                    toolbar.getMenu().clear();
+                    setTitleChange("");
+                    getMenuInflater().inflate(R.menu.menu, mMenu);
+                }
+                else if(position == 1){
+                    toolbar.getMenu().clear();
+                    setTitleChange("Diary");
+                    getMenuInflater().inflate(R.menu.menu_diary, mMenu);
+                }
+                else if(position == 2)
                 {
                     heartPublisher.notifyObserver();
+                    toolbar.getMenu().clear();
+                    setTitleChange("Favorite");
+                    getMenuInflater().inflate(R.menu.menu_heart, mMenu);
                 }
             }
 
@@ -135,7 +152,11 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+        mMenu = menu;
         getMenuInflater().inflate(R.menu.menu, menu);
+        setTitleChange("");
+
         return true;
     }
 
@@ -146,6 +167,8 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
+        Intent intent;
+
         switch(id)
         {
             case android.R.id.home:
@@ -156,8 +179,16 @@ public class MainActivity extends AppCompatActivity{
                 return true;
 
             case R.id.action_filter:
-                Intent intent = new Intent(this, Filter.class);
+                intent = new Intent(this, Filter.class);
                 startActivity(intent);
+                return true;
+
+            case R.id.action_write:
+                intent = new Intent(this, Write_Diary.class);
+                startActivity(intent);
+                return true;
+
+            case R.id.action_sort:
                 return true;
         }
 

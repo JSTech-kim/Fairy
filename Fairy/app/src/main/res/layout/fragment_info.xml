@@ -16,9 +16,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
-        android:src="@drawable/ic_pencil"
-        fab:fab_colorNormal="@color/colorAccent"
-        fab:fab_colorPressed="@color/colorAccentPressed"
-        fab:fab_colorRipple="@color/colorGray" />
+        android:src="@drawable/ic_up"
+        fab:fab_type="mini"
+        fab:fab_colorNormal="@color/colorGray"
+        fab:fab_colorPressed="@color/light_gray"
+        fab:fab_colorRipple="@color/colorBackground" />
 
 </FrameLayout>
