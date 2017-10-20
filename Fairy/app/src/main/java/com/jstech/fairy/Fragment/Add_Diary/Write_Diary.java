@@ -20,7 +20,6 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.jstech.fairy.R;
 
@@ -67,7 +66,7 @@ public class Write_Diary extends AppCompatActivity {
 
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitleChange("");
 
@@ -83,10 +82,7 @@ public class Write_Diary extends AppCompatActivity {
 
         /*===================  제목 넣는 코드  ====================*/
         EditText_Title = (EditText) findViewById(R.id.Title_Diary);
-        DataBase_title = EditText_Title.getText().toString();
-
         EditText_Text = (EditText)findViewById(R.id.Text_Diary);
-        DataBase_text = EditText_Text.getText().toString();
         /*===================  제목 넣는 코드  ====================*/
     }
 
@@ -186,7 +182,7 @@ public class Write_Diary extends AppCompatActivity {
                 return true;
 
             case R.id.action_save:
-                finish();
+                Save_Diary();
                 return true;
         }
 
@@ -198,7 +194,9 @@ public class Write_Diary extends AppCompatActivity {
 
 
     public void Save_Diary(){
-        Toast.makeText(getApplicationContext(),":aaaaa",Toast.LENGTH_LONG);
-        //InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
+        DataBase_title = EditText_Title.getText().toString();
+        DataBase_text = EditText_Text.getText().toString();
+        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
+        finish();
     }
 }

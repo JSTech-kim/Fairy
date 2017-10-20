@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="44dp"
         android:background="@color/colorPrimary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+        android:theme="@style/ThemeOverlay.AppCompat.Dark" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -21,122 +21,123 @@
         android:orientation="vertical"
         android:weightSum="12">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5">
-
-        <ImageView
-            android:id="@+id/Photo"
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#77aaaaaa"
-            android:scaleType="fitXY"
-            android:layout_margin="7dp"/>
-
-        <ImageButton
-            android:id="@+id/Add_Photo_Button"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:background="@android:color/transparent"
-            android:onClick="Add_Photo"
-            android:src="@drawable/ic_add_circle" />
-    </FrameLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="7"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="날짜"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:id="@+id/Date_Viewer"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="8"/>
+            android:layout_height="0dp"
+            android:layout_weight="5">
 
             <ImageView
-                android:id="@+id/Date_Chooser"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="Date_Choise"
-                android:src="@drawable/ic_calendar"
-                android:tint="@color/colorAccent"
-                android:layout_weight="1"/>
-        </LinearLayout>
+                android:id="@+id/Photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="7dp"
+                android:background="#77aaaaaa"
+                android:scaleType="fitXY" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorLine"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
+            <ImageButton
+                android:id="@+id/Add_Photo_Button"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:onClick="Add_Photo"
+                android:src="@drawable/ic_add_circle" />
+        </FrameLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="10">
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="7"
+            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
-                android:text="제목"
-                android:textColor="@color/colorPrimaryDark"
-                android:textStyle="bold"
-                android:layout_weight="1"/>
+                android:orientation="horizontal"
+                android:weightSum="10">
 
-            <EditText
-                android:id="@+id/Title_Diary"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="날짜"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/Date_Viewer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8" />
+
+                <ImageView
+                    android:id="@+id/Date_Chooser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="Date_Choise"
+                    android:src="@drawable/ic_calendar"
+                    android:tint="@color/colorAccent" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorLine" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="제목을 입력하시오."
-                android:textColorHint="@color/colorGray"
-                android:layout_weight="9"/>
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="20dp"
+                    android:layout_weight="1"
+                    android:text="제목"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/Title_Diary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9"
+                    android:background="@null"
+                    android:hint="제목을 입력하시오."
+                    android:textColorHint="@color/colorGray" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorLine" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/Text_Diary"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:background="@null"
+                    android:gravity="top"
+                    android:hint="내용을 입력하시오."
+                    android:minLines="10"
+                    android:textColorHint="@color/colorGray" />
+            </ScrollView>
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorLine"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"/>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <EditText
-                android:id="@+id/Text_Diary"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:background="@null"
-                android:gravity="top"
-                android:hint="내용을 입력하시오."
-                android:textColorHint="@color/colorGray" />
-        </ScrollView>
-
-    </LinearLayout>
     </LinearLayout>
 </LinearLayout>

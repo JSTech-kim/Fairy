@@ -133,13 +133,7 @@ public class DiaryFragment extends Fragment {
             se.printStackTrace();
         }
 
-        //  Test이므로 지워야함
-        DiaryDataType objDiary = new DiaryDataType();
-        objDiary.setStrDate("2017-10-12");
-        objDiary.setStrTitle("청운 돼지");
-        objDiary.setStrMainText("청운에서 밥을 먹는다 냠냠");
-        objDiary.setStrImgPath("임시임시열매");
-        aListDiary.add(objDiary);
+
 
     }
 }

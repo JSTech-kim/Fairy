@@ -34,7 +34,7 @@ public class Navi_ContactUs extends AppCompatActivity {
 
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_back);
+        actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitleChange("문의 사항");
 

@@ -17,6 +17,7 @@
 
             <ImageView
                 android:id="@+id/diary_cardview_imageview"
+                android:tint="#33888888"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/test_diary" />
@@ -25,8 +26,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_margin="15dp"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="50dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
                 <TextView
@@ -34,14 +36,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"
-                    android:text="2017-10-12" />
+                    android:layout_marginBottom="5dp"/>
 
                 <TextView
                     android:id="@+id/diary_cardview_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colorWhite"
-                    android:text="진섭이랑 숭실대 축제" />
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp" />
 
             </LinearLayout>
         </FrameLayout>

@@ -2,8 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_save"
-        android:title="Action Save"
+    <item android:id="@+id/action_filter"
+        android:title="Action Filtering"
         app:showAsAction="always"
-        android:icon="@drawable/ic_save"/>
+        android:icon="@drawable/ic_filter"/>
 </menu>

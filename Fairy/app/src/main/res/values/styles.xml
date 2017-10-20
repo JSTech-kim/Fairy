@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- Floating Actions Menu-->
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
     <style name="PasscodeEditTextStyle">
         <item name="android:background">@color/passcodelock_field_background_color</item>
         <item name="android:singleLine">true</item>
