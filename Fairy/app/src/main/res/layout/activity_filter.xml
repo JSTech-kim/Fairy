@@ -49,6 +49,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/filter_rb_fee_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -56,6 +57,7 @@
                 android:textColor="@color/colorText"/>
 
             <RadioButton
+                android:id="@+id/filter_rb_fee_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -63,12 +65,13 @@
                 android:textColor="@color/colorText"/>
 
             <RadioButton
-                android:id="@+id/radioButton"
+                android:id="@+id/filter_rb_fee_all"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="전체"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/colorText"
+                android:checked="true" />
         </RadioGroup>
 
         <TextView
@@ -96,6 +99,7 @@
             android:weightSum="3">
 
             <TextView
+                android:id="@+id/filter_tv_drama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -104,9 +108,13 @@
                 android:background="@drawable/text_background"
                 android:layout_marginRight="30dp"
                 android:paddingTop="7dp"
-                android:paddingBottom="7dp"/>
+                android:paddingBottom="7dp"
+                android:clickable="true"
+                android:checked="false"
+                android:onClick="ClickCategory"/>
 
             <TextView
+                android:id="@+id/filter_tv_concert"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -115,9 +123,13 @@
                 android:background="@drawable/text_background"
                 android:layout_marginRight="30dp"
                 android:paddingTop="7dp"
-                android:paddingBottom="7dp"/>
+                android:paddingBottom="7dp"
+                android:clickable="true"
+                android:checked="false"
+                android:onClick="ClickCategory"/>
 
             <TextView
+                android:id="@+id/filter_tv_festival"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -125,7 +137,10 @@
                 android:gravity="center"
                 android:background="@drawable/text_background"
                 android:paddingTop="7dp"
-                android:paddingBottom="7dp"/>
+                android:paddingBottom="7dp"
+                android:clickable="true"
+                android:checked="false"
+                android:onClick="ClickCategory"/>
 
         </LinearLayout>
 
@@ -133,12 +148,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:weightSum="2">
 
         <TextView
+            android:id="@+id/filter_tv_art"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -147,9 +162,13 @@
             android:background="@drawable/text_background"
             android:layout_marginRight="30dp"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"/>
+            android:paddingBottom="7dp"
+            android:clickable="true"
+            android:checked="false"
+            android:onClick="ClickCategory"/>
 
         <TextView
+            android:id="@+id/filter_tv_opera"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -157,7 +176,10 @@
             android:gravity="center"
             android:background="@drawable/text_background"
             android:paddingTop="7dp"
-            android:paddingBottom="7dp"/>
+            android:paddingBottom="7dp"
+            android:clickable="true"
+            android:checked="false"
+            android:onClick="ClickCategory"/>
 
         </LinearLayout>
 

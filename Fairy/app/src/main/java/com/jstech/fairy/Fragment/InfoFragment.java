@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.jstech.fairy.Adapter.InfoFragmentRecyclerViewAdapter;
+import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.DataType.InfoDataType;
 import com.jstech.fairy.Interface.HeartObserver;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
@@ -68,6 +69,8 @@ public class InfoFragment extends Fragment implements HeartObserver{
     String[] arrStrOld = {"&#39;"};
     String[] arrStrNew = {"`"};
 
+    FilterDataType mFilterData; //  Filter 적용위한 데이터 타입.
+
     //  Constructor
     public InfoFragment(){
 
@@ -75,13 +78,15 @@ public class InfoFragment extends Fragment implements HeartObserver{
 
     //  Constructor
     @SuppressLint("ValidFragment")
-    public InfoFragment(int page, HeartAlarm heartCancelPublisher) {
+    public InfoFragment(int page, HeartAlarm heartCancelPublisher, FilterDataType filterData) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
         this.setArguments(args);
 
         this.heartCancelPublisher = heartCancelPublisher;
         heartCancelPublisher.add(this);
+
+        this.mFilterData = filterData;
     }
 
     @Override
@@ -136,21 +141,40 @@ public class InfoFragment extends Fragment implements HeartObserver{
 
     /*
     *
-    *   뮤지컬/오페라	    : "3.0"
-    *   전시/미술	        : "7.0"
-    *   연극		        : "5.0"
-    *   축제		        : "12.0"
     *   콘서트 		        : "1.0"
+    *   뮤지컬/오페라	    : "3.0"
+    *   연극		        : "5.0"
+    *   전시/미술	        : "7.0"
+    *   축제		        : "12.0"
     *
     * */
     public void AddFilterList()
     {
         aListFilter = new ArrayList<>();
-        aListFilter.add(getString(R.string.subjcode_art));
-        aListFilter.add(getString(R.string.subjcode_concert));
-        aListFilter.add(getString(R.string.subjcode_drama));
-        aListFilter.add(getString(R.string.subjcode_festival));
-        aListFilter.add(getString(R.string.subjcode_opera));
+        if(mFilterData.isbCheckArt() == true)
+        {
+            aListFilter.add(getString(R.string.subjcode_art));
+        }
+
+        if(mFilterData.isbCheckConcert() == true)
+        {
+            aListFilter.add(getString(R.string.subjcode_concert));
+        }
+
+        if(mFilterData.isbCheckDrama() == true)
+        {
+            aListFilter.add(getString(R.string.subjcode_drama));
+        }
+
+        if(mFilterData.isbCheckFestival() == true)
+        {
+            aListFilter.add(getString(R.string.subjcode_festival));
+        }
+
+        if(mFilterData.isbCheckOpera() == true)
+        {
+            aListFilter.add(getString(R.string.subjcode_opera));
+        }
     }
 
     /*
@@ -353,6 +377,16 @@ public class InfoFragment extends Fragment implements HeartObserver{
                 //  Subject Code 필터링한다.
                 JSONObject jsonobject = aJson.getJSONObject(i);
                 if(aListFilter.contains(jsonobject.getString("SUBJCODE")) == false)
+                {
+                    continue;
+                }
+
+                //  유,무료 필터 적용
+                if(mFilterData.getiIsFee() == 0 && jsonobject.getString("IS_FREE").equals("0"))
+                {
+                    continue;
+                }
+                else if(mFilterData.getiIsFee() == 1 && jsonobject.getString("IS_FREE").equals("1"))
                 {
                     continue;
                 }

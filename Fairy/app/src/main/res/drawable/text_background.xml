@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_focused="false" android:state_pressed="false">
+    <item android:state_selected="false">
         <shape android:shape="rectangle">
             <solid android:color="@android:color/white" />
             <stroke android:width="2dip" android:color="@color/colorGray" />
@@ -9,7 +9,7 @@
         </shape>
     </item>
 
-    <item android:state_focused="false" android:state_pressed="true">
+    <item android:state_selected="true">
         <shape android:shape="rectangle">
             <solid android:color="@android:color/white" />
             <stroke android:width="2dip" android:color="@color/colorAccent" />

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.Fragment.DiaryFragment;
 import com.jstech.fairy.Fragment.HeartFragment;
 import com.jstech.fairy.Fragment.InfoFragment;
@@ -24,12 +25,14 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
     HeartAlarm heartCancelPublisher;                  //  Info Fragment에 Observer Pattern 추가하기 위함.
     Context mContext;
+    FilterDataType filterData;
 
-    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher, Context context) {
+    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher, Context context, FilterDataType filterData) {
         super(fm);
         this.heartPublisher = heartPublisher;
         this.heartCancelPublisher = heartCancelPublisher;
         this.mContext = context;
+        this.filterData = filterData;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     public Fragment getItem(int position) {
 
         if(position == 0){
-            return new InfoFragment(position, heartCancelPublisher);
+            return new InfoFragment(position, heartCancelPublisher, filterData);
         }
         else if(position == 1){
             return new DiaryFragment(position);

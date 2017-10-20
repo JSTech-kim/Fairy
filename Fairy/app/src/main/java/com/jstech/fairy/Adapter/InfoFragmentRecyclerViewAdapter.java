@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,16 +61,13 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
         //  이미지 스트링이 없으면 비운다.
         if(aListInfo.get(pos).getStrMainImg().isEmpty())
         {
-            Log.e("BindImg", "Failed");
             holder.ivImg.setVisibility(View.GONE);
         }
         else
         {
             //  Picasso 라이브러리를 통해 URL에 해당하는 이미지를 가져와 뷰에 넣는다.
-            Log.e("BingImg", aListInfo.get(pos).getStrMainImg());
             Picasso.with(mContext).load(aListInfo.get(pos).getStrMainImg())
                     .placeholder(R.drawable.loading_image)                              // 이미지 불러오는 동안 이미지
-//                    .transform(PicassoTransformations.resizeTransformation)           //  리사이즈    //  이미지 구김현상으로 제거.
                     .error(R.drawable.no_image)                                  // 다운로드 실패 시, 이미지
                     .fit()                                                            // 이미지뷰에 맞추기
                     .into(holder.ivImg);

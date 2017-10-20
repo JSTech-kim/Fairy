@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
+import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.MoreFunction.Filter;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
@@ -41,6 +42,9 @@ public class MainActivity extends AppCompatActivity{
     //  Selector
     private int tabImg[] = {R.drawable.tab_info_selector, R.drawable.tab_diary_selector, R.drawable.tab_heart_selector};
 
+    //  Filter
+    private FilterDataType filterData;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +58,15 @@ public class MainActivity extends AppCompatActivity{
         toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         mContext = this.getApplicationContext();
+        filterData = new FilterDataType();
+
+        //  Filter 데이터
+        Intent intentFilter = getIntent();
+        FilterDataType filterDataInput = intentFilter.getParcelableExtra("Filter");
+        if(filterDataInput != null)
+        {
+            filterData.CopyData(filterDataInput);
+        }
 
         //  Heart Observer Pattern을 위한 Publisher.
         heartPublisher = new HeartAlarm();
@@ -102,7 +115,7 @@ public class MainActivity extends AppCompatActivity{
         //페이지 2개 미리 띄움. 페이지 이동 시 데이터 로드 때문.
         viewpager = (ViewPager)findViewById(R.id.main_viewpager);
         viewpager.setOffscreenPageLimit(PAGE_COUNT);
-        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, heartCancelPublisher, mContext);
+        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, heartCancelPublisher, mContext, filterData);
         viewpager.setAdapter(mAdapter);
 
         //  Page 바꿀 때 이벤트 처리.
