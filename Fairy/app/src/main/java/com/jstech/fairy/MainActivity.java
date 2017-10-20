@@ -194,9 +194,6 @@ public class MainActivity extends AppCompatActivity{
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.action_search:
-                return true;
-
             case R.id.action_filter:
                 intent = new Intent(this, Filter.class);
                 startActivity(intent);
