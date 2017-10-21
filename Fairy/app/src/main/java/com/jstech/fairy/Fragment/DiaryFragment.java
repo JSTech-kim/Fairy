@@ -1,7 +1,6 @@
 package com.jstech.fairy.Fragment;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
@@ -17,7 +16,6 @@ import android.view.ViewGroup;
 
 import com.jstech.fairy.Adapter.DiaryFragmentRecyclerViewAdapter;
 import com.jstech.fairy.DataType.DiaryDataType;
-import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.R;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -91,11 +89,11 @@ public class DiaryFragment extends Fragment {
         fab.attachToRecyclerView(mRecyclerView);
 
         //  Floating Button 클릭 리스너
+        //  클릭시 맨 위로
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Write_Diary.class);
-                startActivity(intent);
+                mRecyclerView.scrollToPosition(0);
             }
         });
 

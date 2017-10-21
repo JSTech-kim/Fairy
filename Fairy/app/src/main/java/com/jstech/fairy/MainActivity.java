@@ -1,12 +1,16 @@
 package com.jstech.fairy;
 
+import android.Manifest;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setupPermission(); // 내부저장소 권한 획득
 
         /**********************************************************************************************************/
         Application thisApp = (Application)getApplication(); // 어플 잠금 여부 확인 및 비밀번호 입력  by JinGi
@@ -188,9 +194,6 @@ public class MainActivity extends AppCompatActivity{
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 return true;
 
-            case R.id.action_search:
-                return true;
-
             case R.id.action_filter:
                 intent = new Intent(this, Filter.class);
                 startActivity(intent);
@@ -211,4 +214,22 @@ public class MainActivity extends AppCompatActivity{
     protected void setTitleChange(String title){
         getSupportActionBar().setTitle(title);
     }
+
+    // 내부저장소 저장 권한 획득
+    private void setupPermission() {
+        //check for permission
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+                //ask for permission
+                requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
+            }
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+
+    }
+
+
 }

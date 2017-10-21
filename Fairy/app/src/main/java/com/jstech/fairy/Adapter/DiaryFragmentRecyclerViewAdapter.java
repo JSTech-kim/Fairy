@@ -29,6 +29,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
     ArrayList<DiaryDataType> aListDiary;
     SQLiteDatabase mSQLiteDatabase;
 
+
     public DiaryFragmentRecyclerViewAdapter(Context context, ArrayList<DiaryDataType> aListDiary) {
         this.mContext = context;
         this.aListDiary = aListDiary;
@@ -52,6 +53,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         holder.tvDate.setText(aListDiary.get(pos).getStrDate());
         holder.tvTitle.setText(aListDiary.get(pos).getStrTitle());
 
+
         //  카드뷰 클릭 이벤트
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +72,8 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         });
 
     }
+
+
 
     @Override
     public int getItemCount() {

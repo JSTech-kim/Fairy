@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -35,6 +36,7 @@ public class Filter extends AppCompatActivity {
     private TextView tvDrama;
     private TextView tvArt;
     private TextView tvFestival;
+    private EditText etSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,19 @@ public class Filter extends AppCompatActivity {
         tvDrama = (TextView)findViewById(R.id.filter_tv_drama);
         tvArt = (TextView)findViewById(R.id.filter_tv_art);
         tvFestival = (TextView)findViewById(R.id.filter_tv_festival);
+        etSearch = (EditText)findViewById(R.id.filter_et_search);
 
+        //  필터 액티비티 최초 설정
+        bCheckArt = true;
+        bCheckConcert = true;
+        bCheckDrama = true;
+        bCheckFestival = true;
+        bCheckOpera = true;
+        tvConcert.setSelected(true);
+        tvOpera.setSelected(true);
+        tvDrama.setSelected(true);
+        tvArt.setSelected(true);
+        tvFestival.setSelected(true);
     }
 
 
@@ -165,6 +179,17 @@ public class Filter extends AppCompatActivity {
     //  필터 적용
     public void AdaptFilter()
     {
+        //  검색어
+        String strSearch = etSearch.getText().toString();
+        if(strSearch == null || strSearch.length() <= 0)
+        {
+            filterData.setStrSearch("");
+        }
+        else
+        {
+            filterData.setStrSearch(strSearch);
+        }
+
         //  요금 필터
         if(rbFee0.isChecked())
         {

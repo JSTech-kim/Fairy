@@ -112,7 +112,6 @@ public class InfoFragment extends Fragment implements HeartObserver{
         mRecyclerView.setHasFixedSize(false);
         mRecyclerView.setLayoutManager(mLinearLayoutManager);
 
-
         //  Floating Button 연결. (맨 위로 버튼)
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.info_fab);
         fab.attachToRecyclerView(mRecyclerView);
@@ -125,7 +124,6 @@ public class InfoFragment extends Fragment implements HeartObserver{
                 mRecyclerView.scrollToPosition(0);
             }
         });
-
 
         //  필터링 될 행사 종류를 추가하는 함수.
         AddFilterList();
@@ -313,6 +311,10 @@ public class InfoFragment extends Fragment implements HeartObserver{
                 }
                 return sb.toString().trim();
             }catch (Exception e) {
+                if(progressdialog != null)
+                {
+                    progressdialog.dismiss();
+                }
                 return null;
             }
         }
@@ -389,6 +391,15 @@ public class InfoFragment extends Fragment implements HeartObserver{
                 else if(mFilterData.getiIsFee() == 1 && jsonobject.getString("IS_FREE").equals("1"))
                 {
                     continue;
+                }
+
+                String strFilterSearch = mFilterData.getStrSearch();
+                if(!(strFilterSearch == null || strFilterSearch.length() <= 0))
+                {
+                    if(jsonobject.getString("TITLE").contains(strFilterSearch) == false)
+                    {
+                        continue;
+                    }
                 }
 
                 //  필터링한 결과에 들어가면 리스트에 추가.

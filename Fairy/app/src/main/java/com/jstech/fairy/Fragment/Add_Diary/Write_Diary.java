@@ -9,6 +9,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,8 +25,12 @@ import android.widget.TextView;
 
 import com.jstech.fairy.R;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Write_Diary extends AppCompatActivity {
@@ -35,7 +41,7 @@ public class Write_Diary extends AppCompatActivity {
 
     ImageView CropView_Photo;
     ImageButton Button_Add_Photo;
-    Bitmap finalbitmap;
+    Bitmap finalbitmap = null;
 
     TextView TextView_date;
     EditText EditText_Title;
@@ -194,9 +200,34 @@ public class Write_Diary extends AppCompatActivity {
 
 
     public void Save_Diary(){
+        DataBase_PictureURI = saveBitmap(finalbitmap);
         DataBase_title = EditText_Title.getText().toString();
         DataBase_text = EditText_Text.getText().toString();
-        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,"file Uri");
+
+        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI);
         finish();
+    }
+
+    @Nullable
+    private String saveBitmap(Bitmap bitmap){
+        if(!comeback) //사진 선택 안했을 때.
+            return null;
+        Uri SavedURI = null;
+        String FileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
+        String path = Environment.getExternalStorageDirectory().toString() + "/Pictures/Fairy";
+        File file ;
+        try {
+            file = new File(path);
+            if(!file.isDirectory()){
+                file.mkdir();
+            }
+            FileOutputStream outputStream = new FileOutputStream(file+"/"+FileName);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,outputStream);
+            outputStream.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        SavedURI =Uri.parse(path+FileName);
+        return SavedURI.toString();
     }
 }

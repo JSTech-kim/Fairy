@@ -29,9 +29,36 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="가격"
+            android:text="검색"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="16dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorLine" />
+
+        <EditText
+            android:id="@+id/filter_et_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:hint="검색어 입력"
+            android:gravity="top"
+            android:maxLines="1"
+            android:textColorHint="@color/colorGray"
+            android:maxLength="15" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="가격"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16dp"
+            android:layout_marginTop="30dp"/>
 
         <View
             android:layout_width="match_parent"
@@ -110,7 +137,6 @@
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:clickable="true"
-                android:checked="false"
                 android:onClick="ClickCategory"/>
 
             <TextView
@@ -125,7 +151,6 @@
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:clickable="true"
-                android:checked="false"
                 android:onClick="ClickCategory"/>
 
             <TextView
@@ -139,7 +164,6 @@
                 android:paddingTop="7dp"
                 android:paddingBottom="7dp"
                 android:clickable="true"
-                android:checked="false"
                 android:onClick="ClickCategory"/>
 
         </LinearLayout>
@@ -164,7 +188,6 @@
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:clickable="true"
-            android:checked="false"
             android:onClick="ClickCategory"/>
 
         <TextView
@@ -178,7 +201,6 @@
             android:paddingTop="7dp"
             android:paddingBottom="7dp"
             android:clickable="true"
-            android:checked="false"
             android:onClick="ClickCategory"/>
 
         </LinearLayout>

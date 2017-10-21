@@ -16,6 +16,7 @@ public class FilterDataType implements Parcelable {
     private boolean bCheckFestival;
     private boolean bCheckOpera;
     private String strDate;
+    private String strSearch;   //검색어
 
     public FilterDataType()
     {
@@ -26,10 +27,11 @@ public class FilterDataType implements Parcelable {
         bCheckFestival = true;
         bCheckOpera = true;
         strDate = "";
+        strSearch = "";
     }
 
     public FilterDataType(int iIsFee, boolean bCheckArt, boolean bCheckConcert, boolean bCheckDrama, boolean bCheckFestival,
-                          boolean bCheckOpera, String strDate)
+                          boolean bCheckOpera, String strDate, String strSearch)
     {
         this.iIsFee = iIsFee;
         this.bCheckArt = bCheckArt;
@@ -38,6 +40,7 @@ public class FilterDataType implements Parcelable {
         this.bCheckFestival = bCheckFestival;
         this.bCheckOpera = bCheckOpera;
         this.strDate = strDate;
+        this.strSearch = strSearch;
     }
 
     protected FilterDataType(Parcel in) {
@@ -48,6 +51,7 @@ public class FilterDataType implements Parcelable {
         bCheckFestival = in.readByte() != 0;
         bCheckOpera = in.readByte() != 0;
         strDate = in.readString();
+        strSearch = in.readString();
     }
 
     public void CopyData(FilterDataType filterData)
@@ -59,6 +63,7 @@ public class FilterDataType implements Parcelable {
         this.bCheckFestival = filterData.isbCheckFestival();
         this.bCheckOpera = filterData.isbCheckOpera();
         this.strDate = filterData.getStrDate();
+        this.strSearch = filterData.getStrSearch();
     }
 
     public static final Creator<FilterDataType> CREATOR = new Creator<FilterDataType>() {
@@ -129,6 +134,13 @@ public class FilterDataType implements Parcelable {
         this.strDate = strDate;
     }
 
+    public String getStrSearch() {
+        return strSearch;
+    }
+
+    public void setStrSearch(String strSearch) {
+        this.strSearch = strSearch;
+    }
     @Override
     public int describeContents() {
         return 0;
@@ -143,5 +155,6 @@ public class FilterDataType implements Parcelable {
         dest.writeByte((byte) (bCheckFestival ? 1 : 0));
         dest.writeByte((byte) (bCheckOpera ? 1 : 0));
         dest.writeString(strDate);
+        dest.writeString(strSearch);
     }
 }
