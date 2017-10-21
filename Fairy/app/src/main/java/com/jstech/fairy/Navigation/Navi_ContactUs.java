@@ -18,10 +18,16 @@ import android.widget.Toast;
 import com.jstech.fairy.R;
 
 public class Navi_ContactUs extends AppCompatActivity {
+    public static boolean comeback = false;
+
     ArrayAdapter Developers_List_Adapter;
     String UserTitle;
     String Receiver;
     String EmailBody;
+
+    EditText EmailTitle;
+    EditText EmailText;
+    Spinner Developer_List;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +42,7 @@ public class Navi_ContactUs extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitleChange("문의 사항");
 
-        Spinner Developer_List = (Spinner)findViewById(R.id.Developer_List);
+        Developer_List = (Spinner)findViewById(R.id.Developer_List);
         Developers_List_Adapter = ArrayAdapter.createFromResource(this,R.array.Developers,android.R.layout.simple_spinner_item);
         Developers_List_Adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         Developer_List.setAdapter(Developers_List_Adapter);
@@ -59,6 +65,7 @@ public class Navi_ContactUs extends AppCompatActivity {
         });
     }
 
+
     /*현지 : 전송버튼 액션바로 이동*/
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -78,38 +85,39 @@ public class Navi_ContactUs extends AppCompatActivity {
             case android.R.id.home:
                 finish();
                 return true;
-
             case R.id.action_send:
-                EditText EmailTitle = (EditText) findViewById(R.id.EmailTitle) ; // 메일 제목 받아오기
+                EmailTitle = (EditText) findViewById(R.id.EmailTitle) ; // 메일 제목 받아오기
                 UserTitle = EmailTitle.getText().toString();
-                EditText EmailText = (EditText) findViewById(R.id.EmailText) ; // 메일 본문 받아오기
+                EmailText = (EditText) findViewById(R.id.EmailText) ; // 메일 본문 받아오기
                 EmailBody = EmailText.getText().toString();
 
                 if(UserTitle.trim().getBytes().length <= 0) { // 공백 또는 아무 내용이 없을 때
                     Toast.makeText(getApplicationContext(), "제목을 입력하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
-
                 if(Receiver == null) { // 받는 사람 선택안했을 때
                     Toast.makeText(getApplicationContext(), "받는 사람을 정하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
-
                 if(EmailBody.trim().getBytes().length <= 0){ // 공백 또는 아무 내용이 없을 때
                     Toast.makeText(getApplicationContext(), "본문을 입력하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
-
+                comeback = true;
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto",Receiver, null));
                 intent.putExtra(Intent.EXTRA_SUBJECT, UserTitle);
                 intent.putExtra(Intent.EXTRA_TEXT , EmailBody);
-                startActivity(Intent.createChooser(intent, "Send mail..."));
+                startActivityForResult(Intent.createChooser(intent, "Send mail..."),1);
                 return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
-
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        EmailTitle.setText("");
+        EmailText.setText("");
+        Developer_List.setSelection(0);
+    }
     protected void setTitleChange(String title){
         getSupportActionBar().setTitle(title);
     }

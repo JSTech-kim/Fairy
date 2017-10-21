@@ -32,6 +32,8 @@ import com.jstech.fairy.Navigation.Navi_Security.AppLockManager;
 import com.jstech.fairy.Navigation.Navi_Security.Navi_Secuity;
 
 public class MainActivity extends AppCompatActivity{
+    public static boolean comeback = false;
+
     final int PAGE_COUNT = 3;   //페이지 개수
     private DrawerLayout mDrawerLayout;
     private ViewPager viewpager;    // ViewPager에 Fragment 올려서 액티비티 구성.
@@ -195,6 +197,7 @@ public class MainActivity extends AppCompatActivity{
                 return true;
 
             case R.id.action_filter:
+                comeback = true;
                 intent = new Intent(this, Filter.class);
                 startActivity(intent);
                 return true;

@@ -12,6 +12,8 @@ import android.util.Base64;
 
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 import com.jstech.fairy.InfoDetail;
+import com.jstech.fairy.MainActivity;
+import com.jstech.fairy.Navigation.Navi_ContactUs;
 
 import java.util.Date;
 
@@ -59,12 +61,23 @@ public class DefaultAppLock extends AbstractAppLock {
 
         Write_Diary Exception = new Write_Diary();
         InfoDetail Exception_2 = new InfoDetail();
+        MainActivity Exception_3 = new MainActivity();
+        Navi_ContactUs Exception_4 = new Navi_ContactUs();
+
         if(Exception.comeback&&activity.getClass().getName().equals("com.jstech.fairy.Fragment.Add_Diary.Write_Diary")) {
             Exception.comeback = false;
             return;
         }
         else if(Exception_2.comeback&&activity.getClass().getName().equals("com.jstech.fairy.InfoDetail")) {
             Exception_2.comeback = false;
+            return;
+        }
+        else if(Exception_3.comeback&&activity.getClass().getName().equals("com.jstech.fairy.MainActivity")){
+            Exception_3.comeback = false;
+            return;
+        }
+        else if(Exception_4.comeback&&activity.getClass().getName().equals("com.jstech.fairy.Navigation.Navi_ContactUs")){
+            Exception_3.comeback = false;
             return;
         }
         else if (!isExemptActivity(activity.getClass().getName()) && shouldShowUnlockScreen()){

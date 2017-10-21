@@ -50,6 +50,8 @@ import static android.content.Context.MODE_PRIVATE;
 *
 * */
 public class InfoFragment extends Fragment implements HeartObserver{
+
+
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
     public static final int POSITION_INFO = 0;          //  Info Fragment Index
     private int mPage;                                      //  Page Index
