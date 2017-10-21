@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.DIAL_PHONE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,15 +53,22 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".InfoDetail"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            />
         <activity
             android:name=".Fragment.Add_Diary.Write_Diary"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".Fragment.Add_Diary.Crop"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".MoreFunction.Filter"></activity>
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MoreFunction.Filter"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".PoPupImage"
+            android:screenOrientation="portrait"
+            android:theme="@style/MyDialog"/>
     </application>
 
 </manifest>
