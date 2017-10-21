@@ -62,7 +62,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         Log.d("gogogo",uri2.toString());
         //holder.ivImg.setImageURI(uri2);
         holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
-        
+
 
 
         //  카드뷰 클릭 이벤트

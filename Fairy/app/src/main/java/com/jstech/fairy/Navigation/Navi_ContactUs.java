@@ -3,8 +3,6 @@ package com.jstech.fairy.Navigation;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -88,17 +86,17 @@ public class Navi_ContactUs extends AppCompatActivity {
                 EmailBody = EmailText.getText().toString();
 
                 if(UserTitle.trim().getBytes().length <= 0) { // 공백 또는 아무 내용이 없을 때
-                    Toast.makeText(getApplicationContext(), "Please fill in Title", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "제목을 입력하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
                 if(Receiver == null) { // 받는 사람 선택안했을 때
-                    Toast.makeText(getApplicationContext(), "Please Select Receiver", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "받는 사람을 정하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
 
                 if(EmailBody.trim().getBytes().length <= 0){ // 공백 또는 아무 내용이 없을 때
-                    Toast.makeText(getApplicationContext(), "Please fill in Body", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "본문을 입력하시오.", Toast.LENGTH_SHORT).show();
                     return true;
                 }
 

@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +22,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jstech.fairy.R;
 
@@ -50,9 +50,9 @@ public class Write_Diary extends AppCompatActivity {
 
     int mYear, mMonth, mDay;
 
-    String DataBase_Date;
+    String DataBase_Date ;
     String DataBase_title;
-    String DataBase_PictureURI;
+    String DataBase_PictureURI = null;
     String DataBase_text;
 
     SQLiteDatabase mSQLiteDatabase;     //  SQLite 접근 객체
@@ -138,10 +138,8 @@ public class Write_Diary extends AppCompatActivity {
         }
     };
     void UpdateNow(){
-
         DataBase_Date = String.valueOf(mYear)+"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay);
         TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));
-
     }
     /*==================================================날짜 고르는 코드==========================================================*/
 
@@ -201,18 +199,31 @@ public class Write_Diary extends AppCompatActivity {
 
 
     public void Save_Diary(){
-        DataBase_PictureURI = saveBitmap(finalbitmap);
+        if(comeback)
+             DataBase_PictureURI = saveBitmap(finalbitmap);
         DataBase_title = EditText_Title.getText().toString();
         DataBase_text = EditText_Text.getText().toString();
 
+        if(DataBase_PictureURI == null){
+            Toast.makeText(getApplicationContext(),"사진을 선택하시오.",Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if(DataBase_title.trim().getBytes().length<=0){
+            Toast.makeText(getApplicationContext(),"제목을 입력하시오.",Toast.LENGTH_LONG).show();
+            return;
+        }
+        else if(DataBase_text.trim().getBytes().length<=0){
+            Toast.makeText(getApplicationContext(),"본문을 입력하시오.",Toast.LENGTH_LONG).show();
+            return;
+        }
+
         InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI);
+        Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Nullable
     private String saveBitmap(Bitmap bitmap){
-        if(!comeback) //사진 선택 안했을 때.
-            return null;
         Uri SavedURI = null;
         String FileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/Fairy";
@@ -227,7 +238,6 @@ public class Write_Diary extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
         SavedURI = Uri.parse(path+FileName);
         return SavedURI.toString();
 
