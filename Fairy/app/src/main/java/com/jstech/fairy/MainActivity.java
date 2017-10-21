@@ -137,7 +137,7 @@ public class MainActivity extends AppCompatActivity{
 
                 if(position == 0){
                     toolbar.getMenu().clear();
-                    setTitleChange("");
+                    setTitleChange("Festival");
                     getMenuInflater().inflate(R.menu.menu, mMenu);
                 }
                 else if(position == 1){
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity{
 
         mMenu = menu;
         getMenuInflater().inflate(R.menu.menu, menu);
-        setTitleChange("");
+        setTitleChange("Festival");
 
         return true;
     }

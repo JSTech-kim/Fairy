@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
@@ -64,6 +67,17 @@ public class Filter extends AppCompatActivity {
         tvArt = (TextView)findViewById(R.id.filter_tv_art);
         tvFestival = (TextView)findViewById(R.id.filter_tv_festival);
         etSearch = (EditText)findViewById(R.id.filter_et_search);
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                    /*검색기능*/
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
         //  필터 액티비티 최초 설정
         bCheckArt = true;
@@ -179,6 +193,7 @@ public class Filter extends AppCompatActivity {
     //  필터 적용
     public void AdaptFilter()
     {
+
         //  검색어
         String strSearch = etSearch.getText().toString();
         if(strSearch == null || strSearch.length() <= 0)
@@ -219,5 +234,9 @@ public class Filter extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    public void onClick_search_cancel(View v){
+        etSearch.setText(null);
     }
 }

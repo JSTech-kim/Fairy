@@ -11,6 +11,6 @@
     <item android:id="@+id/action_filter"
         android:title="Action Filtering"
         app:showAsAction="always"
-        android:icon="@drawable/ic_filter"/>
+        android:icon="@drawable/ic_search"/>
 
 </menu>
