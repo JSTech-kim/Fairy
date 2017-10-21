@@ -91,8 +91,10 @@ public class MainActivity extends AppCompatActivity{
         //  들어가는 내용은 정상동작 여부를 위한 테스트용. 추후 수정 필요.
         final NavigationView navigationView = (NavigationView)findViewById(R.id.main_navigation_view);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
                 Intent intent;
@@ -235,4 +237,8 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }
