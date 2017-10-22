@@ -58,7 +58,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         holder.tvTitle.setText(aListDiary.get(pos).getStrTitle());
 
         Uri uri = Uri.fromFile(new File(aListDiary.get(pos).getStrImgPath())); // file:///storage/emulated/0/Pictures/Fairy20171021_162240.jpg
-        Uri uri2 = Uri.parse(aListDiary.get(pos).getStrImgPath());//  /storage/emulated/0/Pictures/Fairy20171021_162240.jpg
+        Uri uri2 = Uri.parse(aListDiary.get(pos).getStrImgPath());//              /storage/emulated/0/Pictures/Fairy20171021_162240.jpg
         Log.d("gogogo",uri2.toString());
         //holder.ivImg.setImageURI(uri2);
         holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
