@@ -48,12 +48,16 @@ public class Write_Diary extends AppCompatActivity {
     EditText EditText_Title;
     EditText EditText_Text;
 
+    private int ImgPathLength;
+    private String FileName;
+
     int mYear, mMonth, mDay;
 
     String DataBase_Date ;
     String DataBase_title;
     String DataBase_PictureURI = null;
     String DataBase_text;
+    String DataBase_PictureName;
 
     SQLiteDatabase mSQLiteDatabase;     //  SQLite 접근 객체
     Context mContext;
@@ -152,19 +156,21 @@ public class Write_Diary extends AppCompatActivity {
          - strTitle     제목          - (256)
          - strMainText  본문          - (2048)
          - strImgPath   이미지 경로   - (512)
+         - strImgName   이미지 이름   - (256)
      */
-    public void InsertDiaryDataToDatabase(String strDate, String strTitle, String strMainText, String strImgPath)
+    public void InsertDiaryDataToDatabase(String strDate, String strTitle, String strMainText, String strImgPath,String strImgName)
     {
         mSQLiteDatabase = mContext.openOrCreateDatabase(mContext.getString(R.string.database_name), MODE_PRIVATE, null);
         mSQLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS " + mContext.getString(R.string.diary_table_name)
-                + " (DATE VARCHAR(16), TITLE VARCHAR(256), MAINTEXT VARCHAR(2048), IMGPATH VARCHAR(512));");
+                + " (DATE VARCHAR(16), TITLE VARCHAR(256), MAINTEXT VARCHAR(2048), IMGPATH VARCHAR(512), IMGNAME VARCHAR(256));");
 
         mSQLiteDatabase.execSQL("INSERT INTO " + mContext.getString(R.string.diary_table_name)
-                + " (DATE, TITLE, MAINTEXT, IMGPATH) Values"
+                + " (DATE, TITLE, MAINTEXT, IMGPATH, IMGNAME) Values"
                 + " ('"+ strDate + "', '"
                 + strTitle + "', '"
                 + strMainText + "', '"
-                + strImgPath + "');");
+                + strImgPath + "', '"
+                + strImgName + "');");
 
         mSQLiteDatabase.close();
     }
@@ -216,14 +222,17 @@ public class Write_Diary extends AppCompatActivity {
             return;
         }
 
-        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI);
+        ImgPathLength = DataBase_PictureURI.length();
+        FileName = DataBase_PictureURI.substring(ImgPathLength-18,ImgPathLength-4);
+
+        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI,FileName);
         Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_LONG).show();
         finish();
     }
 
     @Nullable
     private String saveBitmap(Bitmap bitmap){
-        String FileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
+        String FileName = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date())+".jpg";
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/Fairy";
          try {
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"Fairy");

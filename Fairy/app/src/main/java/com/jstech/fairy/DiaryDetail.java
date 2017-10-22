@@ -1,9 +1,13 @@
 package com.jstech.fairy;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -21,15 +25,19 @@ public class DiaryDetail extends AppCompatActivity {
     private TextView title;
     private TextView text;
     private TextView date;
+    private DiaryDataType diaryData;
+    private Context mContext;
+
+    SQLiteDatabase mSQLiteDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diary_detail);
+        mContext = this.getApplicationContext();
 
         Intent intent = getIntent();
-
-        DiaryDataType diaryData = new DiaryDataType();
+        diaryData = new DiaryDataType();
         diaryData =intent.getParcelableExtra("DiaryData");
 
         toolbar = (Toolbar)findViewById(R.id.diary_detail_toolbar);
@@ -39,14 +47,14 @@ public class DiaryDetail extends AppCompatActivity {
         date = (TextView)findViewById(R.id.diary_detail_Date_Viewer);
 
 
-        Toolbar toolbar = (Toolbar)findViewById(R.id.diary_detail_toolbar);
-        setSupportActionBar(toolbar);
 
+        setSupportActionBar(toolbar);
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitleChange("Diary");
+
 
 
         picture.setImageBitmap(BitmapFactory.decodeFile(diaryData.getStrImgPath()));
@@ -66,8 +74,7 @@ public class DiaryDetail extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
-        switch(id)
-        {
+        switch(id) {
             case android.R.id.home:
                 finish();
                 return true;
@@ -76,12 +83,32 @@ public class DiaryDetail extends AppCompatActivity {
                 return true;
 
             case R.id.action_remove:
-                return true;
+                new AlertDialog.Builder(this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("일기 삭제")
+                        .setMessage("일기를 삭제하시겠습니까 ?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                removeDiary();
+                            }
+
+                        })
+                        .setNegativeButton("No", null)
+                        .show();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
+    private void removeDiary(){
+        mSQLiteDatabase = mContext.openOrCreateDatabase(mContext.getString(R.string.database_name), MODE_PRIVATE, null);
+        mSQLiteDatabase.execSQL("DELETE FROM " +mContext.getString(R.string.diary_table_name)+
+                " WHERE IMGNAME = "+diaryData.getstrImgName()+";");
+        mSQLiteDatabase.close();
+        finish();
+    }
     protected void setTitleChange(String title){
         getSupportActionBar().setTitle(title);
     }

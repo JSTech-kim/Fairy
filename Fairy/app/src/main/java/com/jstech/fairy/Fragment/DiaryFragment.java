@@ -119,6 +119,7 @@ public class DiaryFragment extends Fragment {
                         objDiary.setStrTitle(cursor.getString(cursor.getColumnIndex("TITLE")));
                         objDiary.setStrMainText(cursor.getString(cursor.getColumnIndex("MAINTEXT")));
                         objDiary.setStrImgPath(cursor.getString(cursor.getColumnIndex("IMGPATH")));
+                        objDiary.setstrImgName(cursor.getString(cursor.getColumnIndex("IMGNAME")));
                         aListDiary.add(objDiary);
                     }while(cursor.moveToNext());
                 }

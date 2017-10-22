@@ -3,7 +3,6 @@ package com.jstech.fairy.Adapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v7.widget.CardView;
@@ -28,7 +27,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
 
     Context mContext;
     ArrayList<DiaryDataType> aListDiary;
-    SQLiteDatabase mSQLiteDatabase;
+
 
 
     public DiaryFragmentRecyclerViewAdapter(Context context, ArrayList<DiaryDataType> aListDiary) {

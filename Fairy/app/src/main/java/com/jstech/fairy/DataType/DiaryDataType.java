@@ -13,6 +13,7 @@ public class DiaryDataType implements Parcelable{
     private String strTitle;
     private String strMainText;
     private String strImgPath; // 대표 이미지
+    private String strImgName;
 
 
     public DiaryDataType()
@@ -20,12 +21,13 @@ public class DiaryDataType implements Parcelable{
 
     }
 
-    public DiaryDataType(String strDate, String strTitle, String strMainText, String strImgPath)
+    public DiaryDataType(String strDate, String strTitle, String strMainText, String strImgPath, String strImgName)
     {
         this.strDate = strDate;
         this.strTitle = strTitle;
         this.strMainText = strMainText;
         this.strImgPath = strImgPath;
+        this.strImgName = strImgName;
     }
 
     protected DiaryDataType(Parcel in) {
@@ -33,6 +35,7 @@ public class DiaryDataType implements Parcelable{
         strTitle = in.readString();
         strMainText = in.readString();
         strImgPath = in.readString();
+        strImgName = in.readString();
     }
 
     public void CopyData(DiaryDataType diarydatatype)
@@ -41,6 +44,7 @@ public class DiaryDataType implements Parcelable{
         this.strTitle = diarydatatype.getStrTitle();
         this.strMainText = diarydatatype.getStrMainText();
         this.strImgPath = diarydatatype.getStrImgPath();
+        this.strImgName = diarydatatype.getstrImgName();
     }
 
     public String getStrDate() {
@@ -75,6 +79,14 @@ public class DiaryDataType implements Parcelable{
         this.strTitle = strTitle;
     }
 
+    public String getstrImgName() {
+        return strImgName;
+    }
+
+    public void setstrImgName(String strImgName) {
+        this.strImgName = strImgName;
+    }
+
     public static final Creator<DiaryDataType> CREATOR = new Creator<DiaryDataType>(){
 
         @Override
@@ -99,6 +111,7 @@ public class DiaryDataType implements Parcelable{
         dest.writeString(strTitle);
         dest.writeString(strMainText);
         dest.writeString(strImgPath);
+        dest.writeString(strImgName);
     }
 
 }

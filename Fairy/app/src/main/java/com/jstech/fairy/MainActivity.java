@@ -54,9 +54,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setupPermission(); // 내부저장소 권한 획득
-
         /**********************************************************************************************************/
         Application thisApp = (Application)getApplication(); // 어플 잠금 여부 확인 및 비밀번호 입력  by JinGi
         AppLockManager.getInstance().enableDefaultAppLockIfAvailable(thisApp);
@@ -224,9 +222,7 @@ public class MainActivity extends AppCompatActivity{
     private void setupPermission() {
         //check for permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
-                //ask for permission
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 0);
             }
         }
@@ -235,8 +231,6 @@ public class MainActivity extends AppCompatActivity{
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
     }
-
-
     @Override
     public void onBackPressed() {
         super.onBackPressed();
