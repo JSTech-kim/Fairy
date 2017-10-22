@@ -132,7 +132,15 @@ public class DiaryFragment extends Fragment {
             se.printStackTrace();
         }
 
+    }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        aListDiary = new ArrayList<DiaryDataType>();
+        GetDiaryDataFromDatabase();
+        mAdapter = new DiaryFragmentRecyclerViewAdapter(getActivity(), aListDiary);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

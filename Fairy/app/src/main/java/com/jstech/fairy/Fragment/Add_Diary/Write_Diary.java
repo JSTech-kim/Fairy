@@ -247,4 +247,6 @@ public class Write_Diary extends AppCompatActivity {
         }
         return path+"/"+FileName;
     }
+
+
 }
