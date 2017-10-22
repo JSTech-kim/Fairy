@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -75,7 +74,7 @@ public class Write_Diary extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("");
+        setTitleChange("Diary");
 
         /*===============날짜 고르는 코드=========================*/
         TextView_date = (TextView)findViewById(R.id.Date_Viewer);
@@ -224,7 +223,6 @@ public class Write_Diary extends AppCompatActivity {
 
     @Nullable
     private String saveBitmap(Bitmap bitmap){
-        Uri SavedURI = null;
         String FileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/Fairy";
          try {
@@ -238,10 +236,6 @@ public class Write_Diary extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-
-        SavedURI = Uri.parse(path+"/"+FileName);
-        Log.e("URI", SavedURI.toString());
-        return SavedURI.toString();
-
+        return path+"/"+FileName;
     }
 }

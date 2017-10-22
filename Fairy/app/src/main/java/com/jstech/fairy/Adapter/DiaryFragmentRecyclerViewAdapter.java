@@ -4,13 +4,10 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
 import android.os.Build;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +18,6 @@ import com.jstech.fairy.DataType.DiaryDataType;
 import com.jstech.fairy.DiaryDetail;
 import com.jstech.fairy.R;
 
-import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -57,17 +53,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         //  우선은 텍스트만
         holder.tvDate.setText(aListDiary.get(pos).getStrDate());
         holder.tvTitle.setText(aListDiary.get(pos).getStrTitle());
-
-        Uri uri = Uri.fromFile(new File(aListDiary.get(pos).getStrImgPath())); // file:///storage/emulated/0/Pictures/Fairy20171021_162240.jpg
-        Uri uri2 = Uri.parse(aListDiary.get(pos).getStrImgPath());//              /storage/emulated/0/Pictures/Fairy20171021_162240.jpg
-        //Log.d("gogogo",uri2.toString());
-        //holder.ivImg.setImageURI(uri2);
-        //holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
-
-        //  진기야 뒤를 부탁해
-        Log.e("gogogo", aListDiary.get(pos).getStrImgPath());
-        Bitmap bm = BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath());
-        holder.ivImg.setImageBitmap(bm);
+        holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
 
 
         //  카드뷰 클릭 이벤트

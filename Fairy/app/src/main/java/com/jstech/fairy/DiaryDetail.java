@@ -1,6 +1,7 @@
 package com.jstech.fairy;
 
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,7 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jstech.fairy.DataType.DiaryDataType;
-import com.squareup.picasso.Picasso;
 
 public class DiaryDetail extends AppCompatActivity {
 
@@ -46,10 +46,10 @@ public class DiaryDetail extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("Read Diary");
+        setTitleChange("Diary");
 
 
-        Picasso.with(this).load(R.drawable.loading_image).fit().into(picture);
+        picture.setImageBitmap(BitmapFactory.decodeFile(diaryData.getStrImgPath()));
         title.setText(diaryData.getStrTitle());
         text.setText(diaryData.getStrMainText());
         date.setText(diaryData.getStrDate());
