@@ -14,8 +14,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jstech.fairy.DataType.DiaryDataType;
+
+import java.io.File;
 
 public class DiaryDetail extends AppCompatActivity {
 
@@ -107,6 +110,10 @@ public class DiaryDetail extends AppCompatActivity {
         mSQLiteDatabase.execSQL("DELETE FROM " +mContext.getString(R.string.diary_table_name)+
                 " WHERE IMGNAME = "+diaryData.getstrImgName()+";");
         mSQLiteDatabase.close();
+        File removePicture = new File(diaryData.getStrImgPath());
+        if(removePicture.exists())
+            removePicture.delete();
+        Toast.makeText(mContext,"일기를 삭제하였습니다.",Toast.LENGTH_LONG).show();
         finish();
     }
     protected void setTitleChange(String title){
