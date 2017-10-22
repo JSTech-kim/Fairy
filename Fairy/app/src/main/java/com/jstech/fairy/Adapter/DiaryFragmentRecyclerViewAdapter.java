@@ -17,7 +17,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jstech.fairy.DataType.DiaryDataType;
-import com.jstech.fairy.InfoDetail;
+import com.jstech.fairy.DiaryDetail;
 import com.jstech.fairy.R;
 
 import java.io.File;
@@ -63,8 +63,6 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         //holder.ivImg.setImageURI(uri2);
         holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
 
-
-
         //  카드뷰 클릭 이벤트
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +73,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
                 diaryData.CopyData(aListDiary.get(pos));
 
                 //  일기 자세히 보기 액티비티로 옮겨야함. (이건 임시)
-                Intent intent = new Intent(mContext.getApplicationContext(), InfoDetail.class);
+                Intent intent = new Intent(mContext.getApplicationContext(), DiaryDetail.class);
                 intent.putExtra("DiaryData", diaryData);
                 mContext.startActivity(intent);
 

@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity"
+        <activity
+            android:name=".SplashActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,8 +54,7 @@
             android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".InfoDetail"
-            android:screenOrientation="portrait"
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Fragment.Add_Diary.Write_Diary"
             android:screenOrientation="portrait"
@@ -64,11 +64,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MoreFunction.Filter"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".PoPupImage"
             android:screenOrientation="portrait"
-            android:theme="@style/MyDialog"/>
+            android:theme="@style/MyDialog" />
+        <activity android:name=".DiaryDetail"></activity>
     </application>
 
 </manifest>

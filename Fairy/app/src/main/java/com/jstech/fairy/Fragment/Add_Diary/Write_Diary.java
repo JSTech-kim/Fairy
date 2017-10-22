@@ -61,12 +61,11 @@ public class Write_Diary extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_write_diary);
+        setContentView(R.layout.activity_diary_write);
 
         mContext = this.getApplicationContext();
         CropView_Photo=(ImageView)findViewById(R.id.Photo) ;
         Button_Add_Photo=(ImageButton)findViewById(R.id.Add_Photo_Button);
-        Bitmap bitmap;
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.diary_write_toolbar);
         setSupportActionBar(toolbar);
