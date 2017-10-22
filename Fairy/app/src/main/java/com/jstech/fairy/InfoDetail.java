@@ -59,7 +59,7 @@ public class InfoDetail extends AppCompatActivity {
 
         Picasso.with(getApplicationContext()).load(mInfoData.getStrMainImg())
                 .placeholder(R.drawable.loading_image)                              // 이미지 불러오는 동안 이미지
-                .error(R.drawable.no_image)                                  // 다운로드 실패 시, 이미지
+                .error(R.drawable.no_image2)                                  // 다운로드 실패 시, 이미지
                 .fit()                                                            // 이미지뷰에 맞추기
                 .into(mainIv);
 

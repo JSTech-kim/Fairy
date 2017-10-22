@@ -30,7 +30,7 @@ public class PoPupImage extends AppCompatActivity {
 
         Picasso.with(getApplicationContext()).load(path)
                 .placeholder(R.drawable.loading_image)
-                .error(R.drawable.no_image)
+                .error(R.drawable.no_image2)
                 .fit()
                 .into(BigPucture);
     }
