@@ -3,12 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_rewrite"
-        android:title="Action Rewrite"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_save"/>
+        android:title="수정"
+        app:showAsAction="always" />
 
     <item android:id="@+id/action_remove"
         android:title="Action Remove"
         app:showAsAction="always"
-        android:icon="@drawable/ic_save"/>
+        android:icon="@drawable/ic_delete"/>
 </menu>

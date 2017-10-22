@@ -66,7 +66,7 @@ public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<Heart
             Log.e("BingImg(Heart)", aListHeart.get(pos).getStrMainImg());
             Picasso.with(mContext).load(aListHeart.get(pos).getStrMainImg())
                     .placeholder(R.drawable.loading_image)                              // 이미지 불러오는 동안 이미지
-                    .error(R.drawable.no_image)                                  // 다운로드 실패 시, 이미지
+                    .error(R.drawable.no_image2)                                  // 다운로드 실패 시, 이미지
                     .fit()                                                            // 이미지뷰에 맞추기
                     .into(holder.ivImg);
         }

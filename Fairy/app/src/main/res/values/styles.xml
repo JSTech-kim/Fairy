@@ -54,4 +54,8 @@
         parent="Theme.AppCompat.Light.Dialog">
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="MyTheme.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
 </resources>
