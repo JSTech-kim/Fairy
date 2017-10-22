@@ -4,6 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -15,8 +19,12 @@ public class SplashActivity extends AppCompatActivity {
         this.overridePendingTransition(R.anim.start_enter, R.anim.start_exit);
         setContentView(R.layout.activity_splash);
 
+        ImageView iv_splash = (ImageView)findViewById(R.id.splash_iv);
+        GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(iv_splash);
+        Glide.with(this).load(R.drawable.fairy_splah).into(gifImage);
+
         Handler handle = new Handler();
-        handle.postDelayed(new splashhandler(), 2000);  //일단 2초 후 Main으로
+        handle.postDelayed(new splashhandler(), 3600);  //일단 2초 후 Main으로
 
 
     }

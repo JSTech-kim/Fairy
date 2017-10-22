@@ -9,10 +9,11 @@
     android:padding="100dp">
 
     <ImageView
+        android:id="@+id/splash_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:src="@drawable/fairy_logo"/>
+        android:layout_gravity="center"/>
+        <!--android:src="@drawable/fairy_logo"-->
 
 
 </LinearLayout>
