@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -20,7 +21,7 @@ import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.MainActivity;
 import com.jstech.fairy.R;
 
-public class Filter extends AppCompatActivity {
+public class Filter extends AppCompatActivity{
 
     private Context mContext;
     private FilterDataType filterData;
@@ -72,8 +73,12 @@ public class Filter extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                     /*검색기능*/
+                    InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+                    AdaptFilter();
                     return true;
                 }
+
                 return false;
             }
         });
@@ -90,6 +95,15 @@ public class Filter extends AppCompatActivity {
         tvDrama.setSelected(true);
         tvArt.setSelected(true);
         tvFestival.setSelected(true);
+
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.activity_filter);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+            }
+        });
     }
 
 
