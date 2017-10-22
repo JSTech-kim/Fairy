@@ -14,6 +14,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -226,7 +227,7 @@ public class Write_Diary extends AppCompatActivity {
         Uri SavedURI = null;
         String FileName = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date())+".jpg";
         String path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() + "/Fairy";
-        try {
+         try {
             File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),"Fairy");
             if(!file.isDirectory()){
                 file.mkdir();
@@ -237,7 +238,9 @@ public class Write_Diary extends AppCompatActivity {
         }catch (Exception e){
             e.printStackTrace();
         }
-        SavedURI = Uri.parse(path+FileName);
+
+        SavedURI = Uri.parse(path+"/"+FileName);
+        Log.e("URI", SavedURI.toString());
         return SavedURI.toString();
 
     }
