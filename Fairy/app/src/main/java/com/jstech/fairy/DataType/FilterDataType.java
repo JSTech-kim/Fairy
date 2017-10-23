@@ -15,7 +15,6 @@ public class FilterDataType implements Parcelable {
     private boolean bCheckDrama;
     private boolean bCheckFestival;
     private boolean bCheckOpera;
-    private String strDate;
     private String strSearch;   //검색어
 
     private String strDate_start;
@@ -29,12 +28,13 @@ public class FilterDataType implements Parcelable {
         bCheckDrama = true;
         bCheckFestival = true;
         bCheckOpera = true;
-        strDate = "";
         strSearch = "";
+        strDate_start="";
+        strDate_end="";
     }
 
     public FilterDataType(int iIsFee, boolean bCheckArt, boolean bCheckConcert, boolean bCheckDrama, boolean bCheckFestival,
-                          boolean bCheckOpera, String strDate, String strSearch)
+                          boolean bCheckOpera, String strSearch,String strDate_start,String strDate_end)
     {
         this.iIsFee = iIsFee;
         this.bCheckArt = bCheckArt;
@@ -42,8 +42,9 @@ public class FilterDataType implements Parcelable {
         this.bCheckDrama = bCheckDrama;
         this.bCheckFestival = bCheckFestival;
         this.bCheckOpera = bCheckOpera;
-        this.strDate = strDate;
         this.strSearch = strSearch;
+        this.strDate_start = strDate_start;
+        this.strDate_end = strDate_end;
     }
 
     protected FilterDataType(Parcel in) {
@@ -53,8 +54,9 @@ public class FilterDataType implements Parcelable {
         bCheckDrama = in.readByte() != 0;
         bCheckFestival = in.readByte() != 0;
         bCheckOpera = in.readByte() != 0;
-        strDate = in.readString();
         strSearch = in.readString();
+        strDate_start = in.readString();
+        strDate_end = in.readString();
     }
 
     public void CopyData(FilterDataType filterData)
@@ -65,8 +67,9 @@ public class FilterDataType implements Parcelable {
         this.bCheckDrama = filterData.isbCheckDrama();
         this.bCheckFestival = filterData.isbCheckFestival();
         this.bCheckOpera = filterData.isbCheckOpera();
-        this.strDate = filterData.getStrDate();
         this.strSearch = filterData.getStrSearch();
+        this.strDate_start = filterData.getStrDate_start();
+        this.strDate_end = filterData.getStrDate_end();
     }
 
     public static final Creator<FilterDataType> CREATOR = new Creator<FilterDataType>() {
@@ -129,14 +132,6 @@ public class FilterDataType implements Parcelable {
         this.iIsFee = iIsFee;
     }
 
-    public String getStrDate() {
-        return strDate;
-    }
-
-    public void setStrDate(String strDate) {
-        this.strDate = strDate;
-    }
-
     public String getStrSearch() {
         return strSearch;
     }
@@ -144,6 +139,19 @@ public class FilterDataType implements Parcelable {
     public void setStrSearch(String strSearch) {
         this.strSearch = strSearch;
     }
+
+    public String getStrDate_start() {
+        return strDate_start;
+    }
+
+    public void setStrDate_start(String strDate_start){this.strDate_start = strDate_start;}
+
+    public String getStrDate_end() {
+        return strDate_end;
+    }
+
+    public void setStrDate_end(String strDate_end){this.strDate_end = strDate_end;}
+
     @Override
     public int describeContents() {
         return 0;
@@ -157,7 +165,8 @@ public class FilterDataType implements Parcelable {
         dest.writeByte((byte) (bCheckDrama ? 1 : 0));
         dest.writeByte((byte) (bCheckFestival ? 1 : 0));
         dest.writeByte((byte) (bCheckOpera ? 1 : 0));
-        dest.writeString(strDate);
         dest.writeString(strSearch);
+        dest.writeString(strDate_start);
+        dest.writeString(strDate_end);
     }
 }

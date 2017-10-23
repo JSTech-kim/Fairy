@@ -1,5 +1,6 @@
 package com.jstech.fairy.MoreFunction;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -20,6 +22,9 @@ import android.widget.TextView;
 import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.MainActivity;
 import com.jstech.fairy.R;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Filter extends AppCompatActivity{
 
@@ -41,6 +46,11 @@ public class Filter extends AppCompatActivity{
     private TextView tvArt;
     private TextView tvFestival;
     private EditText etSearch;
+
+    //Edit By Jin
+    private TextView Startdate;
+    private TextView Enddate;
+    private String strStartDate,strEndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +78,13 @@ public class Filter extends AppCompatActivity{
         tvArt = (TextView)findViewById(R.id.filter_tv_art);
         tvFestival = (TextView)findViewById(R.id.filter_tv_festival);
         etSearch = (EditText)findViewById(R.id.filter_et_search);
+
+        //Edit By Jin
+        Startdate = (TextView)findViewById(R.id.StartDate);
+        Startdate.setText("0000-00-00");
+        Enddate = (TextView)findViewById(R.id.EndDate);
+        Enddate.setText("9999-99-99");
+
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -104,6 +121,54 @@ public class Filter extends AppCompatActivity{
                 imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
             }
         });
+    }
+
+    /* 날짜 변경 코드*/
+    public void Date_Choise_Start(View v){
+        Calendar cal = new GregorianCalendar();
+        new DatePickerDialog(Filter.this, mDateSetListener_Start,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show();
+    }
+    public void Date_Choise_End(View v){
+        Calendar cal = new GregorianCalendar();
+        new DatePickerDialog(Filter.this, mDateSetListener_End,
+                cal.get(Calendar.YEAR),
+                cal.get(Calendar.MONTH),
+                cal.get(Calendar.DAY_OF_MONTH)).show();
+    }
+    DatePickerDialog.OnDateSetListener mDateSetListener_Start = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            UpdateNow(false,year,monthOfYear+1,dayOfMonth);
+        }
+    };
+    DatePickerDialog.OnDateSetListener mDateSetListener_End = new DatePickerDialog.OnDateSetListener() {
+        @Override
+        public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+            UpdateNow(true,year,monthOfYear+1,dayOfMonth);
+        }
+    };
+    private void UpdateNow(boolean cur,int year,int month,int day){
+        String tempmonth;
+        String tempday;
+        if((month/10) <1)
+            tempmonth = "0"+String.valueOf(month);
+        else
+            tempmonth =String.valueOf(month);
+        if((day/10)<1)
+            tempday = "0"+String.valueOf(day);
+        else
+            tempday =String.valueOf(day);
+        if(cur){ // setEndDate
+            strEndDate = String.valueOf(year)+tempmonth+tempday;
+            Enddate.setText(String.format("%02d/%02d/%02d", year, month, day));
+        }
+        else{ // setStartDate
+            strStartDate = String.valueOf(year)+tempmonth+tempday;
+            Startdate.setText(String.format("%02d/%02d/%02d", year, month, day));
+        }
     }
 
 
@@ -241,7 +306,8 @@ public class Filter extends AppCompatActivity{
         filterData.setbCheckOpera(bCheckOpera);
 
         //  날짜 필터 구현해야함
-
+        filterData.setStrDate_start(strStartDate);
+        filterData.setStrDate_end(strEndDate);
         //  Intent에 Filter정보 담아서 Main 호출.
         Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("Filter", filterData);
