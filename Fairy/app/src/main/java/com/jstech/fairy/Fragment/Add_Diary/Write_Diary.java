@@ -173,8 +173,20 @@ public class Write_Diary extends AppCompatActivity {
         }
     };
     void UpdateNow(){
-        DataBase_Date = String.valueOf(mYear)+"-"+String.valueOf(mMonth+1)+"-"+String.valueOf(mDay);
-        TextView_date.setText(String.format("%d/%d/%d", mYear, mMonth + 1, mDay));
+        //1자리 숫자일 경우 앞에 0을 붙여주기 위해
+        String tempmonth;
+        String tempday;
+        if(((mMonth+1)/10) <1)
+            tempmonth = "0"+String.valueOf(mMonth+1);
+        else
+            tempmonth =String.valueOf(mMonth+1);
+        if((mDay/10)<1)
+            tempday = "0"+String.valueOf(mDay);
+        else
+            tempday =String.valueOf(mDay);
+
+        DataBase_Date = String.valueOf(mYear)+"-"+tempmonth+"-"+tempday;
+        TextView_date.setText(String.format("%02d/%02d/%02d", mYear, mMonth + 1, mDay));
     }
     /*==================================================날짜 고르는 코드==========================================================*/
 
