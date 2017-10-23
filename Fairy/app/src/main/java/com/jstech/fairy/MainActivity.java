@@ -204,6 +204,7 @@ public class MainActivity extends AppCompatActivity{
 
             case R.id.action_write:
                 intent = new Intent(this, Write_Diary.class);
+                intent.putExtra("isRewrite",false);
                 startActivity(intent);
                 return true;
 

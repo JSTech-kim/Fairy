@@ -24,6 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.jstech.fairy.DataType.DiaryDataType;
 import com.jstech.fairy.R;
 
 import java.io.File;
@@ -40,7 +41,12 @@ public class Write_Diary extends AppCompatActivity {
     final int PICK_PHOTO = 1;
     final int CROP_PHOTO = 2;
 
-    ImageView CropView_Photo;
+    private DiaryDataType diaryData;
+    private boolean isRewrite;
+    private String pastFilename;
+    private String[] pastDate;
+
+    ImageView ImageView_Photo;
     ImageButton Button_Add_Photo;
     Bitmap finalbitmap = null;
 
@@ -49,15 +55,14 @@ public class Write_Diary extends AppCompatActivity {
     EditText EditText_Text;
 
     private int ImgPathLength;
-    private String FileName;
 
     int mYear, mMonth, mDay;
 
-    String DataBase_Date ;
-    String DataBase_title;
+    String DataBase_Date = null ;
+    String DataBase_title = null;
     String DataBase_PictureURI = null;
-    String DataBase_text;
-    String DataBase_PictureName;
+    String DataBase_text = null;
+    String DataBase_PictureName = null;
 
     SQLiteDatabase mSQLiteDatabase;     //  SQLite 접근 객체
     Context mContext;
@@ -68,32 +73,57 @@ public class Write_Diary extends AppCompatActivity {
         setContentView(R.layout.activity_diary_write);
 
         mContext = this.getApplicationContext();
-        CropView_Photo=(ImageView)findViewById(R.id.Photo) ;
+        ImageView_Photo =(ImageView)findViewById(R.id.Photo) ;
         Button_Add_Photo=(ImageButton)findViewById(R.id.Add_Photo_Button);
+        TextView_date = (TextView)findViewById(R.id.Date_Viewer);
+        EditText_Title = (EditText) findViewById(R.id.Title_Diary);
+        EditText_Text = (EditText)findViewById(R.id.Text_Diary);
 
         Toolbar toolbar = (Toolbar)findViewById(R.id.diary_write_toolbar);
         setSupportActionBar(toolbar);
 
-        //  Action Bar
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("Diary");
+        Intent intent = getIntent();
+        diaryData = intent.getParcelableExtra("data");
+        isRewrite = intent.getBooleanExtra("isRewrite",false);
 
-        /*===============날짜 고르는 코드=========================*/
-        TextView_date = (TextView)findViewById(R.id.Date_Viewer);
         Calendar cal = new GregorianCalendar();
         mYear = cal.get(Calendar.YEAR);
         mMonth = cal.get(Calendar.MONTH);
         mDay = cal.get(Calendar.DAY_OF_MONTH);
-        UpdateNow();
-        /*===============날짜 고르는 코드=========================*/
 
+        //  Action Bar
+        if(!isRewrite) {
+            comeback = false;
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            setTitleChange("일기작성");
+            UpdateNow();
+        }
+        else{
+            comeback = false;
+            DataBase_Date = diaryData.getStrDate();
+            DataBase_title = diaryData.getStrTitle();
+            DataBase_PictureURI = diaryData.getStrImgPath();
+            DataBase_text = diaryData.getStrMainText();
+            DataBase_PictureName = diaryData.getstrImgName();
+            pastFilename = DataBase_PictureName;
 
-        /*===================  제목 넣는 코드  ====================*/
-        EditText_Title = (EditText) findViewById(R.id.Title_Diary);
-        EditText_Text = (EditText)findViewById(R.id.Text_Diary);
-        /*===================  제목 넣는 코드  ====================*/
+            ImageView_Photo.setImageBitmap(BitmapFactory.decodeFile(diaryData.getStrImgPath()));
+            TextView_date.setText(diaryData.getStrDate());
+            EditText_Title.setText(diaryData.getStrTitle());
+            EditText_Text.setText(diaryData.getStrMainText());
+
+            pastDate = diaryData.getStrDate().split("-");
+            mYear = Integer.parseInt(pastDate[0]);
+            mMonth = Integer.parseInt(pastDate[1])-1;
+            mDay = Integer.parseInt(pastDate[2]);
+
+            ActionBar actionBar = getSupportActionBar();
+            actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            setTitleChange("일기수정");
+        }
     }
 
     /*======================================사진 골라 넣기 버튼 이벤트============================================================*/
@@ -121,14 +151,16 @@ public class Write_Diary extends AppCompatActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            CropView_Photo.setImageBitmap(finalbitmap);
+            ImageView_Photo.setImageBitmap(finalbitmap);
             Button_Add_Photo.setAlpha(65);
         }
     }
     /*=====================================사진 골라 넣기 버튼 이벤트=============================================================*/
 
     /*==================================================날짜 고르는 코드==========================================================*/
-    public void Date_Choise(View v){new DatePickerDialog(Write_Diary.this, mDateSetListener, mYear, mMonth, mDay).show();}
+    public void Date_Choise(View v){
+        new DatePickerDialog(Write_Diary.this, mDateSetListener, mYear, mMonth, mDay).show();
+    }
     DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
         @Override
         public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
@@ -204,11 +236,13 @@ public class Write_Diary extends AppCompatActivity {
 
 
     public void Save_Diary(){
-        if(comeback)
-             DataBase_PictureURI = saveBitmap(finalbitmap);
+        if(comeback) {
+            DataBase_PictureURI = saveBitmap(finalbitmap);
+            ImgPathLength = DataBase_PictureURI.length();
+            DataBase_PictureName = DataBase_PictureURI.substring(ImgPathLength - 18, ImgPathLength - 4);
+        }
         DataBase_title = EditText_Title.getText().toString();
         DataBase_text = EditText_Text.getText().toString();
-
         if(DataBase_PictureURI == null){
             Toast.makeText(getApplicationContext(),"사진을 선택하시오.",Toast.LENGTH_LONG).show();
             return;
@@ -221,11 +255,19 @@ public class Write_Diary extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"본문을 입력하시오.",Toast.LENGTH_LONG).show();
             return;
         }
+        if(isRewrite){ //  수정했을 때, 먼저 있던 데이터 베이스의 정보를 삭제한다.
+            mSQLiteDatabase = mContext.openOrCreateDatabase(mContext.getString(R.string.database_name), MODE_PRIVATE, null);
+            mSQLiteDatabase.execSQL("DELETE FROM " +mContext.getString(R.string.diary_table_name)+
+                    " WHERE IMGNAME = "+pastFilename+";");
+            mSQLiteDatabase.close();
+            if(DataBase_PictureName != pastFilename) {
+                File removePicture = new File(diaryData.getStrImgPath());
+                if (removePicture.exists())
+                    removePicture.delete();
+            }
+        }
 
-        ImgPathLength = DataBase_PictureURI.length();
-        FileName = DataBase_PictureURI.substring(ImgPathLength-18,ImgPathLength-4);
-
-        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI,FileName);
+        InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI,DataBase_PictureName);
         Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_LONG).show();
         finish();
     }

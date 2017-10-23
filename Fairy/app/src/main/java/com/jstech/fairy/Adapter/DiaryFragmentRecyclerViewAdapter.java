@@ -59,12 +59,9 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         holder.cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //  세부 보여주기 액티비티로 옮길 데이터 복사
                 DiaryDataType diaryData = new DiaryDataType();
                 diaryData.CopyData(aListDiary.get(pos));
-
-                //  일기 자세히 보기 액티비티로 옮겨야함. (이건 임시)
                 Intent intent = new Intent(mContext.getApplicationContext(), DiaryDetail.class);
                 intent.putExtra("DiaryData", diaryData);
                 mContext.startActivity(intent);

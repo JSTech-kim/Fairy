@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jstech.fairy.DataType.DiaryDataType;
+import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 
 import java.io.File;
 
@@ -83,6 +84,11 @@ public class DiaryDetail extends AppCompatActivity {
                 return true;
 
             case R.id.action_rewrite:
+                Intent intent = new Intent(this, Write_Diary.class);
+                intent.putExtra("data",diaryData);
+                intent.putExtra("isRewrite",true);
+                startActivity(intent);
+                finish();
                 return true;
 
             case R.id.action_remove:
@@ -100,8 +106,8 @@ public class DiaryDetail extends AppCompatActivity {
                         })
                         .setNegativeButton("No", null)
                         .show();
+                return true;
         }
-
         return super.onOptionsItemSelected(item);
     }
 
