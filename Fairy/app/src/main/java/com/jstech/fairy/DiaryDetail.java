@@ -118,7 +118,7 @@ public class DiaryDetail extends AppCompatActivity {
         File removePicture = new File(diaryData.getStrImgPath());
         if(removePicture.exists())
             removePicture.delete();
-        Toast.makeText(mContext,"일기를 삭제하였습니다.",Toast.LENGTH_LONG).show();
+        Toast.makeText(mContext,"일기를 삭제하였습니다.",Toast.LENGTH_SHORT).show();
         finish();
     }
     protected void setTitleChange(String title){
