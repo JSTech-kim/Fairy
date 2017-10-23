@@ -20,9 +20,12 @@ import com.jstech.fairy.DataType.DiaryDataType;
 import com.jstech.fairy.Fragment.Add_Diary.Write_Diary;
 
 import java.io.File;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DiaryDetail extends AppCompatActivity {
-
 
     private Toolbar toolbar;
     private ImageView picture;
@@ -33,6 +36,7 @@ public class DiaryDetail extends AppCompatActivity {
     private Context mContext;
 
     SQLiteDatabase mSQLiteDatabase;
+    String[] arrDay = {"일", "월", "화", "수", "목", "금", "토"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,6 @@ public class DiaryDetail extends AppCompatActivity {
         date = (TextView)findViewById(R.id.diary_detail_Date_Viewer);
 
 
-
         setSupportActionBar(toolbar);
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
@@ -59,13 +62,33 @@ public class DiaryDetail extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true);
         setTitleChange("Diary");
 
-
-
         picture.setImageBitmap(BitmapFactory.decodeFile(diaryData.getStrImgPath()));
         title.setText(diaryData.getStrTitle());
         text.setText(diaryData.getStrMainText());
-        date.setText(diaryData.getStrDate());
 
+        int iDay = GetDayOfWeek(diaryData.getStrDate());
+        date.setText(diaryData.getStrDate() + " (" + arrDay[iDay] + ")");
+
+    }
+
+    //  요일 구하기
+    public int GetDayOfWeek(String strDate)
+    {
+        String day = "" ;
+
+        Date nDate = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd") ;
+            nDate = dateFormat.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar cal = Calendar.getInstance() ;
+        cal.setTime(nDate);
+
+        int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;
+        return dayNum - 1;
     }
 
     //Toolbar

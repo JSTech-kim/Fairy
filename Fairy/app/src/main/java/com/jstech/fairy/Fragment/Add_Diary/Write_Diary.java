@@ -186,7 +186,7 @@ public class Write_Diary extends AppCompatActivity {
             tempday =String.valueOf(mDay);
 
         DataBase_Date = String.valueOf(mYear)+"-"+tempmonth+"-"+tempday;
-        TextView_date.setText(String.format("%02d/%02d/%02d", mYear, mMonth + 1, mDay));
+        TextView_date.setText(String.format("%02d-%02d-%02d", mYear, mMonth + 1, mDay));
     }
     /*==================================================날짜 고르는 코드==========================================================*/
 

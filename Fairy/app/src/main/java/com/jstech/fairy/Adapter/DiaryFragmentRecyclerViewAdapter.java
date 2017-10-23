@@ -17,7 +17,11 @@ import com.jstech.fairy.DataType.DiaryDataType;
 import com.jstech.fairy.DiaryDetail;
 import com.jstech.fairy.R;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by SONY on 2017-10-12.
@@ -27,8 +31,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
 
     Context mContext;
     ArrayList<DiaryDataType> aListDiary;
-
-
+    String[] arrDay = {"일", "월", "화", "수", "목", "금", "토"};
 
     public DiaryFragmentRecyclerViewAdapter(Context context, ArrayList<DiaryDataType> aListDiary) {
         this.mContext = context;
@@ -50,7 +53,8 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
 
         //  이미지는 경로를 이용해서 받아오셈!
         //  우선은 텍스트만
-        holder.tvDate.setText(aListDiary.get(pos).getStrDate());
+        int iWeek = GetDayOfWeek(aListDiary.get(pos).getStrDate());
+        holder.tvDate.setText(aListDiary.get(pos).getStrDate() + " (" + arrDay[iWeek] + ")");
         holder.tvTitle.setText(aListDiary.get(pos).getStrTitle());
         holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
 
@@ -71,7 +75,25 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
 
     }
 
+    //  요일 구하기
+    public int GetDayOfWeek(String strDate)
+    {
+        String day = "" ;
 
+        Date nDate = null;
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd") ;
+            nDate = dateFormat.parse(strDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        Calendar cal = Calendar.getInstance() ;
+        cal.setTime(nDate);
+
+        int dayNum = cal.get(Calendar.DAY_OF_WEEK) ;
+        return dayNum - 1;
+    }
 
     @Override
     public int getItemCount() {
