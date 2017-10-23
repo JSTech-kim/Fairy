@@ -92,10 +92,9 @@ public class DiaryDetail extends AppCompatActivity {
                 return true;
 
             case R.id.action_remove:
-                new AlertDialog.Builder(this)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setTitle("일기 삭제")
-                        .setMessage("일기를 삭제하시겠습니까 ?")
+                AlertDialog dialog =
+                        new AlertDialog.Builder(this,R.style.Theme_AppCompat_Light_Dialog_Alert)
+                        .setMessage("정말 일기를 삭제하시겠습니까?")
                         .setPositiveButton("Yes", new DialogInterface.OnClickListener()
                         {
                             @Override

@@ -18,6 +18,9 @@ public class FilterDataType implements Parcelable {
     private String strDate;
     private String strSearch;   //검색어
 
+    private String strDate_start;
+    private String strDate_end;
+
     public FilterDataType()
     {
         iIsFee = 2;
