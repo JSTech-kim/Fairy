@@ -8,7 +8,7 @@
         android:id="@+id/info_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10sp">
+        android:layout_marginBottom="5sp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,12 +43,36 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="JinSub2"
+                    android:textSize="16dp"
                     android:textColor="@color/colorText"
                     android:textStyle="bold" />
+
+                <!--
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorLine"
+                    android:layout_marginTop="10dp"/>
+                    -->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <!-- due date 추가하기 -->
+                    <TextView
+                        android:id="@+id/info_cardview_due"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:layout_marginBottom="3sp"
+                        android:padding="3dp"
+                        android:layout_above="@+id/info_cardview_date"
+                        android:text="D-day"
+                        android:textSize="10dp"
+                        android:textColor="@color/colorPink"
+                        android:background="@drawable/due_background"/>
 
                     <TextView
                         android:id="@+id/info_cardview_date"
@@ -56,9 +80,10 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:paddingBottom="3sp"
+                        android:layout_marginBottom="3sp"
                         android:layout_above="@+id/info_cardview_place"
                         android:text="2017/10/13 ~ 2017/10/14"
+                        android:textSize="13dp"
                         android:textColor="@color/colorText2" />
 
                     <TextView
@@ -67,9 +92,10 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:paddingBottom="3sp"
+                        android:layout_marginBottom="3sp"
                         android:layout_above="@+id/info_cardview_fee"
                         android:text="용인"
+                        android:textSize="13dp"
                         android:textColor="@color/colorText2" />
 
                     <TextView
@@ -78,8 +104,8 @@
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:paddingBottom="3sp"
                         android:text="500\"
+                        android:textSize="13dp"
                         android:layout_above="@+id/info_cardview_btn_heart"
                         android:textColor="@color/colorText2" />
 

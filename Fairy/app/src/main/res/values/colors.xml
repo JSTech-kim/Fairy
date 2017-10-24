@@ -6,6 +6,7 @@
     <color name="colorPrimaryDark">#006064</color>
     <color name="colorPrimaryLight">#5bb9ba</color>
     <color name="colorAccentPressed">#E3AA1B</color>
+    <color name="colorPink">#e87493</color>
 
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorLine">#dadada</color>

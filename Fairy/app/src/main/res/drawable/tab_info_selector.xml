@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/ic_flower_select"/>
-    <item android:drawable="@drawable/ic_flower"/>
+    <item android:state_selected="true" android:drawable="@drawable/fireworks"/>
+    <item android:drawable="@drawable/fireworks"/>
 </selector>
