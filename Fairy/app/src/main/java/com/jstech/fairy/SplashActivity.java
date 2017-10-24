@@ -21,10 +21,10 @@ public class SplashActivity extends AppCompatActivity {
 
         ImageView iv_splash = (ImageView)findViewById(R.id.splash_iv);
         GlideDrawableImageViewTarget gifImage = new GlideDrawableImageViewTarget(iv_splash);
-        Glide.with(this).load(R.drawable.fairy_splah).into(gifImage);
+        Glide.with(this).load(R.drawable.fairy_splash).into(gifImage);
 
         Handler handle = new Handler();
-        handle.postDelayed(new splashhandler(), 3600);  //일단 2초 후 Main으로
+        handle.postDelayed(new splashhandler(), 2700);  //일단 2초 후 Main으로
 
 
     }
