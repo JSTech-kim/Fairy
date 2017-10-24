@@ -192,16 +192,7 @@ public class Write_Diary extends AppCompatActivity {
 
 
 
-    /*
-        To. 진기 : 파라미터 4개로 값을 넣으면 DataBase에 저장될 걸!?
-                    Table에서 데이터 삭제하는거는 상세보기 같은 화면 등에서 삭제버튼 눌렀을 때, 구현되어야할 듯.
-        [DiaryTable]
-         - strDate      날짜          - (16)
-         - strTitle     제목          - (256)
-         - strMainText  본문          - (2048)
-         - strImgPath   이미지 경로   - (512)
-         - strImgName   이미지 이름   - (256)
-     */
+
     public void InsertDiaryDataToDatabase(String strDate, String strTitle, String strMainText, String strImgPath,String strImgName)
     {
         mSQLiteDatabase = mContext.openOrCreateDatabase(mContext.getString(R.string.database_name), MODE_PRIVATE, null);

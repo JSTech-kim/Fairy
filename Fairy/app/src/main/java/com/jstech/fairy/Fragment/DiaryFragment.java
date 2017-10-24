@@ -26,11 +26,6 @@ import static android.content.Context.MODE_PRIVATE;
 /**
  * Created by SONY on 2017-09-25.
  */
-/*
-*
-*   17/09/25 일기장 정보를 뿌려주는 DiaryFragment
-*   이곳에서 RecyclerView + CardView로 일기장 정보를 뿌려줘야한다.
-* */
 
 public class DiaryFragment extends Fragment {
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자

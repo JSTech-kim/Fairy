@@ -47,9 +47,6 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         final int pos = position;
-
-        //  이미지는 경로를 이용해서 받아오셈!
-        //  우선은 텍스트만
         holder.tvDate.setText(aListDiary.get(pos).getStrDate());
         holder.tvTitle.setText(aListDiary.get(pos).getStrTitle());
         holder.ivImg.setImageBitmap(BitmapFactory.decodeFile(aListDiary.get(pos).getStrImgPath()));
@@ -70,7 +67,6 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
         });
 
     }
-
 
 
     @Override
