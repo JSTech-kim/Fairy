@@ -269,7 +269,6 @@ public class Write_Diary extends AppCompatActivity {
                     removePicture.delete();
             }
         }
-
         InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI,DataBase_PictureName);
         Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_SHORT).show();
         finish();

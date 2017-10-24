@@ -138,4 +138,37 @@ public class DiaryFragment extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
         mAdapter.notifyDataSetChanged();
     }
+
+
+    // Onclick에서 오름차순을 누르면 true가 전달되어야 하고, 내림차순을 누르면 false가 전달되어야 한다.
+    // ArrayList를 다시 만들어서 리턴하므로, 리턴값만 어댑터에 붙이면 된다.
+    //정렬된 aListDiary 리턴
+    private ArrayList<DiaryDataType> sortedList(ArrayList<DiaryDataType> aListDiary,boolean option){
+        // option
+        // true = 오름차순  false = 내림차순
+        ArrayList<DiaryDataType> SortedList = new ArrayList<DiaryDataType>();
+        while(!aListDiary.isEmpty()){
+            DiaryDataType temp = aListDiary.remove(findBiggestIndex(aListDiary));
+            if(option) // 오름차순
+                SortedList.add(0,temp);
+            else // 내림차순
+                SortedList.add(temp);
+        }
+        return SortedList;
+    }
+    private int strDate_To_Int(String strDate){
+        strDate.replace("-","");
+        return Integer.parseInt(strDate);
+
+    }
+    private int findBiggestIndex(ArrayList<DiaryDataType> aListDiary){
+        int num=0;
+        int temp = 0;
+        for(int i=0;i<aListDiary.size();i++)
+            if((strDate_To_Int(aListDiary.get(i).getStrDate())) > temp) {
+                num = i;
+                temp = strDate_To_Int(aListDiary.get(i).getStrDate());
+            }
+            return num;
+    }
 }
