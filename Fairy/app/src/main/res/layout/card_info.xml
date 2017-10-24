@@ -43,8 +43,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="JinSub2"
-                    android:textSize="16dp"
                     android:textColor="@color/colorText"
+                    android:textSize="16dp"
                     android:textStyle="bold" />
 
                 <!--
@@ -64,50 +64,50 @@
                         android:id="@+id/info_cardview_due"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/info_cardview_date"
+                        android:layout_marginBottom="3sp"
+                        android:background="@drawable/due_background"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:layout_marginBottom="3sp"
                         android:padding="3dp"
-                        android:layout_above="@+id/info_cardview_date"
                         android:text="D-day"
-                        android:textSize="10dp"
                         android:textColor="@color/colorPink"
-                        android:background="@drawable/due_background"/>
+                        android:textSize="10dp" />
 
                     <TextView
                         android:id="@+id/info_cardview_date"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/info_cardview_place"
+                        android:layout_marginBottom="3sp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:layout_marginBottom="3sp"
-                        android:layout_above="@+id/info_cardview_place"
                         android:text="2017/10/13 ~ 2017/10/14"
-                        android:textSize="13dp"
-                        android:textColor="@color/colorText2" />
+                        android:textColor="@color/colorText2"
+                        android:textSize="13dp" />
 
                     <TextView
                         android:id="@+id/info_cardview_place"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/info_cardview_fee"
+                        android:layout_marginBottom="3sp"
                         android:ellipsize="end"
                         android:maxLines="1"
-                        android:layout_marginBottom="3sp"
-                        android:layout_above="@+id/info_cardview_fee"
                         android:text="용인"
-                        android:textSize="13dp"
-                        android:textColor="@color/colorText2" />
+                        android:textColor="@color/colorText2"
+                        android:textSize="13dp" />
 
                     <TextView
                         android:id="@+id/info_cardview_fee"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_above="@+id/info_cardview_btn_heart"
                         android:ellipsize="end"
                         android:maxLines="1"
                         android:text="500\"
-                        android:textSize="13dp"
-                        android:layout_above="@+id/info_cardview_btn_heart"
-                        android:textColor="@color/colorText2" />
+                        android:textColor="@color/colorText2"
+                        android:textSize="13dp" />
 
                     <ImageView
                         android:id="@+id/info_cardview_btn_heart"
@@ -115,9 +115,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentBottom="true"
                         android:layout_alignParentRight="true"
-                        android:paddingTop="6dp"
-                        android:paddingRight="3dp"
                         android:paddingLeft="7dp"
+                        android:paddingRight="3dp"
+                        android:paddingTop="6dp"
                         android:src="@drawable/ic_heart_empty"
                         android:tint="@color/colorAccent" />
                 </RelativeLayout>

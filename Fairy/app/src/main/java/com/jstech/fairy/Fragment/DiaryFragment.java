@@ -157,9 +157,9 @@ public class DiaryFragment extends Fragment {
         return SortedList;
     }
     private int strDate_To_Int(String strDate){
-        strDate.replace("-","");
+        String temp[] = strDate.split("-");
+        strDate = temp[0]+temp[1]+temp[2];
         return Integer.parseInt(strDate);
-
     }
     private int findBiggestIndex(ArrayList<DiaryDataType> aListDiary){
         int num=0;

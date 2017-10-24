@@ -18,7 +18,11 @@ import com.jstech.fairy.InfoDetail;
 import com.jstech.fairy.R;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -31,6 +35,9 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
     Context mContext;
     ArrayList<InfoDataType> aListInfo;
     SQLiteDatabase mSQLiteDatabase;
+
+    private int mYear,mMonth,mDay;
+    private String today,endday,dday;
 
     public InfoFragmentRecyclerViewAdapter(Context context, ArrayList<InfoDataType> aListInfo) {
         this.mContext = context;
@@ -57,6 +64,35 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
     public void onBindViewHolder(InfoFragmentRecyclerViewAdapter.ViewHolder holder, int position) {
 
         final int pos = position;
+
+        //d-day
+        Calendar cal = new GregorianCalendar();
+        mYear = cal.get(Calendar.YEAR);
+        mMonth = cal.get(Calendar.MONTH)+1;
+        mDay = cal.get(Calendar.DAY_OF_MONTH);
+        String tempmonth;
+        String tempday;
+        if(((mMonth)/10) <1)
+            tempmonth = "0"+String.valueOf(mMonth);
+        else
+            tempmonth =String.valueOf(mMonth);
+        if((mDay/10)<1)
+            tempday = "0"+String.valueOf(mDay);
+        else
+            tempday =String.valueOf(mDay);
+        endday = aListInfo.get(pos).getStrEndDate();
+        String temp[] = endday.split("-");
+        endday = temp[0]+temp[1]+temp[2];
+        today = String.valueOf(mYear)+tempmonth+tempday;
+        try {
+            dday = Long.toString(diffOfDate(today, endday));
+            if(dday.equals("0"))
+                holder.tvDDay.setText("D-Day");
+            else {
+                holder.tvDDay.setText("D-"+dday);
+            }
+        }catch (Exception e){}
+
 
         //  이미지 스트링이 없으면 비운다.
         if(aListInfo.get(pos).getStrMainImg().isEmpty())
@@ -232,6 +268,7 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
         TextView tvPlace;
         TextView tvFee;
         ImageView ivHeart;          //  좋아요 버튼으로 사용할 ImageView.
+        TextView tvDDay;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -242,7 +279,20 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
             tvPlace = (TextView)itemView.findViewById(R.id.info_cardview_place);
             tvFee = (TextView)itemView.findViewById(R.id.info_cardview_fee);
             ivHeart = (ImageView)itemView.findViewById(R.id.info_cardview_btn_heart);
+            tvDDay = (TextView)itemView.findViewById(R.id.info_cardview_due);
         }
     }
 
+    public static long diffOfDate(String begin, String end) throws Exception
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+
+        Date beginDate = formatter.parse(begin);
+        Date endDate = formatter.parse(end);
+
+        long diff = endDate.getTime() - beginDate.getTime();
+        long diffDays = diff / (24 * 60 * 60 * 1000);
+
+        return diffDays;
+    }
 }
