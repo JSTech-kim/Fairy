@@ -23,7 +23,9 @@ import com.jstech.fairy.DataType.FilterDataType;
 import com.jstech.fairy.MainActivity;
 import com.jstech.fairy.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 
 public class Filter extends AppCompatActivity{
@@ -50,7 +52,7 @@ public class Filter extends AppCompatActivity{
     //Edit By Jin
     private TextView Startdate;
     private TextView Enddate;
-    private String strStartDate,strEndDate;
+    private String mStrStartDate, mStrEndDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,11 +81,26 @@ public class Filter extends AppCompatActivity{
         tvFestival = (TextView)findViewById(R.id.filter_tv_festival);
         etSearch = (EditText)findViewById(R.id.filter_et_search);
 
-        //Edit By Jin
+        //(Last) Edit By Jin(Sub)
         Startdate = (TextView)findViewById(R.id.StartDate);
-        Startdate.setText("0000-00-00");
         Enddate = (TextView)findViewById(R.id.EndDate);
-        Enddate.setText("9999-99-99");
+
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat sdfViewFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat sdfCalculFormat = new SimpleDateFormat("yyyyMMdd");
+
+        String getEndTime = sdfCalculFormat.format(date);
+        mStrStartDate = getEndTime;
+        int iTodayTime = Integer.parseInt(getEndTime);
+        iTodayTime += 10000;
+        getEndTime = Integer.toString(iTodayTime);
+        mStrEndDate = getEndTime;
+        String strEndTime = getEndTime.substring(0, 4) + "-" + getEndTime.substring(4, 6) + "-" + getEndTime.substring(6, 8);
+
+        String strTodayTime = sdfViewFormat.format(date);
+        Startdate.setText(strTodayTime);
+        Enddate.setText(strEndTime);
 
         etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
@@ -162,12 +179,12 @@ public class Filter extends AppCompatActivity{
         else
             tempday =String.valueOf(day);
         if(cur){ // setEndDate
-            strEndDate = String.valueOf(year)+tempmonth+tempday;
-            Enddate.setText(String.format("%02d/%02d/%02d", year, month, day));
+            mStrEndDate = String.valueOf(year)+tempmonth+tempday;
+            Enddate.setText(String.format("%02d-%02d-%02d", year, month, day));
         }
         else{ // setStartDate
-            strStartDate = String.valueOf(year)+tempmonth+tempday;
-            Startdate.setText(String.format("%02d/%02d/%02d", year, month, day));
+            mStrStartDate = String.valueOf(year)+tempmonth+tempday;
+            Startdate.setText(String.format("%02d-%02d-%02d", year, month, day));
         }
     }
 
@@ -306,8 +323,8 @@ public class Filter extends AppCompatActivity{
         filterData.setbCheckOpera(bCheckOpera);
 
         //  날짜 필터 구현해야함
-        filterData.setStrDate_start(strStartDate);
-        filterData.setStrDate_end(strEndDate);
+        filterData.setStrDate_start(mStrStartDate);
+        filterData.setStrDate_end(mStrEndDate);
         //  Intent에 Filter정보 담아서 Main 호출.
         Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("Filter", filterData);

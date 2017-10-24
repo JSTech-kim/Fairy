@@ -378,30 +378,11 @@ public class InfoFragment extends Fragment implements HeartObserver{
             aJson = objData.getJSONArray("row");
             for(int i = 0; i < aJson.length(); i++)
             {
-                //  Subject Code 필터링한다.
+                //  적절한 데이터인지 필터링한다.
                 JSONObject jsonobject = aJson.getJSONObject(i);
-                if(aListFilter.contains(jsonobject.getString("SUBJCODE")) == false)
+                if(IsValidData(jsonobject) == false)
                 {
                     continue;
-                }
-
-                //  유,무료 필터 적용
-                if(mFilterData.getiIsFee() == 0 && jsonobject.getString("IS_FREE").equals("0"))
-                {
-                    continue;
-                }
-                else if(mFilterData.getiIsFee() == 1 && jsonobject.getString("IS_FREE").equals("1"))
-                {
-                    continue;
-                }
-
-                String strFilterSearch = mFilterData.getStrSearch();
-                if(!(strFilterSearch == null || strFilterSearch.length() <= 0))
-                {
-                    if(jsonobject.getString("TITLE").contains(strFilterSearch) == false)
-                    {
-                        continue;
-                    }
                 }
 
                 //  필터링한 결과에 들어가면 리스트에 추가.
@@ -464,7 +445,66 @@ public class InfoFragment extends Fragment implements HeartObserver{
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
 
+    //  필터링 데이터를 기반으로 데이터 거르기.
+    public boolean IsValidData(JSONObject jsonobject)
+    {
+        try {
+
+            //  Subject Code 필터링한다.
+            if(aListFilter.contains(jsonobject.getString("SUBJCODE")) == false)
+            {
+                return false;
+            }
+
+            //  유,무료 필터 적용
+            if(mFilterData.getiIsFee() == 0 && jsonobject.getString("IS_FREE").equals("0"))
+            {
+                return false;
+            }
+            else if(mFilterData.getiIsFee() == 1 && jsonobject.getString("IS_FREE").equals("1"))
+            {
+                return false;
+            }
+
+            //  검색어 필터링
+            String strFilterSearch = mFilterData.getStrSearch();
+            if(!(strFilterSearch == null || strFilterSearch.length() <= 0))
+            {
+                if(jsonobject.getString("TITLE").contains(strFilterSearch) == false)
+                {
+                    return false;
+                }
+            }
+
+            //  날짜 필터링 (YYYYMMDD)
+            if(mFilterData.getStrDate_start() == null || mFilterData.getStrDate_start().length() <= 0)
+            {
+                return true;
+            }
+
+            if(mFilterData.getStrDate_end() == null || mFilterData.getStrDate_end().length() <= 0)
+            {
+                return true;
+            }
+
+            String strTempStartDate = jsonobject.getString("STRTDATE");
+            String strTempEndDate = jsonobject.getString("END_DATE");
+
+            strTempStartDate = strTempStartDate.replace("-", "");
+            strTempEndDate = strTempEndDate.replace("-", "");
+            if(!((strTempStartDate.compareTo(mFilterData.getStrDate_start()) >= 0 && strTempStartDate.compareTo(mFilterData.getStrDate_end()) <= 0)
+                    || (strTempEndDate.compareTo(mFilterData.getStrDate_start()) >= 0 && strTempEndDate.compareTo(mFilterData.getStrDate_end()) <= 0)))
+            {
+                return false;
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
     //  HTML 특수문자 치환

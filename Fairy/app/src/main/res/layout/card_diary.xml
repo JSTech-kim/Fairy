@@ -17,7 +17,7 @@
 
             <ImageView
                 android:id="@+id/diary_cardview_imageview"
-                android:tint="#33888888"
+                android:tint="#33444444"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/test_diary" />
@@ -25,24 +25,23 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="50dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/diary_cardview_date"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"
-                    android:layout_marginBottom="5dp"/>
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/diary_cardview_title"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorWhite"
+                    android:layout_gravity="center"
+                    android:textStyle="bold"
                     android:textSize="18dp" />
 
             </LinearLayout>

@@ -186,7 +186,7 @@ public class Write_Diary extends AppCompatActivity {
             tempday =String.valueOf(mDay);
 
         DataBase_Date = String.valueOf(mYear)+"-"+tempmonth+"-"+tempday;
-        TextView_date.setText(String.format("%02d/%02d/%02d", mYear, mMonth + 1, mDay));
+        TextView_date.setText(String.format("%02d-%02d-%02d", mYear, mMonth + 1, mDay));
     }
     /*==================================================날짜 고르는 코드==========================================================*/
 
@@ -247,15 +247,15 @@ public class Write_Diary extends AppCompatActivity {
         DataBase_title = EditText_Title.getText().toString();
         DataBase_text = EditText_Text.getText().toString();
         if(DataBase_PictureURI == null){
-            Toast.makeText(getApplicationContext(),"사진을 선택하시오.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"사진을 선택하시오.",Toast.LENGTH_SHORT).show();
             return;
         }
         else if(DataBase_title.trim().getBytes().length<=0){
-            Toast.makeText(getApplicationContext(),"제목을 입력하시오.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"제목을 입력하시오.",Toast.LENGTH_SHORT).show();
             return;
         }
         else if(DataBase_text.trim().getBytes().length<=0){
-            Toast.makeText(getApplicationContext(),"본문을 입력하시오.",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"본문을 입력하시오.",Toast.LENGTH_SHORT).show();
             return;
         }
         if(isRewrite){ //  수정했을 때, 먼저 있던 데이터 베이스의 정보를 삭제한다.
@@ -271,7 +271,7 @@ public class Write_Diary extends AppCompatActivity {
         }
 
         InsertDiaryDataToDatabase(DataBase_Date,DataBase_title,DataBase_text,DataBase_PictureURI,DataBase_PictureName);
-        Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(),"일기를 저장하였습니다.",Toast.LENGTH_SHORT).show();
         finish();
     }
 
