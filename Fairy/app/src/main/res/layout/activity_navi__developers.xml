@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.jstech.fairy.Navigation.Navi_Developers">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="강현지 팀장,UX/UI ,ehfkddl29@naver.com, 빠른96년생
+김진섭 수석연구원,개발,Sujinsub@naver.com, 나이많음
+박진기 짬찌, 개발, rlqkrwls@naver.com, 늦은95년생"/>
+
+</LinearLayout>
