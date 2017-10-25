@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -19,6 +20,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.jstech.fairy.Adapter.FairyFragmentPagerAdapter;
 import com.jstech.fairy.DataType.FilterDataType;
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar)findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
+
         mContext = this.getApplicationContext();
         filterData = new FilterDataType();
 
@@ -173,6 +176,7 @@ public class MainActivity extends AppCompatActivity{
         {
             tabLayout.getTabAt(i).setIcon(tabImg[i]);
         }
+
     }
 
     @Override
@@ -181,6 +185,10 @@ public class MainActivity extends AppCompatActivity{
         mMenu = menu;
         getMenuInflater().inflate(R.menu.menu, menu);
         setTitleChange("Festival");
+
+        //  폰트 적용
+        Typeface typeFace= Typeface.createFromAsset(mContext.getAssets(), "fonts/Airplanes_in_the_Night_Sky.ttf");
+        ((TextView)toolbar.getChildAt(0)).setTypeface(typeFace);
 
         return true;
     }
