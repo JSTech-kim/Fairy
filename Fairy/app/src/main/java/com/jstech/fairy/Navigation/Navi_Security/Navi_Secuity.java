@@ -23,6 +23,7 @@ public class Navi_Secuity extends AppCompatActivity {
         mSamplePreferenceFragment = (Navi_Security_PreferenceFragment) fragmentManager.findFragmentByTag(KEY_PREFERENCE_FRAGMENT);
         mPasscodePreferenceFragment = (PasscodePreferenceFragment) fragmentManager.findFragmentByTag(KEY_PASSCODE_FRAGMENT);
 
+
         if (mSamplePreferenceFragment == null || mPasscodePreferenceFragment == null) {
             Bundle passcodeArgs = new Bundle();
             passcodeArgs.putBoolean(PasscodePreferenceFragment.KEY_SHOULD_INFLATE, false);

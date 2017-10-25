@@ -24,9 +24,7 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by SONY on 2017-10-12.
- */
+
 
 public class HeartFragmentRecyclerViewAdapter extends RecyclerView.Adapter<HeartFragmentRecyclerViewAdapter.ViewHolder>{
 

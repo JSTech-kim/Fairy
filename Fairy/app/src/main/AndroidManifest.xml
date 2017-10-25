@@ -69,7 +69,9 @@
             android:name=".PoPupImage"
             android:screenOrientation="portrait"
             android:theme="@style/MyDialog" />
-        <activity android:name=".DiaryDetail"></activity>
+        <activity
+            android:name=".DiaryDetail"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

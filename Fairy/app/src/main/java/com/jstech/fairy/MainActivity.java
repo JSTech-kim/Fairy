@@ -146,19 +146,19 @@ public class MainActivity extends AppCompatActivity{
 
                 if(position == 0){
                     toolbar.getMenu().clear();
-                    setTitleChange("Festival");
+                    setTitleChange("행사정보");
                     getMenuInflater().inflate(R.menu.menu, mMenu);
                 }
                 else if(position == 1){
                     toolbar.getMenu().clear();
-                    setTitleChange("Diary");
+                    setTitleChange("일기장");
                     getMenuInflater().inflate(R.menu.menu_diary, mMenu);
                 }
                 else if(position == 2)
                 {
                     heartPublisher.notifyObserver();
                     toolbar.getMenu().clear();
-                    setTitleChange("Favorite");
+                    setTitleChange("찜목록");
                     getMenuInflater().inflate(R.menu.menu_heart, mMenu);
                 }
             }
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity{
 
         mMenu = menu;
         getMenuInflater().inflate(R.menu.menu, menu);
-        setTitleChange("Festival");
+        setTitleChange("행사정보");
 
         //  폰트 적용
         Typeface typeFace= Typeface.createFromAsset(mContext.getAssets(), "fonts/Airplanes_in_the_Night_Sky.ttf");

@@ -60,7 +60,7 @@ public class DiaryDetail extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("Diary");
+        setTitleChange("일기");
 
         picture.setImageBitmap(BitmapFactory.decodeFile(diaryData.getStrImgPath()));
         title.setText(diaryData.getStrTitle());

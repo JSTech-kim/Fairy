@@ -11,14 +11,6 @@ import com.jstech.fairy.Fragment.HeartFragment;
 import com.jstech.fairy.Fragment.InfoFragment;
 import com.jstech.fairy.MoreFunction.HeartAlarm;
 
-/**
- * Created by SONY on 2017-09-25.
- */
-/*
-*
-*   17/09/25 FragmentPagerAdapter
-*   Fragment들을 생성.
-* */
 
 public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수

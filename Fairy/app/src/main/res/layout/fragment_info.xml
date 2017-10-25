@@ -8,8 +8,6 @@
         android:id="@+id/info_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
-    <!-- 맨 위로 올라가는 기능-->
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/info_fab"
         android:layout_width="wrap_content"

@@ -40,7 +40,7 @@ public class Navi_ContactUs extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("문의 사항");
+        setTitleChange("문의하기");
 
         Developer_List = (Spinner)findViewById(R.id.Developer_List);
         Developers_List_Adapter = ArrayAdapter.createFromResource(this,R.array.Developers,android.R.layout.simple_spinner_item);
@@ -66,7 +66,7 @@ public class Navi_ContactUs extends AppCompatActivity {
     }
 
 
-    /*현지 : 전송버튼 액션바로 이동*/
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_email, menu);

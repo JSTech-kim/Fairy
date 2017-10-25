@@ -23,9 +23,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by SONY on 2017-10-12.
- */
 
 public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<DiaryFragmentRecyclerViewAdapter.ViewHolder>{
 

@@ -2,12 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- 추후 검색 버튼 구현-->
-    <!--item android:id="@+id/action_search"
-        android:title="Action searching"
-        app:showAsAction="always"
-        android:icon="@drawable/ic_search"/-->
-
     <item android:id="@+id/action_filter"
         android:title="Action Filtering"
         app:showAsAction="always"

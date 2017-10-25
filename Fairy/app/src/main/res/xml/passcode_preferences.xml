@@ -1,9 +1,11 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
+
+
     <PreferenceCategory
         android:key="security_header"
-        android:title="화면 잠금">
+        android:title="화면잠금">
 
         <!-- A 'parent' preference, which enables/disables child preferences (below)
              when checked/unchecked. -->

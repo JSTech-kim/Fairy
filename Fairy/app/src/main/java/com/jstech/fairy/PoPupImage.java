@@ -16,10 +16,7 @@ public class PoPupImage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_po_pup_image);
         CropView BigPucture = (CropView)findViewById(R.id.BigPucture);
-
         //this.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        // 배경 어두워지는거 막기 ... 이거 추가하는데 고생했는데 현지가 하지 말자한다.
-
         DisplayMetrics dm = getApplicationContext().getResources().getDisplayMetrics();
         int width = dm.widthPixels;
         int height = dm.heightPixels;

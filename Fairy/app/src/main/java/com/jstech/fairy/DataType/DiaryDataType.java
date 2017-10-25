@@ -3,9 +3,6 @@ package com.jstech.fairy.DataType;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by SONY on 2017-10-12.
- */
 
 public class DiaryDataType implements Parcelable{
 

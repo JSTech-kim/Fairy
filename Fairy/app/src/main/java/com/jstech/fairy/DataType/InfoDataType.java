@@ -3,13 +3,6 @@ package com.jstech.fairy.DataType;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by SONY on 2017-09-28.
- */
-/*
-*       문화 행사 API로부터 받아와서 사용할 데이터 리스트
-*       뒤에 * 붙은건, Main 화면에서 보여질 정보.
-*/
 public class InfoDataType implements Parcelable{
     private String strCultCode;     //  문화 행사 코드
     private String strSubjCode;     //  장르 분류 코드

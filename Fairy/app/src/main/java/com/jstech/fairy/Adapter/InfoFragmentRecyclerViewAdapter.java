@@ -26,9 +26,6 @@ import java.util.GregorianCalendar;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by SONY on 2017-09-26.
- */
 
 public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFragmentRecyclerViewAdapter.ViewHolder>{
 
@@ -52,14 +49,7 @@ public class InfoFragmentRecyclerViewAdapter extends RecyclerView.Adapter<InfoFr
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
 
-    /*
-    *
-    *   17/10/11
-    *   좋아요 클릭 시, DB에 저장.
-    *   취소 시, DB에서 제거.
-    *   최초에 바인딩 할 때, DB 참조해야한다. 라고 생각하고있는 중임. 구현 ㄴㄴ.
-    *
-    * */
+
     @Override
     public void onBindViewHolder(InfoFragmentRecyclerViewAdapter.ViewHolder holder, int position) {
 

@@ -37,18 +37,6 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 
-/**
- * Created by SONY on 2017-09-25.
- */
-/*
-*
-*   17/09/25 문화 행사 정보를 뿌려주는 InfoFragment
-*   이곳에서 RecyclerView + CardView로 문화 행사 정보를 뿌려줘야한다.
-*
-*   17/10/10 동적으로 데이터 갯수에 따라 전체 데이터 다운로드 가능.
-*   1페이지 데이터 시트 다운로드 -> list_total_count 값 추출 -> 1~Count의 데이터 시트 다운로드 -> 리스트 생성
-*
-* */
 public class InfoFragment extends Fragment implements HeartObserver{
 
 
