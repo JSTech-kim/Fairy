@@ -24,13 +24,15 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
     final int PAGE_COUNT = 3;   //페이지 개수
     HeartAlarm heartPublisher;                  //  Heart Fragment에 Observer Pattern 추가하기 위함.
     HeartAlarm heartCancelPublisher;                  //  Info Fragment에 Observer Pattern 추가하기 위함.
+    HeartAlarm DiaryOrderPublisher;             //  다이어리 정렬 알림
     Context mContext;
     FilterDataType filterData;
 
-    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher, Context context, FilterDataType filterData) {
+    public FairyFragmentPagerAdapter(FragmentManager fm, HeartAlarm heartPublisher, HeartAlarm heartCancelPublisher, HeartAlarm DiaryOrderPublisher, Context context, FilterDataType filterData) {
         super(fm);
         this.heartPublisher = heartPublisher;
         this.heartCancelPublisher = heartCancelPublisher;
+        this.DiaryOrderPublisher = DiaryOrderPublisher;
         this.mContext = context;
         this.filterData = filterData;
     }
@@ -47,7 +49,7 @@ public class FairyFragmentPagerAdapter extends FragmentPagerAdapter{
             return new InfoFragment(position, heartCancelPublisher, filterData);
         }
         else if(position == 1){
-            return new DiaryFragment(position);
+            return new DiaryFragment(position, DiaryOrderPublisher);
         }
         else{
             return new HeartFragment(position, heartPublisher, heartCancelPublisher);

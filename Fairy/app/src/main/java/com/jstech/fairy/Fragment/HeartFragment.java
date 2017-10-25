@@ -162,4 +162,9 @@ public class HeartFragment extends Fragment implements HeartObserver{
     public void ChangeHeartData(boolean bPushHeart, String strCultCode) {
 
     }
+
+    @Override
+    public void SetDiaryOrdered(boolean bAsc) {
+
+    }
 }

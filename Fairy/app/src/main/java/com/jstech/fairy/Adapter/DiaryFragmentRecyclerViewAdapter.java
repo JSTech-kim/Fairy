@@ -50,9 +50,7 @@ public class DiaryFragmentRecyclerViewAdapter  extends RecyclerView.Adapter<Diar
     public void onBindViewHolder(ViewHolder holder, int position) {
 
         final int pos = position;
-
         holder.tvDate.setText(aListDiary.get(pos).getStrDate());
-
 
         //  이미지는 경로를 이용해서 받아오셈!
         //  우선은 텍스트만

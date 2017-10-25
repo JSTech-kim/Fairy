@@ -41,5 +41,14 @@ public class HeartAlarm implements HeartPublisher{
         }
     }
 
+    //  다이어리 정렬하기 클릭 시 알림.
+    @Override
+    public void notifyDiaryOrdered(boolean bAsc) {
+        for(HeartObserver observer : observers)
+        {
+            observer.SetDiaryOrdered(bAsc);
+        }
+    }
+
 
 }

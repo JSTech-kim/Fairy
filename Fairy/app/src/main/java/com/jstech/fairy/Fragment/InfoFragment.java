@@ -210,6 +210,11 @@ public class InfoFragment extends Fragment implements HeartObserver{
         mAdapter.HeartDataUpdate(bPushHeart, iPosition);
     }
 
+    @Override
+    public void SetDiaryOrdered(boolean bAsc) {
+
+    }
+
     /*
     *
     *       전체 데이터를 받아와서 리스트에 삽입한다.

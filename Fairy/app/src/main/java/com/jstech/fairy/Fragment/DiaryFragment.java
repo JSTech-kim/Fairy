@@ -16,6 +16,8 @@ import android.view.ViewGroup;
 
 import com.jstech.fairy.Adapter.DiaryFragmentRecyclerViewAdapter;
 import com.jstech.fairy.DataType.DiaryDataType;
+import com.jstech.fairy.Interface.HeartObserver;
+import com.jstech.fairy.MoreFunction.HeartAlarm;
 import com.jstech.fairy.R;
 import com.melnykov.fab.FloatingActionButton;
 
@@ -27,7 +29,7 @@ import static android.content.Context.MODE_PRIVATE;
  * Created by SONY on 2017-09-25.
  */
 
-public class DiaryFragment extends Fragment {
+public class DiaryFragment extends Fragment implements HeartObserver {
     public static final String ARG_PAGE = "ARG_PAGE";   //  Position값 받아올 구분자
     public static final int POSITION_DIARY = 1;
     private int mPage;
@@ -44,10 +46,12 @@ public class DiaryFragment extends Fragment {
 
     //  Constructor
     @SuppressLint("ValidFragment")
-    public DiaryFragment(int page) {
+    public DiaryFragment(int page, HeartAlarm DiaryOrderPublisher) {
         Bundle args = new Bundle();
         args.putInt(ARG_PAGE, page);
         this.setArguments(args);
+
+        DiaryOrderPublisher.add(this);
     }
 
     @Override
@@ -170,5 +174,24 @@ public class DiaryFragment extends Fragment {
                 temp = strDate_To_Int(aListDiary.get(i).getStrDate());
             }
             return num;
+    }
+
+    @Override
+    public void DataUpdate() {
+
+    }
+
+    @Override
+    public void ChangeHeartData(boolean bPushHeart, String strCultCode) {
+
+    }
+
+    //  정렬 클릭 시.
+    @Override
+    public void SetDiaryOrdered(boolean bAsc) {
+        aListDiary = sortedList(aListDiary, bAsc);
+        mAdapter = new DiaryFragmentRecyclerViewAdapter(getActivity(), aListDiary);
+        mRecyclerView.setAdapter(mAdapter);
+        mAdapter.notifyDataSetChanged();
     }
 }

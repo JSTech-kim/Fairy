@@ -5,7 +5,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,9 +17,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.TypefaceSpan;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -44,6 +40,7 @@ public class MainActivity extends AppCompatActivity{
     private FairyFragmentPagerAdapter mAdapter;
     private HeartAlarm heartPublisher;               //  Info에서 좋아요 누른것을 Heart 탭에 알리기 위함.
     private HeartAlarm heartCancelPublisher;        //  Heart에서 좋아요 취소한 것을 Info에 알리기 위함.
+    private HeartAlarm DiaryOrderPublisher;        //  다이어리 정렬 클릭이벤트 알리기 위함.
     private Context mContext;
 
     Menu mMenu;
@@ -81,6 +78,9 @@ public class MainActivity extends AppCompatActivity{
         //  Heart Observer Pattern을 위한 Publisher.
         heartPublisher = new HeartAlarm();
         heartCancelPublisher = new HeartAlarm();
+
+        //  Diary Order Observer
+        DiaryOrderPublisher = new HeartAlarm();
 
         //  Action Bar
         ActionBar actionBar = getSupportActionBar();
@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity{
         //페이지 2개 미리 띄움. 페이지 이동 시 데이터 로드 때문.
         viewpager = (ViewPager)findViewById(R.id.main_viewpager);
         viewpager.setOffscreenPageLimit(PAGE_COUNT);
-        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, heartCancelPublisher, mContext, filterData);
+        mAdapter = new FairyFragmentPagerAdapter(getSupportFragmentManager(), heartPublisher, heartCancelPublisher, DiaryOrderPublisher, mContext, filterData);
         viewpager.setAdapter(mAdapter);
 
         //  Page 바꿀 때 이벤트 처리.
@@ -210,6 +210,16 @@ public class MainActivity extends AppCompatActivity{
                 intent = new Intent(this, Write_Diary.class);
                 intent.putExtra("isRewrite",false);
                 startActivity(intent);
+                return true;
+
+            //  최근순
+            case R.id.Ascen:
+                DiaryOrderPublisher.notifyDiaryOrdered(false);
+                return true;
+
+            //  오래된 순
+            case R.id.descen:
+                DiaryOrderPublisher.notifyDiaryOrdered(true);
                 return true;
 
             case R.id.action_sort:
