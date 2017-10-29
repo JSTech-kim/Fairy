@@ -61,7 +61,9 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/hj" />
+                android:src="@drawable/hj"
+                android:padding="2dp"
+                android:background="@color/white"/>
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -87,7 +89,9 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/js" />
+                android:src="@drawable/js"
+                android:padding="2dp"
+                android:background="@color/white"/>
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
@@ -114,7 +118,9 @@
                 android:layout_height="100dp"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
-                android:src="@drawable/jk" />
+                android:src="@drawable/jk2"
+                android:padding="2dp"
+                android:background="@color/white"/>
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
