@@ -32,13 +32,11 @@ public class Filter extends AppCompatActivity{
 
     private Context mContext;
     private FilterDataType filterData;
-    private int iIsFee;
     private boolean bCheckArt;
     private boolean bCheckConcert;
     private boolean bCheckDrama;
     private boolean bCheckFestival;
     private boolean bCheckOpera;
-    private String strDate;
     private RadioButton rbFee0;
     private RadioButton rbFee1;
     private RadioButton rbFeeAll;
@@ -69,7 +67,7 @@ public class Filter extends AppCompatActivity{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("Filter");
+        setTitleChange("필터");
 
         rbFee0 = (RadioButton)findViewById(R.id.filter_rb_fee_0);
         rbFee1 = (RadioButton)findViewById(R.id.filter_rb_fee_1);
@@ -321,10 +319,9 @@ public class Filter extends AppCompatActivity{
         filterData.setbCheckDrama(bCheckDrama);
         filterData.setbCheckFestival(bCheckFestival);
         filterData.setbCheckOpera(bCheckOpera);
-
-        //  날짜 필터 구현해야함
         filterData.setStrDate_start(mStrStartDate);
         filterData.setStrDate_end(mStrEndDate);
+
         //  Intent에 Filter정보 담아서 Main 호출.
         Intent intent = new Intent(mContext, MainActivity.class);
         intent.putExtra("Filter", filterData);
