@@ -3,8 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_rewrite"
-        android:title="수정"
-        app:showAsAction="always" />
+        android:title="Action Edit"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_edit"/>
 
     <item android:id="@+id/action_remove"
         android:title="Action Remove"

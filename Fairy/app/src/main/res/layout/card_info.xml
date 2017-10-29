@@ -27,7 +27,7 @@
                     android:layout_height="190sp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/no_image" />
+                    android:src="@drawable/no_image2" />
 
             </LinearLayout>
 
@@ -54,7 +54,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:paddingBottom="7dp">
 
                     <!-- due date 추가하기 -->
                     <TextView
