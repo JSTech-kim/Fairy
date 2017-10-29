@@ -9,10 +9,12 @@
             android:id="@+id/navi_btn_ContactUs"
             android:icon="@drawable/ic_mail"
             android:title="문의 사항" />
+
         <item
             android:id="@+id/navi_btn_Developers"
             android:icon="@drawable/ic_developer"
             android:title="개발자 정보" />
+
         <item
             android:id="@+id/navi_btn_LicenseInfo"
             android:icon="@drawable/ic_info"
