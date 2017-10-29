@@ -1,8 +1,6 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android" >
 
-
-
     <PreferenceCategory
         android:key="security_header"
         android:title="화면잠금">
