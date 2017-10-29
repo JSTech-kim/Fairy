@@ -69,7 +69,7 @@ public class Filter extends AppCompatActivity{
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_back2);
         actionBar.setDisplayHomeAsUpEnabled(true);
-        setTitleChange("Filter");
+        setTitleChange("필터");
 
         rbFee0 = (RadioButton)findViewById(R.id.filter_rb_fee_0);
         rbFee1 = (RadioButton)findViewById(R.id.filter_rb_fee_1);
