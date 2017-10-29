@@ -31,14 +31,14 @@
         android:layout_gravity="center"/>
 
     </LinearLayout>
-
+<!--
     <View
         android:layout_width="match_parent"
-        android:layout_height="1dp"
+        android:layout_height="2dp"
         android:layout_marginBottom="5dp"
         android:layout_marginTop="5dp"
         android:background="@color/colorLine" />
-
+-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -46,7 +46,8 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:padding="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:background="@color/colorPrimaryLight">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -62,10 +63,15 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/hj" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="기획 및 디자인"
+                android:gravity="center"
+                android:text="Kang HyeonJi"
+                android:textStyle="bold"
+                android:background="@color/white"
+                android:textColor="@color/colorPrimaryLight"
+                android:padding="3dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
@@ -83,10 +89,15 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/js" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="개발"
+                android:text="Kim JinSub"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:background="@color/white"
+                android:textColor="@color/colorPrimaryLight"
+                android:padding="3dp"
                 android:layout_gravity="center"/>
 
         </LinearLayout>
@@ -105,10 +116,15 @@
                 android:layout_marginLeft="10dp"
                 android:src="@drawable/jk" />
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="개발"
+                android:gravity="center"
+                android:text="Park JinGi"
+                android:textStyle="bold"
+                android:background="@color/white"
+                android:textColor="@color/colorPrimaryLight"
+                android:padding="3dp"
                 android:layout_gravity="center"/>
         </LinearLayout>
 
